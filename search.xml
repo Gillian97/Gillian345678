@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>first blog</title>
+    <title>使用 GitHub 和 Hexo 搭建个人博客</title>
     <url>/Gillian97.github.io/posts/4c659969/</url>
     <content><![CDATA[]]></content>
+      <categories>
+        <category>软件工具</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+        <tag>Hexo</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hello World</title>
