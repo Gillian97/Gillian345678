@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Vue Learning</title>
-    <url>/posts/c1889358/</url>
-    <content><![CDATA[]]></content>
+    <title>LeetCode Solutions</title>
+    <url>/posts/b6a54014/</url>
+    <content><![CDATA[<p>[27] Remove Element</p>
+<blockquote>
+<p>Given an array <em>nums</em> and a value <em>val</em>, remove all instances of that value <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener"><strong>in-place</strong></a> and return the new length.</p>
+<p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener">in-place</a></strong> with O(1) extra memory.</p>
+<p>The order of elements can be changed. It doesn’t matter what you leave beyond the new length.</p>
+</blockquote>
+<p>我自己的解法是利用了js数组操作的特性, 可以直接删除数组元素然后剩余元素位置前移的那种,比较方便,但是运行效果不咋地.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// solution 1</span></span><br><span class="line"><span class="keyword">var</span> removeElement = <span class="function"><span class="keyword">function</span> (<span class="params">nums, val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">    <span class="comment">// 使用 while 保证对于同一个i, 去除该位置所有与val相等的值</span></span><br><span class="line">    <span class="comment">// 不会遗漏由于删除数组元素而位置前移的新元素</span></span><br><span class="line">    <span class="keyword">while</span> (nums[i] == val) &#123;</span><br><span class="line">      nums.splice(i, <span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>下面的解法是参考了示例解法, 双指针解法. 我觉得很精巧.</p>
+<p>主要思路是, 将需要保留的元素都赋值给数组的前部分, 使用 i 标记赋值的位置.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// solution two pointers</span></span><br><span class="line"><span class="comment">// 只保留与val不同的元素</span></span><br><span class="line"><span class="comment">// 赋值操作比起splice的删除操作 肯定速度更快 至于额外的空间 需要看splice的实现有没有占用了</span></span><br><span class="line"><span class="keyword">var</span> removeElement = <span class="function"><span class="keyword">function</span> (<span class="params">nums, val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[j] != val) &#123;</span><br><span class="line">      nums[i] = nums[j];</span><br><span class="line">      <span class="comment">// console.log("i=", i, " ", nums[i]);</span></span><br><span class="line">      i++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> i;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+]]></content>
       <categories>
-        <category>前端框架</category>
+        <category>Algorithm</category>
       </categories>
       <tags>
-        <tag>Vue</tag>
-        <tag>js</tag>
+        <tag>LeetCode</tag>
       </tags>
   </entry>
   <entry>
@@ -31,16 +45,15 @@
 ]]></content>
   </entry>
   <entry>
-    <title>使用 GitHub 和 Hexo 搭建个人博客</title>
-    <url>/posts/4c659969/</url>
-    <content><![CDATA[<p>hello 你好</p>
-]]></content>
+    <title>Vue Learning</title>
+    <url>/posts/c1889358/</url>
+    <content><![CDATA[]]></content>
       <categories>
-        <category>软件工具</category>
+        <category>前端框架</category>
       </categories>
       <tags>
-        <tag>GitHub</tag>
-        <tag>Hexo</tag>
+        <tag>Vue</tag>
+        <tag>js</tag>
       </tags>
   </entry>
 </search>
