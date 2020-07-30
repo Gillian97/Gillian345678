@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  567
+                  981
                 </span>
               
 
@@ -394,7 +394,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  2
+                  4
                 </span>
               
             </div>
@@ -417,7 +417,27 @@
       
         
           
-            <h4 id="26-Remove-Duplicates-from-Sorted-Array"><a href="#26-Remove-Duplicates-from-Sorted-Array" class="headerlink" title="[26] Remove Duplicates from Sorted Array"></a>[26] Remove Duplicates from Sorted Array</h4><blockquote>
+            <h4 id="11-Container-With-Most-Water"><a href="#11-Container-With-Most-Water" class="headerlink" title="[11] Container With Most Water"></a>[11] Container With Most Water</h4><blockquote>
+<p>Given <em>n</em> non-negative integers <em>a1</em>, <em>a2</em>, …, <em>an</em> , where each represents a point at coordinate (<em>i</em>, <em>ai</em>). <em>n</em> vertical lines are drawn such that the two endpoints of line <em>i</em> is at (<em>i</em>, <em>ai</em>) and (<em>i</em>, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.</p>
+<p><strong>Note:</strong> You may not slant the container and <em>n</em> is at least 2.</p>
+</blockquote>
+<h6 id="my-solution-Brute-Force"><a href="#my-solution-Brute-Force" class="headerlink" title="my solution : Brute Force"></a>my solution : Brute Force</h6><p>穷举所有面积的可能性,最后对面积进行排序,找到最大值.</p>
+<p>中间一度尝试过将 <code>partArea</code> 组成数组先排序,也还是超时.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> maxArea = <span class="function"><span class="keyword">function</span> (<span class="params">height</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> partMaxSet = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; height.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; height.length; j++) &#123;</span><br><span class="line">      <span class="keyword">let</span> yVal = height[j] &lt; height[i] ? height[j] : height[i];</span><br><span class="line">      <span class="keyword">let</span> partArea = (j - i) * yVal;</span><br><span class="line">      partMaxSet.add(partArea);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> partMaxList = <span class="built_in">Array</span>.from(partMaxSet);</span><br><span class="line">  <span class="comment">// 数字降序排列</span></span><br><span class="line">  partMaxList.sort(<span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123; <span class="keyword">return</span> b - a &#125;);</span><br><span class="line">  <span class="keyword">return</span> partMaxList[<span class="number">0</span>];</span><br><span class="line">  <span class="comment">// return Math.max.apply(null, partMaxList);</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="Two-pointers"><a href="#Two-pointers" class="headerlink" title="Two pointers"></a>Two pointers</h6><p>采用双指针做法, 对于 S(i, j) 来说, 都是每次向里移动一步.</p>
+<p>移动短板, 短板有可能变长, 面积有可能变大.</p>
+<p>但是移动长板,  短板只会不变或者变小, 因为盛水的体积取决于短板, 所以面积只会不变或变小.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 此算法需要证明</span></span><br><span class="line"><span class="keyword">var</span> maxArea = <span class="function"><span class="keyword">function</span> (<span class="params">height</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>, j = height.length - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> areaList = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">  <span class="keyword">while</span> (j - i &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (height[i] &lt; height[j]) &#123;</span><br><span class="line">      <span class="comment">// 计算面积以短边为准</span></span><br><span class="line">      areaList.push((j - i) * height[i]);</span><br><span class="line">      <span class="comment">// 移动短边有可能获得更大面积</span></span><br><span class="line">      i++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      areaList.push((j - i) * height[j]);</span><br><span class="line">      j--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 将可能的面积列表倒序排列,返回第一个</span></span><br><span class="line">  <span class="keyword">return</span> areaList.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> b - a)[<span class="number">0</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Complexity Analysis</strong></p>
+<ul>
+<li>Time complexity : O(n)<em>O</em>(<em>n</em>). Single pass.</li>
+<li>Space complexity : O(1)<em>O</em>(1). Constant space is used.</li>
+</ul>
+<h4 id="26-Remove-Duplicates-from-Sorted-Array"><a href="#26-Remove-Duplicates-from-Sorted-Array" class="headerlink" title="[26] Remove Duplicates from Sorted Array"></a>[26] Remove Duplicates from Sorted Array</h4><blockquote>
 <p>Given a sorted array <em>nums</em>, remove the duplicates <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener"><strong>in-place</strong></a> such that each element appear only <em>once</em> and return the new length.</p>
 <p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener">in-place</a></strong> with O(1) extra memory.</p>
 </blockquote>
@@ -426,7 +446,7 @@
 
 
 
-<h6 id="Two-pointers"><a href="#Two-pointers" class="headerlink" title="Two pointers"></a>Two pointers</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 参考双指针的方法, 优化了解法</span></span><br><span class="line"><span class="comment">// js的数组越界不会报错,只会得到 undefined 值</span></span><br><span class="line"><span class="keyword">var</span> removeDuplicates = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[j] != nums[j + <span class="number">1</span>]) &#123;</span><br><span class="line">      nums[i] = nums[j];</span><br><span class="line">      i++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> i;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h6 id="Two-pointers-1"><a href="#Two-pointers-1" class="headerlink" title="Two pointers"></a>Two pointers</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 参考双指针的方法, 优化了解法</span></span><br><span class="line"><span class="comment">// js的数组越界不会报错,只会得到 undefined 值</span></span><br><span class="line"><span class="keyword">var</span> removeDuplicates = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[j] != nums[j + <span class="number">1</span>]) &#123;</span><br><span class="line">      nums[i] = nums[j];</span><br><span class="line">      i++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> i;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -440,7 +460,7 @@
 
 
 
-<h6 id="Two-pointers-1"><a href="#Two-pointers-1" class="headerlink" title="Two pointers"></a>Two pointers</h6><p>下面的解法是参考了示例解法, 双指针解法. 我觉得很精巧.</p>
+<h6 id="Two-pointers-2"><a href="#Two-pointers-2" class="headerlink" title="Two pointers"></a>Two pointers</h6><p>下面的解法是参考了示例解法, 双指针解法. 我觉得很精巧.</p>
 <p>主要思路是, 将需要保留的元素都赋值给数组的前部分, 使用 i 标记赋值的位置.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// solution two pointers</span></span><br><span class="line"><span class="comment">// 只保留与val不同的元素</span></span><br><span class="line"><span class="comment">// 赋值操作比起splice的删除操作 肯定速度更快 至于额外的空间 需要看splice的实现有没有占用了</span></span><br><span class="line"><span class="keyword">var</span> removeElement = <span class="function"><span class="keyword">function</span> (<span class="params">nums, val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[j] != val) &#123;</span><br><span class="line">      nums[i] = nums[j];</span><br><span class="line">      <span class="comment">// console.log("i=", i, " ", nums[i]);</span></span><br><span class="line">      i++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> i;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -957,7 +977,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">640</span>
+    <span title="Site words total count">1.1k</span>
   
 </div>
 
