@@ -966,7 +966,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  2k
+                  2.2k
                 </span>
               
 
@@ -982,7 +982,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  10
+                  11
                 </span>
               
             </div>
@@ -1097,6 +1097,17 @@
 </blockquote>
 <p>双指针解法, 一次成功.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// solution: two pointers</span></span><br><span class="line"><span class="comment">// 借鉴之前的做题经验, 这题算是完成的比较快</span></span><br><span class="line"><span class="keyword">var</span> moveZeroes = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length, i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; len; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[j] != <span class="number">0</span>) &#123;</span><br><span class="line">      nums[i] = nums[j];</span><br><span class="line">      i++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> t = i; t &lt; len; t++) &#123;</span><br><span class="line">    nums[t] = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// console.log(nums);</span></span><br><span class="line">  <span class="keyword">return</span> nums;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="66-Plus-One"><a href="#66-Plus-One" class="headerlink" title="[66] Plus One"></a>[66] Plus One</h4><blockquote>
+<p>Given a <strong>non-empty</strong> array of digits representing a non-negative integer, increment one to the integer.</p>
+<p>The digits are stored such that the most significant digit is at the head of the list, and each element in the array contains a single digit.</p>
+<p>You may assume the integer does not contain any leading zero, except the number 0 itself.</p>
+</blockquote>
+<p>主要是运用数组特性.不是很难, 理解题意即可.</p>
+<p>还挺多人不喜欢这道题的, 可能觉得太弱智了?…</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> plusOne = <span class="function"><span class="keyword">function</span> (<span class="params">digits</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = digits.length;</span><br><span class="line">  <span class="comment">// c 表示进位</span></span><br><span class="line">  <span class="keyword">let</span> i = len - <span class="number">1</span>, c = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (i &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// 没有向前进位, 就 +1 结束</span></span><br><span class="line">    <span class="keyword">if</span> (digits[i] + c &lt; <span class="number">10</span>) &#123;</span><br><span class="line">      digits[i]++;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">0</span>) &#123; </span><br><span class="line">      <span class="comment">// 首位元素 +1 后有进位, 向数组头部插入 1 结束</span></span><br><span class="line">      digits[i] = <span class="number">0</span>;</span><br><span class="line">      digits.unshift(<span class="number">1</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 不是首位元素 +1 后有进位</span></span><br><span class="line">      <span class="comment">// 当前元素设为 0 , 继续看更高位元素</span></span><br><span class="line">      digits[i] = <span class="number">0</span>;</span><br><span class="line">      i--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// console.log(digits);</span></span><br><span class="line">  <span class="keyword">return</span> digits;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
           
@@ -1544,7 +1555,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -1605,7 +1616,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">4.2k</span>
+    <span title="Site words total count">4.4k</span>
   
 </div>
 
