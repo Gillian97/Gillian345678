@@ -77,17 +77,19 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="[78] Subsets Given a set of distinct integers, nums, return all possible subsets (the power set). Note: The solution set must not contain duplicate subsets.  观察全排列&#x2F;组合&#x2F;子集问题，它们比较相似，且可以使用一些通用策略解决。 首先，它们的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://gillian97.github.io/posts/4a17b156/index.html">
+<meta property="og:title" content="Permutations&#x2F;Combinations&#x2F;Subsets">
+<meta property="og:url" content="https://gillian97.github.io/posts/91d834a1/index.html">
 <meta property="og:site_name" content="Gillian&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="[78] Subsets Given a set of distinct integers, nums, return all possible subsets (the power set). Note: The solution set must not contain duplicate subsets.  观察全排列&#x2F;组合&#x2F;子集问题，它们比较相似，且可以使用一些通用策略解决。 首先，它们的">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-28T10:22:25.188Z">
-<meta property="article:modified_time" content="2020-07-28T15:24:05.684Z">
+<meta property="og:image" content="https://gillian97.github.io/posts/91d834a1/bitmask4.png">
+<meta property="article:published_time" content="2020-08-03T07:36:23.000Z">
+<meta property="article:modified_time" content="2020-08-04T02:22:10.346Z">
 <meta property="article:author" content="Gillian">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gillian97.github.io/posts/91d834a1/bitmask4.png">
 
 
 
@@ -117,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://gillian97.github.io/posts/4a17b156/"/>
+  <link rel="canonical" href="https://gillian97.github.io/posts/91d834a1/"/>
 
 
 
 
 
-  <title>Hello World | Gillian's Blog</title>
+  <title>Permutations/Combinations/Subsets | Gillian's Blog</title>
   
 
 
@@ -294,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://gillian97.github.io/posts/4a17b156/">
+    <link itemprop="mainEntityOfPage" href="https://gillian97.github.io/posts/91d834a1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Gillian">
@@ -311,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">Permutations/Combinations/Subsets</h1>
         
 
         <div class="post-meta">
@@ -323,8 +325,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-28T18:22:25+08:00">
-                2020-07-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-03T15:36:23+08:00">
+                2020-08-03
               </time>
             
 
@@ -360,7 +362,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  73
+                  698
                 </span>
               
 
@@ -376,7 +378,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  2
                 </span>
               
             </div>
@@ -397,19 +399,48 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h4 id="78-Subsets"><a href="#78-Subsets" class="headerlink" title="[78] Subsets"></a>[78] Subsets</h4><blockquote>
+<p>Given a set of <strong>distinct</strong> integers, <em>nums</em>, return all possible subsets (the power set).</p>
+<p><strong>Note:</strong> The solution set must not contain duplicate subsets.</p>
+</blockquote>
+<p>观察全排列/组合/子集问题，它们比较相似，且可以使用一些通用策略解决。</p>
+<p>首先，它们的解空间非常大：</p>
+<ul>
+<li>全排列：N!。</li>
+</ul>
+<ul>
+<li>组合：N!。</li>
+</ul>
+<ul>
+<li>子集：2^N, 每个元素都可能存在或不存在。</li>
+</ul>
+<p>在它们的指数级解法中，要确保生成的结果 <strong>完整</strong> 且 <strong>无冗余</strong>，有三种常用的方法：</p>
+<ol>
+<li>递归</li>
+<li>回溯</li>
+<li>基于二进制位掩码和对应位掩码之间的映射字典生成排列/组合/子集</li>
+</ol>
+<p>相比前两种方法，第三种方法将每种情况都简化为二进制数，易于实现和验证。</p>
+<p>此外，第三种方法具有<strong>最优的时间复杂度</strong>，可以生成按照字典顺序的输出结果。</p>
+<h5 id="solution-1-字典排序（二进制排序）-子集"><a href="#solution-1-字典排序（二进制排序）-子集" class="headerlink" title="solution 1 : 字典排序（二进制排序） 子集"></a>solution 1 : 字典排序（二进制排序） 子集</h5><p>这种解法很巧妙, 由于是全排列问题, 子集的数量与数组长度有关.</p>
+<p>数组中的元素, 每个只有在或者不在子集中这两种选择. 对于每一种可能, 都能用二进制来标记.</p>
+<p>因此该方法的思路如下:</p>
+<p>假设数组为[1, 2, 4], 则子集数量为 2^len= 2^3 = 8</p>
+<p>则从 0 - 7 的二进制对应分别为 000-111</p>
+<p>每一种可能都对应一种子集详情, 比如 101 对应 [1,4],  001 对应 [4].</p>
+<img src="/posts/91d834a1/bitmask4.png" class="" title="bitmask4">
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>需要注意的点是, 在将十进制转换为二进制时, 需要将二进制的位数扩充至与nums的长度相等.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> subsets = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">let</span> subSets = [];</span><br><span class="line">  <span class="comment">// 根据数组长度计算器其子集数量</span></span><br><span class="line">  <span class="keyword">let</span> subSetsNum = <span class="built_in">Math</span>.pow(<span class="number">2</span>, len);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; subSetsNum; i++) &#123;</span><br><span class="line">    <span class="comment">// 十进制转换为二进制</span></span><br><span class="line">    <span class="comment">// 每一个二进制都唯一对应一个子集</span></span><br><span class="line">    <span class="keyword">let</span> setNoStr = i.toString(<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">while</span> (setNoStr.length &lt; len) &#123;</span><br><span class="line">      <span class="comment">//如果长度不足 len，前面添加 0</span></span><br><span class="line">      setNoStr = <span class="string">'0'</span> + setNoStr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> setNoList = setNoStr.split(<span class="string">''</span>);</span><br><span class="line">    <span class="keyword">let</span> subSet = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; len; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (setNoList[j] == <span class="string">'1'</span>) &#123;</span><br><span class="line">        subSet.push(nums[j]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    subSets.push(subSet);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> subSets;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p><strong>复杂度分析</strong></p>
+<ul>
+<li>时间复杂度：O(N×2^N)，生成所有的子集，并复制到输出列表中。</li>
+<li>空间复杂度：O(N×2^N)，存储所有子集，共 n 个元素，每个元素都有可能存在或者不存在。</li>
+</ul>
+<h5 id="solution-2-递归法"><a href="#solution-2-递归法" class="headerlink" title="solution 2 : 递归法"></a>solution 2 : 递归法</h5><p>这个解法挺巧妙的, 每次都把新元素加进已有的所有子集, 生成新的子集, 因为每个元素只有在和不在两种情况.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> subsets = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> subSets = [[]];</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">if</span> (len == <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> subSets</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> l = subSets.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; l; j++) &#123;</span><br><span class="line">      <span class="keyword">let</span> ele = subSets[j].concat([nums[i]]);</span><br><span class="line">      subSets.push(ele);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> subSets;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
       
     </div>
@@ -451,15 +482,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/posts/fbb0c1cd/" rel="next" title="Binary Search">
+                <i class="fa fa-chevron-left"></i> Binary Search
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/c1889358/" rel="prev" title="Vue Learning">
-                Vue Learning <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -603,7 +634,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#78-Subsets"><span class="nav-number">1.</span> <span class="nav-text">[78] Subsets</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#solution-1-字典排序（二进制排序）-子集"><span class="nav-number">1.1.</span> <span class="nav-text">solution 1 : 字典排序（二进制排序） 子集</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#solution-2-递归法"><span class="nav-number">1.2.</span> <span class="nav-text">solution 2 : 递归法</span></a></li></ol></li></ol></div>
             
 
           </div>
