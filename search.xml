@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>String</title>
-    <url>/posts/9912b79f/</url>
-    <content><![CDATA[<h4 id="43-Multiply-Strings"><a href="#43-Multiply-Strings" class="headerlink" title="[43] Multiply Strings"></a>[43] Multiply Strings</h4><blockquote>
-<p>Given two non-negative integers <code>num1</code> and <code>num2</code> represented as strings, return the product of <code>num1</code> and <code>num2</code>, also represented as a string.</p>
-</blockquote>
-<p>算法答题思路就是模拟乘法累加的过程. </p>
-<p>需要注意的是, js大数相加会丢失精度, 所以谨慎使用.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> <span class="variable">num1</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> <span class="variable">num2</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;string&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// js大数相加容易丢失精度, 有安全范围, 不行</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 整个算法的过程模拟乘法的计算过程</span></span><br><span class="line"><span class="comment"> * 用一个数组来存储每一步计算的结果</span></span><br><span class="line"><span class="comment"> * 时间复杂度: n^2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> multiply = <span class="function"><span class="keyword">function</span> (<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 有一个参数为0,则结果为0</span></span><br><span class="line">  <span class="keyword">if</span> (num1 == <span class="string">'0'</span> || num2 == <span class="string">'0'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'0'</span>;</span><br><span class="line">  <span class="keyword">let</span> len1 = num1.length,</span><br><span class="line">    len2 = num2.length,</span><br><span class="line">    len = len1 + len2;</span><br><span class="line">  <span class="comment">// 数组存储计算结果 长度暂时为两个字符串长度之和</span></span><br><span class="line">  <span class="keyword">let</span> resArr = <span class="keyword">new</span> <span class="built_in">Array</span>(len);</span><br><span class="line">  <span class="comment">// 初始化结果数组</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    resArr[i] = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 循环反过来的原因是: 每次都是先拿因数1的每一位与因数2的同一位相乘</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = len2 - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">    <span class="keyword">let</span> n2 = <span class="built_in">parseInt</span>(num2[j]);</span><br><span class="line">    <span class="comment">// 计算结果放置的位置</span></span><br><span class="line">    <span class="keyword">let</span> pos = len - len2 + j;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = len1 - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">      <span class="keyword">let</span> n1 = <span class="built_in">parseInt</span>(num1[i]);</span><br><span class="line">      <span class="keyword">let</span> res = n1 * n2;</span><br><span class="line">      addNext(res, resArr, pos, <span class="number">1</span>);</span><br><span class="line">      <span class="comment">// 数位升高一位, 结果放置也要对应往左一位</span></span><br><span class="line">      pos--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 去除结果数组最左边的 0</span></span><br><span class="line">  <span class="keyword">while</span> (resArr[<span class="number">0</span>] == <span class="string">'0'</span>) &#123;</span><br><span class="line">    resArr.shift()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> resArr.join(<span class="string">''</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// flag 为 1 表示要与当前位置数值相加</span></span><br><span class="line"><span class="comment">// 为 0 则表示不用相加</span></span><br><span class="line"><span class="keyword">var</span> addNext = <span class="function">(<span class="params">num, resArr, pos, flag</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> posNum = num % <span class="number">10</span>, <span class="comment">// 取余数 置于当前位置</span></span><br><span class="line">    addNum = <span class="built_in">Math</span>.floor(num / <span class="number">10</span>); <span class="comment">// floor 向下取整</span></span><br><span class="line"></span><br><span class="line">  resArr[pos] = (flag == <span class="number">1</span>) ? resArr[pos] + posNum : posNum;</span><br><span class="line">  resArr[pos - <span class="number">1</span>] += addNum;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (resArr[pos] &gt;= <span class="number">10</span>) &#123;</span><br><span class="line">    <span class="comment">// 与当前数值相加之后, 数值大于10, 则当前仍然需要进位</span></span><br><span class="line">    <span class="comment">// 但是不需要再与当前位置数值相加了</span></span><br><span class="line">    addNext(resArr[pos], resArr, pos, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 进位最多只会等于 10</span></span><br><span class="line">  <span class="keyword">if</span> (resArr[pos - <span class="number">1</span>] == <span class="number">10</span>) &#123;</span><br><span class="line">    addNext(resArr[pos - <span class="number">1</span>], resArr, pos - <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Algorithm</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Binary Search</title>
     <url>/posts/fbb0c1cd/</url>
     <content><![CDATA[<h4 id="35-Search-Insert-Position"><a href="#35-Search-Insert-Position" class="headerlink" title="[35] Search Insert Position"></a>[35] Search Insert Position</h4><blockquote>
@@ -41,6 +23,128 @@
       </categories>
       <tags>
         <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Greedy Algorithm</title>
+    <url>/posts/9adfc48b/</url>
+    <content><![CDATA[<h4 id="45-Jump-Game-II"><a href="#45-Jump-Game-II" class="headerlink" title="[45] Jump Game II"></a>[45] Jump Game II</h4><blockquote>
+<p> Given an array of non-negative integers, you are initially positioned at the first index of the array.</p>
+<p> Each element in the array represents your maximum jump length at that position.</p>
+<p> Your goal is to reach the last index in the minimum number of jumps.</p>
+</blockquote>
+<p>贪心算法, 局部解得到最优解.</p>
+<p>解题思路: 每次查找当前位置能够到达的位置中, 能跳到最远位置的位置A, 下次就跳到位置A, 然后再从位置A能到达的位置中, 再找能跳到最远位置的位置, 如此循环.</p>
+<p>但是官方解答虽然简洁, 但是我不是看的很明白, 还是暂时先贴自己的直白解法吧.</p>
+<img src="/posts/9adfc48b/45_fig1.png" class="" title="45_fig1">
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 对于当前index, 每次在能跳到的范围内</span></span><br><span class="line"><span class="comment">// 跳到能跳到更远地方的index</span></span><br><span class="line"><span class="keyword">var</span> jump = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">if</span> (len == <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> (nums[<span class="number">0</span>] &gt;= len - <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> step = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> nextPosMap = &#123; <span class="string">'index'</span>: <span class="number">0</span>, <span class="string">'maxIndex'</span>: <span class="number">0</span> + nums[<span class="number">0</span>] &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len;) &#123;</span><br><span class="line">    <span class="keyword">let</span> indexLimit = i + nums[i];</span><br><span class="line">    <span class="comment">// 在寻找下一步跳的位置时, 步数加一</span></span><br><span class="line">    step++;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt;= indexLimit &amp;&amp; j &lt; len; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (j + nums[j] &gt; nextPosMap.maxIndex) &#123;</span><br><span class="line">        nextPosMap.index = j;</span><br><span class="line">        nextPosMap.maxIndex = j + nums[j];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// index != i, 说明能跳到更远距离的index更新了, 这时才需要将当前节点 i 移到index</span></span><br><span class="line">    <span class="comment">// 其实肯定更新, 题目已经说了能跳到最后</span></span><br><span class="line">    <span class="comment">// 移动才算跳了一步</span></span><br><span class="line">    <span class="comment">// 同时能跳到的最远位置不要超过数组边界</span></span><br><span class="line">    <span class="comment">// 超过数组边界则表示步数已经能计算出来了 return</span></span><br><span class="line">    <span class="keyword">if</span> (nextPosMap.maxIndex &lt; len - <span class="number">1</span>) &#123;</span><br><span class="line">      i = nextPosMap.index;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 当最大位置能到达最后时, 返回step+1</span></span><br><span class="line">      <span class="comment">// 把跳到最后位置的一步也加上</span></span><br><span class="line">      <span class="keyword">return</span> step + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="55-Jump-Game"><a href="#55-Jump-Game" class="headerlink" title="[55] Jump Game"></a>[55] Jump Game</h4><blockquote>
+<p>Given an array of non-negative integers, you are initially positioned at the first index of the array.</p>
+<p>Each element in the array represents your maximum jump length at that position.</p>
+<p>Determine if you are able to reach the last index.</p>
+</blockquote>
+<p>一开始尝试使用递归做法, 计算所有的可能性, 但是想也不是最好的解法, 最后很可能超时, 果不其然超时.</p>
+<p>于是就去看网上解法, 这里的考点是<strong>贪心算法</strong>.</p>
+<blockquote>
+<p>贪心算法（又称贪婪算法）是指，在对<a href="https://baike.baidu.com/item/问题求解/6693186" target="_blank" rel="noopener">问题求解</a>时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，算法得到的是在某种意义上的局部最优解</p>
+</blockquote>
+<p>该题的大概思路是:</p>
+<p>数组的第一个元素的值为 reach, 从数组的第一个元素开始, 每次计算在reach范围内的元素们所能到达的最远距离, 是否超过reach, 如果超过了, 就更新reach值为较大值. 直至reach的值超过lastIndex 返回 true.</p>
+<img src="/posts/9adfc48b/largen-reach.png" class="" title="largen-reach">
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;boolean&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 递归超时 使用贪心算法求解</span></span><br><span class="line"><span class="comment">// 局部能够到达的最大范围, 也是全局能够到达的最大范围</span></span><br><span class="line"><span class="keyword">var</span> canJump = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> reach = nums[<span class="number">0</span>];</span><br><span class="line">  <span class="comment">// 需要注意的点是,这里reach的值不一定就&gt;1, 所以i不一定就从1开始</span></span><br><span class="line">  <span class="comment">// 还是从0开始能够包含所有情况, 这么写因为有个特例 [0]</span></span><br><span class="line">  <span class="comment">// 同时注意限制 i 的范围, i 是指 reach 能够到达的位置范围, 不能超过 reach</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length &amp;&amp; i &lt;= reach; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[i] + i &gt; reach) &#123;</span><br><span class="line">      reach = nums[i] + i;</span><br><span class="line">      <span class="comment">// console.log(reach);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 当能到达的范围超过数组的最后 index 时, 返回 true</span></span><br><span class="line">    <span class="keyword">if</span> (reach &gt;= nums.length - <span class="number">1</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 能到达的元素位置都尝试了, 但是没有一个位置可以到达最后一个元素</span></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Permutations/Combinations/Subsets</title>
+    <url>/posts/91d834a1/</url>
+    <content><![CDATA[<h4 id="78-Subsets"><a href="#78-Subsets" class="headerlink" title="[78] Subsets"></a>[78] Subsets</h4><blockquote>
+<p>Given a set of <strong>distinct</strong> integers, <em>nums</em>, return all possible subsets (the power set).</p>
+<p><strong>Note:</strong> The solution set must not contain duplicate subsets.</p>
+</blockquote>
+<p>观察全排列/组合/子集问题，它们比较相似，且可以使用一些通用策略解决。</p>
+<p>首先，它们的解空间非常大：</p>
+<ul>
+<li>全排列：N!。</li>
+</ul>
+<ul>
+<li>组合：N!。</li>
+</ul>
+<ul>
+<li>子集：2^N, 每个元素都可能存在或不存在。</li>
+</ul>
+<p>在它们的指数级解法中，要确保生成的结果 <strong>完整</strong> 且 <strong>无冗余</strong>，有三种常用的方法：</p>
+<ol>
+<li>递归</li>
+<li>回溯</li>
+<li>基于二进制位掩码和对应位掩码之间的映射字典生成排列/组合/子集</li>
+</ol>
+<p>相比前两种方法，第三种方法将每种情况都简化为二进制数，易于实现和验证。</p>
+<p>此外，第三种方法具有<strong>最优的时间复杂度</strong>，可以生成按照字典顺序的输出结果。</p>
+<h5 id="solution-1-字典排序（二进制排序）-子集"><a href="#solution-1-字典排序（二进制排序）-子集" class="headerlink" title="solution 1 : 字典排序（二进制排序） 子集"></a>solution 1 : 字典排序（二进制排序） 子集</h5><p>这种解法很巧妙, 由于是全排列问题, 子集的数量与数组长度有关.</p>
+<p>数组中的元素, 每个只有在或者不在子集中这两种选择. 对于每一种可能, 都能用二进制来标记.</p>
+<p>因此该方法的思路如下:</p>
+<p>假设数组为[1, 2, 4], 则子集数量为 2^len= 2^3 = 8</p>
+<p>则从 0 - 7 的二进制对应分别为 000-111</p>
+<p>每一种可能都对应一种子集详情, 比如 101 对应 [1,4],  001 对应 [4].</p>
+<img src="/posts/91d834a1/bitmask4.png" class="" title="bitmask4">
+
+<p>需要注意的点是, 在将十进制转换为二进制时, 需要将二进制的位数扩充至与nums的长度相等.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> subsets = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">let</span> subSets = [];</span><br><span class="line">  <span class="comment">// 根据数组长度计算器其子集数量</span></span><br><span class="line">  <span class="keyword">let</span> subSetsNum = <span class="built_in">Math</span>.pow(<span class="number">2</span>, len);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; subSetsNum; i++) &#123;</span><br><span class="line">    <span class="comment">// 十进制转换为二进制</span></span><br><span class="line">    <span class="comment">// 每一个二进制都唯一对应一个子集</span></span><br><span class="line">    <span class="keyword">let</span> setNoStr = i.toString(<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">while</span> (setNoStr.length &lt; len) &#123;</span><br><span class="line">      <span class="comment">//如果长度不足 len，前面添加 0</span></span><br><span class="line">      setNoStr = <span class="string">'0'</span> + setNoStr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> setNoList = setNoStr.split(<span class="string">''</span>);</span><br><span class="line">    <span class="keyword">let</span> subSet = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; len; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (setNoList[j] == <span class="string">'1'</span>) &#123;</span><br><span class="line">        subSet.push(nums[j]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    subSets.push(subSet);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> subSets;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong></p>
+<ul>
+<li>时间复杂度：O(N×2^N)，生成所有的子集，并复制到输出列表中。</li>
+<li>空间复杂度：O(N×2^N)，存储所有子集，共 n 个元素，每个元素都有可能存在或者不存在。</li>
+</ul>
+<h5 id="solution-2-递归法"><a href="#solution-2-递归法" class="headerlink" title="solution 2 : 递归法"></a>solution 2 : 递归法</h5><p>这个解法挺巧妙的, 每次都把新元素加进已有的所有子集, 生成新的子集, 因为每个元素只有在和不在两种情况.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> subsets = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> subSets = [[]];</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">if</span> (len == <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> subSets</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> l = subSets.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; l; j++) &#123;</span><br><span class="line">      <span class="keyword">let</span> ele = subSets[j].concat([nums[i]]);</span><br><span class="line">      subSets.push(ele);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> subSets;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>String</title>
+    <url>/posts/9912b79f/</url>
+    <content><![CDATA[<h4 id="43-Multiply-Strings"><a href="#43-Multiply-Strings" class="headerlink" title="[43] Multiply Strings"></a>[43] Multiply Strings</h4><blockquote>
+<p>Given two non-negative integers <code>num1</code> and <code>num2</code> represented as strings, return the product of <code>num1</code> and <code>num2</code>, also represented as a string.</p>
+</blockquote>
+<p>算法答题思路就是模拟乘法累加的过程. </p>
+<p>需要注意的是, js大数相加会丢失精度, 所以谨慎使用.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> <span class="variable">num1</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> <span class="variable">num2</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;string&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// js大数相加容易丢失精度, 有安全范围, 不行</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 整个算法的过程模拟乘法的计算过程</span></span><br><span class="line"><span class="comment"> * 用一个数组来存储每一步计算的结果</span></span><br><span class="line"><span class="comment"> * 时间复杂度: n^2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> multiply = <span class="function"><span class="keyword">function</span> (<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 有一个参数为0,则结果为0</span></span><br><span class="line">  <span class="keyword">if</span> (num1 == <span class="string">'0'</span> || num2 == <span class="string">'0'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'0'</span>;</span><br><span class="line">  <span class="keyword">let</span> len1 = num1.length,</span><br><span class="line">    len2 = num2.length,</span><br><span class="line">    len = len1 + len2;</span><br><span class="line">  <span class="comment">// 数组存储计算结果 长度暂时为两个字符串长度之和</span></span><br><span class="line">  <span class="keyword">let</span> resArr = <span class="keyword">new</span> <span class="built_in">Array</span>(len);</span><br><span class="line">  <span class="comment">// 初始化结果数组</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    resArr[i] = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 循环反过来的原因是: 每次都是先拿因数1的每一位与因数2的同一位相乘</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = len2 - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">    <span class="keyword">let</span> n2 = <span class="built_in">parseInt</span>(num2[j]);</span><br><span class="line">    <span class="comment">// 计算结果放置的位置</span></span><br><span class="line">    <span class="keyword">let</span> pos = len - len2 + j;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = len1 - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">      <span class="keyword">let</span> n1 = <span class="built_in">parseInt</span>(num1[i]);</span><br><span class="line">      <span class="keyword">let</span> res = n1 * n2;</span><br><span class="line">      addNext(res, resArr, pos, <span class="number">1</span>);</span><br><span class="line">      <span class="comment">// 数位升高一位, 结果放置也要对应往左一位</span></span><br><span class="line">      pos--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 去除结果数组最左边的 0</span></span><br><span class="line">  <span class="keyword">while</span> (resArr[<span class="number">0</span>] == <span class="string">'0'</span>) &#123;</span><br><span class="line">    resArr.shift()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> resArr.join(<span class="string">''</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// flag 为 1 表示要与当前位置数值相加</span></span><br><span class="line"><span class="comment">// 为 0 则表示不用相加</span></span><br><span class="line"><span class="keyword">var</span> addNext = <span class="function">(<span class="params">num, resArr, pos, flag</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> posNum = num % <span class="number">10</span>, <span class="comment">// 取余数 置于当前位置</span></span><br><span class="line">    addNum = <span class="built_in">Math</span>.floor(num / <span class="number">10</span>); <span class="comment">// floor 向下取整</span></span><br><span class="line"></span><br><span class="line">  resArr[pos] = (flag == <span class="number">1</span>) ? resArr[pos] + posNum : posNum;</span><br><span class="line">  resArr[pos - <span class="number">1</span>] += addNum;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (resArr[pos] &gt;= <span class="number">10</span>) &#123;</span><br><span class="line">    <span class="comment">// 与当前数值相加之后, 数值大于10, 则当前仍然需要进位</span></span><br><span class="line">    <span class="comment">// 但是不需要再与当前位置数值相加了</span></span><br><span class="line">    addNext(resArr[pos], resArr, pos, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 进位最多只会等于 10</span></span><br><span class="line">  <span class="keyword">if</span> (resArr[pos - <span class="number">1</span>] == <span class="number">10</span>) &#123;</span><br><span class="line">    addNext(resArr[pos - <span class="number">1</span>], resArr, pos - <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue Learning</title>
+    <url>/posts/c1889358/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>前端框架</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -175,61 +279,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Greedy Algorithm</title>
-    <url>/posts/9adfc48b/</url>
-    <content><![CDATA[<h4 id="45-Jump-Game-II"><a href="#45-Jump-Game-II" class="headerlink" title="[45] Jump Game II"></a>[45] Jump Game II</h4><blockquote>
-<p> Given an array of non-negative integers, you are initially positioned at the first index of the array.</p>
-<p> Each element in the array represents your maximum jump length at that position.</p>
-<p> Your goal is to reach the last index in the minimum number of jumps.</p>
-</blockquote>
-<p>贪心算法, 局部解得到最优解.</p>
-<p>解题思路: 每次查找当前位置能够到达的位置中, 能跳到最远位置的位置A, 下次就跳到位置A, 然后再从位置A能到达的位置中, 再找能跳到最远位置的位置, 如此循环.</p>
-<p>但是官方解答虽然简洁, 但是我不是看的很明白, 还是暂时先贴自己的直白解法吧.</p>
-<img src="/posts/9adfc48b/45_fig1.png" class="" title="45_fig1">
-
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 对于当前index, 每次在能跳到的范围内</span></span><br><span class="line"><span class="comment">// 跳到能跳到更远地方的index</span></span><br><span class="line"><span class="keyword">var</span> jump = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">if</span> (len == <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> (nums[<span class="number">0</span>] &gt;= len - <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> step = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> nextPosMap = &#123; <span class="string">'index'</span>: <span class="number">0</span>, <span class="string">'maxIndex'</span>: <span class="number">0</span> + nums[<span class="number">0</span>] &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len;) &#123;</span><br><span class="line">    <span class="keyword">let</span> indexLimit = i + nums[i];</span><br><span class="line">    <span class="comment">// 在寻找下一步跳的位置时, 步数加一</span></span><br><span class="line">    step++;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt;= indexLimit &amp;&amp; j &lt; len; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (j + nums[j] &gt; nextPosMap.maxIndex) &#123;</span><br><span class="line">        nextPosMap.index = j;</span><br><span class="line">        nextPosMap.maxIndex = j + nums[j];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// index != i, 说明能跳到更远距离的index更新了, 这时才需要将当前节点 i 移到index</span></span><br><span class="line">    <span class="comment">// 其实肯定更新, 题目已经说了能跳到最后</span></span><br><span class="line">    <span class="comment">// 移动才算跳了一步</span></span><br><span class="line">    <span class="comment">// 同时能跳到的最远位置不要超过数组边界</span></span><br><span class="line">    <span class="comment">// 超过数组边界则表示步数已经能计算出来了 return</span></span><br><span class="line">    <span class="keyword">if</span> (nextPosMap.maxIndex &lt; len - <span class="number">1</span>) &#123;</span><br><span class="line">      i = nextPosMap.index;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 当最大位置能到达最后时, 返回step+1</span></span><br><span class="line">      <span class="comment">// 把跳到最后位置的一步也加上</span></span><br><span class="line">      <span class="keyword">return</span> step + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="55-Jump-Game"><a href="#55-Jump-Game" class="headerlink" title="[55] Jump Game"></a>[55] Jump Game</h4><blockquote>
-<p>Given an array of non-negative integers, you are initially positioned at the first index of the array.</p>
-<p>Each element in the array represents your maximum jump length at that position.</p>
-<p>Determine if you are able to reach the last index.</p>
-</blockquote>
-<p>一开始尝试使用递归做法, 计算所有的可能性, 但是想也不是最好的解法, 最后很可能超时, 果不其然超时.</p>
-<p>于是就去看网上解法, 这里的考点是<strong>贪心算法</strong>.</p>
-<blockquote>
-<p>贪心算法（又称贪婪算法）是指，在对<a href="https://baike.baidu.com/item/问题求解/6693186" target="_blank" rel="noopener">问题求解</a>时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，算法得到的是在某种意义上的局部最优解</p>
-</blockquote>
-<p>该题的大概思路是:</p>
-<p>数组的第一个元素的值为 reach, 从数组的第一个元素开始, 每次计算在reach范围内的元素们所能到达的最远距离, 是否超过reach, 如果超过了, 就更新reach值为较大值. 直至reach的值超过lastIndex 返回 true.</p>
-<img src="/posts/9adfc48b/largen-reach.png" class="" title="largen-reach">
-
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;boolean&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 递归超时 使用贪心算法求解</span></span><br><span class="line"><span class="comment">// 局部能够到达的最大范围, 也是全局能够到达的最大范围</span></span><br><span class="line"><span class="keyword">var</span> canJump = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> reach = nums[<span class="number">0</span>];</span><br><span class="line">  <span class="comment">// 需要注意的点是,这里reach的值不一定就&gt;1, 所以i不一定就从1开始</span></span><br><span class="line">  <span class="comment">// 还是从0开始能够包含所有情况, 这么写因为有个特例 [0]</span></span><br><span class="line">  <span class="comment">// 同时注意限制 i 的范围, i 是指 reach 能够到达的位置范围, 不能超过 reach</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length &amp;&amp; i &lt;= reach; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[i] + i &gt; reach) &#123;</span><br><span class="line">      reach = nums[i] + i;</span><br><span class="line">      <span class="comment">// console.log(reach);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 当能到达的范围超过数组的最后 index 时, 返回 true</span></span><br><span class="line">    <span class="keyword">if</span> (reach &gt;= nums.length - <span class="number">1</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 能到达的元素位置都尝试了, 但是没有一个位置可以到达最后一个元素</span></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>Algorithm</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Vue Learning</title>
-    <url>/posts/c1889358/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>前端框架</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-        <tag>js</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/posts/4a17b156/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
@@ -245,55 +294,6 @@
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Permutations/Combinations/Subsets</title>
-    <url>/posts/91d834a1/</url>
-    <content><![CDATA[<h4 id="78-Subsets"><a href="#78-Subsets" class="headerlink" title="[78] Subsets"></a>[78] Subsets</h4><blockquote>
-<p>Given a set of <strong>distinct</strong> integers, <em>nums</em>, return all possible subsets (the power set).</p>
-<p><strong>Note:</strong> The solution set must not contain duplicate subsets.</p>
-</blockquote>
-<p>观察全排列/组合/子集问题，它们比较相似，且可以使用一些通用策略解决。</p>
-<p>首先，它们的解空间非常大：</p>
-<ul>
-<li>全排列：N!。</li>
-</ul>
-<ul>
-<li>组合：N!。</li>
-</ul>
-<ul>
-<li>子集：2^N, 每个元素都可能存在或不存在。</li>
-</ul>
-<p>在它们的指数级解法中，要确保生成的结果 <strong>完整</strong> 且 <strong>无冗余</strong>，有三种常用的方法：</p>
-<ol>
-<li>递归</li>
-<li>回溯</li>
-<li>基于二进制位掩码和对应位掩码之间的映射字典生成排列/组合/子集</li>
-</ol>
-<p>相比前两种方法，第三种方法将每种情况都简化为二进制数，易于实现和验证。</p>
-<p>此外，第三种方法具有<strong>最优的时间复杂度</strong>，可以生成按照字典顺序的输出结果。</p>
-<h5 id="solution-1-字典排序（二进制排序）-子集"><a href="#solution-1-字典排序（二进制排序）-子集" class="headerlink" title="solution 1 : 字典排序（二进制排序） 子集"></a>solution 1 : 字典排序（二进制排序） 子集</h5><p>这种解法很巧妙, 由于是全排列问题, 子集的数量与数组长度有关.</p>
-<p>数组中的元素, 每个只有在或者不在子集中这两种选择. 对于每一种可能, 都能用二进制来标记.</p>
-<p>因此该方法的思路如下:</p>
-<p>假设数组为[1, 2, 4], 则子集数量为 2^len= 2^3 = 8</p>
-<p>则从 0 - 7 的二进制对应分别为 000-111</p>
-<p>每一种可能都对应一种子集详情, 比如 101 对应 [1,4],  001 对应 [4].</p>
-<img src="/posts/91d834a1/bitmask4.png" class="" title="bitmask4">
-
-<p>需要注意的点是, 在将十进制转换为二进制时, 需要将二进制的位数扩充至与nums的长度相等.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> subsets = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">let</span> subSets = [];</span><br><span class="line">  <span class="comment">// 根据数组长度计算器其子集数量</span></span><br><span class="line">  <span class="keyword">let</span> subSetsNum = <span class="built_in">Math</span>.pow(<span class="number">2</span>, len);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; subSetsNum; i++) &#123;</span><br><span class="line">    <span class="comment">// 十进制转换为二进制</span></span><br><span class="line">    <span class="comment">// 每一个二进制都唯一对应一个子集</span></span><br><span class="line">    <span class="keyword">let</span> setNoStr = i.toString(<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">while</span> (setNoStr.length &lt; len) &#123;</span><br><span class="line">      <span class="comment">//如果长度不足 len，前面添加 0</span></span><br><span class="line">      setNoStr = <span class="string">'0'</span> + setNoStr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> setNoList = setNoStr.split(<span class="string">''</span>);</span><br><span class="line">    <span class="keyword">let</span> subSet = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; len; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (setNoList[j] == <span class="string">'1'</span>) &#123;</span><br><span class="line">        subSet.push(nums[j]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    subSets.push(subSet);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> subSets;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>复杂度分析</strong></p>
-<ul>
-<li>时间复杂度：O(N×2^N)，生成所有的子集，并复制到输出列表中。</li>
-<li>空间复杂度：O(N×2^N)，存储所有子集，共 n 个元素，每个元素都有可能存在或者不存在。</li>
-</ul>
-<h5 id="solution-2-递归法"><a href="#solution-2-递归法" class="headerlink" title="solution 2 : 递归法"></a>solution 2 : 递归法</h5><p>这个解法挺巧妙的, 每次都把新元素加进已有的所有子集, 生成新的子集, 因为每个元素只有在和不在两种情况.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> subsets = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> subSets = [[]];</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">if</span> (len == <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> subSets</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> l = subSets.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; l; j++) &#123;</span><br><span class="line">      <span class="keyword">let</span> ele = subSets[j].concat([nums[i]]);</span><br><span class="line">      subSets.push(ele);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> subSets;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 ]]></content>
   </entry>
 </search>
