@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="LeetCode,Array,Dynamic-Programming," />
 
 
 
@@ -77,16 +77,19 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="[62] Unique Paths A robot is located at the top-left corner of a m x n grid (marked ‘Start’ in the diagram below). The robot can only move either down or right at any point in time. The robot is tryin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://gillian97.github.io/posts/4a17b156/index.html">
+<meta property="og:title" content="Dynamic-Programming">
+<meta property="og:url" content="https://gillian97.github.io/posts/ef1e907a/index.html">
 <meta property="og:site_name" content="Gillian&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="[62] Unique Paths A robot is located at the top-left corner of a m x n grid (marked ‘Start’ in the diagram below). The robot can only move either down or right at any point in time. The robot is tryin">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-28T10:22:25.188Z">
-<meta property="article:modified_time" content="2020-07-28T15:24:05.684Z">
+<meta property="article:published_time" content="2020-08-04T09:02:27.000Z">
+<meta property="article:modified_time" content="2020-08-17T09:21:51.664Z">
 <meta property="article:author" content="Gillian">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="Array">
+<meta property="article:tag" content="Dynamic-Programming">
 <meta name="twitter:card" content="summary">
 
 
@@ -117,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://gillian97.github.io/posts/4a17b156/"/>
+  <link rel="canonical" href="https://gillian97.github.io/posts/ef1e907a/"/>
 
 
 
 
 
-  <title>Hello World | Gillian's Blog</title>
+  <title>Dynamic-Programming | Gillian's Blog</title>
   
 
 
@@ -294,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://gillian97.github.io/posts/4a17b156/">
+    <link itemprop="mainEntityOfPage" href="https://gillian97.github.io/posts/ef1e907a/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Gillian">
@@ -311,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">Dynamic-Programming</h1>
         
 
         <div class="post-meta">
@@ -323,8 +326,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-28T18:22:25+08:00">
-                2020-07-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-04T17:02:27+08:00">
+                2020-08-04
               </time>
             
 
@@ -360,7 +363,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  73
+                  847
                 </span>
               
 
@@ -376,7 +379,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  4
                 </span>
               
             </div>
@@ -397,19 +400,38 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h4 id="62-Unique-Paths"><a href="#62-Unique-Paths" class="headerlink" title="[62] Unique Paths"></a>[62] Unique Paths</h4><blockquote>
+<p>A robot is located at the top-left corner of a <em>m</em> x <em>n</em> grid (marked ‘Start’ in the diagram below).</p>
+<p>The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked ‘Finish’ in the diagram below).</p>
+<p>How many possible unique paths are there?</p>
+</blockquote>
+<h5 id="Solution-1-排列组合"><a href="#Solution-1-排列组合" class="headerlink" title="Solution 1: 排列组合"></a>Solution 1: 排列组合</h5><p>因为机器到底右下角，向下几步，向右几步都是固定的，</p>
+<p>比如，m=3, n=2，我们只要向下 1 步，向右 2 步就一定能到达终点。</p>
+<p>所以结果= (m+n−2)!/((m−1)!*(n-1)!).</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// solution 1 : 排列组合</span></span><br><span class="line"><span class="comment">// 使用数学上的排列组合计算公式</span></span><br><span class="line"><span class="keyword">var</span> uniquePaths1 = <span class="function"><span class="keyword">function</span> (<span class="params">m, n</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 起点到终点一共需要走 m-1+n-1 = m+n-2 步</span></span><br><span class="line">  <span class="comment">// 其中从总步数中选出向右的 m-1 步</span></span><br><span class="line">  <span class="keyword">return</span> jc(m + n - <span class="number">2</span>) / (jc(m - <span class="number">1</span>) * jc(n - <span class="number">1</span>))</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> jc = <span class="function">(<span class="params">num</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> res = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= num; i++) &#123;</span><br><span class="line">    res = res * i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h5 id="Solution-2-动态规划"><a href="#Solution-2-动态规划" class="headerlink" title="Solution 2: 动态规划"></a>Solution 2: 动态规划</h5><p>关键在于写出状态转移方程.很多解法用的是数组,我这里用的是对象存储.</p>
+<p>数组的空间O(mn)可优化为O(n).</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// solution 2 : 动态规划</span></span><br><span class="line"><span class="comment">// 假设到点(i,j)的所有路径数表示为 dp(i,j)</span></span><br><span class="line"><span class="comment">// 状态转移方程</span></span><br><span class="line"><span class="comment">// dp(i,j) = dp(i-1,j) + dp(i,j-1)</span></span><br><span class="line"><span class="keyword">var</span> uniquePaths2 = <span class="function"><span class="keyword">function</span> (<span class="params">m, n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> dp = &#123;&#125;;</span><br><span class="line">  <span class="comment">// 只能向右或向下</span></span><br><span class="line">  <span class="comment">// 所以到达边界的点的方法数=1</span></span><br><span class="line">  dp[key(<span class="number">0</span>, <span class="number">0</span>)] = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; m; i++) &#123;</span><br><span class="line">    dp[key(i, <span class="number">0</span>)] = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">1</span>; j &lt; n; j++) &#123;</span><br><span class="line">    dp[key(<span class="number">0</span>, j)] = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 时间复杂度O(mn)</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; m; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">1</span>; j &lt; n; j++) &#123;</span><br><span class="line">      dp[key(i, j)] = dp[key(i - <span class="number">1</span>, j)] + dp[key(i, j - <span class="number">1</span>)];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> dp[key(m - <span class="number">1</span>, n - <span class="number">1</span>)]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> key = <span class="function">(<span class="params">i, j</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> i + <span class="string">'/'</span> + j</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+
+<h4 id="63-Unique-Paths-II"><a href="#63-Unique-Paths-II" class="headerlink" title="[63] Unique Paths II"></a>[63] Unique Paths II</h4><blockquote>
+<p>A robot is located at the top-left corner of a <em>m</em> x <em>n</em> grid (marked ‘Start’ in the diagram below).</p>
+<p>The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked ‘Finish’ in the diagram below).</p>
+<p>Now consider if some obstacles are added to the grids. How many unique paths would there be?</p>
+</blockquote>
+<p>这里需要修改状态转移方程, 就是, 在计算某一点可到达的路径数时, 如果这一点有障碍, 则为0, 否则按照原来的等式计算.</p>
+<p>在初始化到达边缘点的路径数时, 也要考虑障碍的情况.</p>
+<p>感觉动态规划主要有两个过程, 重点还是<strong>分析清楚过程</strong>:</p>
+<ol>
+<li><strong>初始化数据</strong></li>
+<li><strong>正确的动态规划方程</strong></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uniquePathsWithObstacles = <span class="function"><span class="keyword">function</span> (<span class="params">obstacleGrid</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> rowNum = obstacleGrid.length;</span><br><span class="line">  <span class="keyword">let</span> colNum = obstacleGrid[<span class="number">0</span>].length;</span><br><span class="line">  <span class="keyword">let</span> dp = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> flag1 = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; rowNum; i++) &#123;</span><br><span class="line">    <span class="comment">// 考虑障碍的情况</span></span><br><span class="line">    <span class="comment">// 边缘一有障碍, 则后面所有点的可到达路径数均为0</span></span><br><span class="line">    <span class="keyword">if</span> (obstacleGrid[i][<span class="number">0</span>] == <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> t = i; t &lt; rowNum; t++) &#123;</span><br><span class="line">        dp[key(t, <span class="number">0</span>)] = <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      flag1 = <span class="literal">false</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    dp[key(i, <span class="number">0</span>)] = (flag1 == <span class="literal">true</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> flag2 = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; colNum; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (obstacleGrid[<span class="number">0</span>][j] == <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> t = j; t &lt; colNum; t++) &#123;</span><br><span class="line">        dp[key(<span class="number">0</span>, t)] = <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      flag2 = <span class="literal">false</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    dp[key(<span class="number">0</span>, j)] = (flag2 == <span class="literal">true</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; rowNum; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">1</span>; j &lt; colNum; j++) &#123;</span><br><span class="line">      <span class="comment">// 考虑障碍的动态规划方程</span></span><br><span class="line">      <span class="keyword">if</span> (obstacleGrid[i][j] == <span class="number">1</span>)</span><br><span class="line">        dp[key(i, j)] = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        dp[key(i, j)] = dp[key(i - <span class="number">1</span>, j)] + dp[key(i, j - <span class="number">1</span>)];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// console.log(dp[key(rowNum - 1, colNum - 1)]);</span></span><br><span class="line">  <span class="keyword">return</span> dp[key(rowNum - <span class="number">1</span>, colNum - <span class="number">1</span>)];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> key = <span class="function">(<span class="params">i, j</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> i + <span class="string">'/'</span> + j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -426,6 +448,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i> LeetCode</a>
+          
+            <a href="/tags/Array/" rel="tag"><i class="fa fa-tag"></i> Array</a>
+          
+            <a href="/tags/Dynamic-Programming/" rel="tag"><i class="fa fa-tag"></i> Dynamic-Programming</a>
+          
+        </div>
       
 
       
@@ -451,14 +483,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/posts/91d834a1/" rel="next" title="Permutations/Combinations/Subsets">
+                <i class="fa fa-chevron-left"></i> Permutations/Combinations/Subsets
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/c1889358/" rel="prev" title="Vue Learning">
-                Vue Learning <i class="fa fa-chevron-right"></i>
+              <a href="/posts/9912b79f/" rel="prev" title="String">
+                String <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -603,7 +639,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#62-Unique-Paths"><span class="nav-number">1.</span> <span class="nav-text">[62] Unique Paths</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Solution-1-排列组合"><span class="nav-number">1.1.</span> <span class="nav-text">Solution 1: 排列组合</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Solution-2-动态规划"><span class="nav-number">1.2.</span> <span class="nav-text">Solution 2: 动态规划</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#63-Unique-Paths-II"><span class="nav-number">2.</span> <span class="nav-text">[63] Unique Paths II</span></a></li></ol></div>
             
 
           </div>
