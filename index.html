@@ -293,6 +293,187 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://gillian97.github.io/posts/9912b79f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gillian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_2.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gillian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/9912b79f/" itemprop="url">String</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-17T17:16:00+08:00">
+                2020-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  491
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="43-Multiply-Strings"><a href="#43-Multiply-Strings" class="headerlink" title="[43] Multiply Strings"></a>[43] Multiply Strings</h4><blockquote>
+<p>Given two non-negative integers <code>num1</code> and <code>num2</code> represented as strings, return the product of <code>num1</code> and <code>num2</code>, also represented as a string.</p>
+</blockquote>
+<p>算法答题思路就是模拟乘法累加的过程. </p>
+<p>需要注意的是, js大数相加会丢失精度, 所以谨慎使用.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> <span class="variable">num1</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> <span class="variable">num2</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;string&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// js大数相加容易丢失精度, 有安全范围, 不行</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 整个算法的过程模拟乘法的计算过程</span></span><br><span class="line"><span class="comment"> * 用一个数组来存储每一步计算的结果</span></span><br><span class="line"><span class="comment"> * 时间复杂度: n^2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> multiply = <span class="function"><span class="keyword">function</span> (<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 有一个参数为0,则结果为0</span></span><br><span class="line">  <span class="keyword">if</span> (num1 == <span class="string">'0'</span> || num2 == <span class="string">'0'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'0'</span>;</span><br><span class="line">  <span class="keyword">let</span> len1 = num1.length,</span><br><span class="line">    len2 = num2.length,</span><br><span class="line">    len = len1 + len2;</span><br><span class="line">  <span class="comment">// 数组存储计算结果 长度暂时为两个字符串长度之和</span></span><br><span class="line">  <span class="keyword">let</span> resArr = <span class="keyword">new</span> <span class="built_in">Array</span>(len);</span><br><span class="line">  <span class="comment">// 初始化结果数组</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    resArr[i] = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 循环反过来的原因是: 每次都是先拿因数1的每一位与因数2的同一位相乘</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = len2 - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">    <span class="keyword">let</span> n2 = <span class="built_in">parseInt</span>(num2[j]);</span><br><span class="line">    <span class="comment">// 计算结果放置的位置</span></span><br><span class="line">    <span class="keyword">let</span> pos = len - len2 + j;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = len1 - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">      <span class="keyword">let</span> n1 = <span class="built_in">parseInt</span>(num1[i]);</span><br><span class="line">      <span class="keyword">let</span> res = n1 * n2;</span><br><span class="line">      addNext(res, resArr, pos, <span class="number">1</span>);</span><br><span class="line">      <span class="comment">// 数位升高一位, 结果放置也要对应往左一位</span></span><br><span class="line">      pos--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 去除结果数组最左边的 0</span></span><br><span class="line">  <span class="keyword">while</span> (resArr[<span class="number">0</span>] == <span class="string">'0'</span>) &#123;</span><br><span class="line">    resArr.shift()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> resArr.join(<span class="string">''</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// flag 为 1 表示要与当前位置数值相加</span></span><br><span class="line"><span class="comment">// 为 0 则表示不用相加</span></span><br><span class="line"><span class="keyword">var</span> addNext = <span class="function">(<span class="params">num, resArr, pos, flag</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> posNum = num % <span class="number">10</span>, <span class="comment">// 取余数 置于当前位置</span></span><br><span class="line">    addNum = <span class="built_in">Math</span>.floor(num / <span class="number">10</span>); <span class="comment">// floor 向下取整</span></span><br><span class="line"></span><br><span class="line">  resArr[pos] = (flag == <span class="number">1</span>) ? resArr[pos] + posNum : posNum;</span><br><span class="line">  resArr[pos - <span class="number">1</span>] += addNum;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (resArr[pos] &gt;= <span class="number">10</span>) &#123;</span><br><span class="line">    <span class="comment">// 与当前数值相加之后, 数值大于10, 则当前仍然需要进位</span></span><br><span class="line">    <span class="comment">// 但是不需要再与当前位置数值相加了</span></span><br><span class="line">    addNext(resArr[pos], resArr, pos, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 进位最多只会等于 10</span></span><br><span class="line">  <span class="keyword">if</span> (resArr[pos - <span class="number">1</span>] == <span class="number">10</span>) &#123;</span><br><span class="line">    addNext(resArr[pos - <span class="number">1</span>], resArr, pos - <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <!--- The End --->
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://gillian97.github.io/posts/91d834a1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -436,6 +617,8 @@
 </ul>
 <h5 id="solution-2-递归法"><a href="#solution-2-递归法" class="headerlink" title="solution 2 : 递归法"></a>solution 2 : 递归法</h5><p>这个解法挺巧妙的, 每次都把新元素加进已有的所有子集, 生成新的子集, 因为每个元素只有在和不在两种情况.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> subsets = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> subSets = [[]];</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">if</span> (len == <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> subSets</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> l = subSets.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; l; j++) &#123;</span><br><span class="line">      <span class="keyword">let</span> ele = subSets[j].concat([nums[i]]);</span><br><span class="line">      subSets.push(ele);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> subSets;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 
 
           
@@ -966,7 +1149,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  2.2k
+                  2.4k
                 </span>
               
 
@@ -982,7 +1165,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  11
+                  12
                 </span>
               
             </div>
@@ -1108,6 +1291,20 @@
 <p>主要是运用数组特性.不是很难, 理解题意即可.</p>
 <p>还挺多人不喜欢这道题的, 可能觉得太弱智了?…</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> plusOne = <span class="function"><span class="keyword">function</span> (<span class="params">digits</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = digits.length;</span><br><span class="line">  <span class="comment">// c 表示进位</span></span><br><span class="line">  <span class="keyword">let</span> i = len - <span class="number">1</span>, c = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (i &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// 没有向前进位, 就 +1 结束</span></span><br><span class="line">    <span class="keyword">if</span> (digits[i] + c &lt; <span class="number">10</span>) &#123;</span><br><span class="line">      digits[i]++;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">0</span>) &#123; </span><br><span class="line">      <span class="comment">// 首位元素 +1 后有进位, 向数组头部插入 1 结束</span></span><br><span class="line">      digits[i] = <span class="number">0</span>;</span><br><span class="line">      digits.unshift(<span class="number">1</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 不是首位元素 +1 后有进位</span></span><br><span class="line">      <span class="comment">// 当前元素设为 0 , 继续看更高位元素</span></span><br><span class="line">      digits[i] = <span class="number">0</span>;</span><br><span class="line">      i--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// console.log(digits);</span></span><br><span class="line">  <span class="keyword">return</span> digits;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="88-Merge-Sorted-Array"><a href="#88-Merge-Sorted-Array" class="headerlink" title="[88] Merge Sorted Array"></a>[88] Merge Sorted Array</h4><blockquote>
+<p>Given two sorted integer arrays <em>nums1</em> and <em>nums2</em>, merge <em>nums2</em> into <em>nums1</em> as one sorted array.</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>The number of elements initialized in <em>nums1</em> and <em>nums2</em> are <em>m</em>and <em>n</em> respectively.</li>
+<li>You may assume that <em>nums1</em> has enough space (size that is <strong>equal</strong> to <em>m</em> + <em>n</em>) to hold additional elements from <em>nums2</em>.</li>
+</ul>
+</blockquote>
+<p>我用的方法比较死板, 感觉没有什么难度. 就是分情况讨论. </p>
+<p>不过用到了 js 里 Array 的特性.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> merge = <span class="function"><span class="keyword">function</span> (<span class="params">nums1, m, nums2, n</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 说明没有自己的元素</span></span><br><span class="line">    <span class="keyword">if</span> (m == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            nums1[i] = nums2[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> len = nums1.length;</span><br><span class="line">        <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">let</span> j = m;</span><br><span class="line">        <span class="keyword">let</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; len &amp;&amp; k &lt; n) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (nums2[k] &gt;= nums1[i] &amp;&amp; nums2[k] &lt; nums1[i + <span class="number">1</span>]) &#123;</span><br><span class="line">                nums1.splice(i + <span class="number">1</span>, <span class="number">0</span>, nums2[k]);</span><br><span class="line">                nums1.pop();</span><br><span class="line">                j++;</span><br><span class="line">                k++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums2[k] &gt;= nums1[j - <span class="number">1</span>]) &#123;</span><br><span class="line">                nums1[j] = nums2[k];</span><br><span class="line">                j++;</span><br><span class="line">                k++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums2[k] &lt;= nums1[<span class="number">0</span>]) &#123;</span><br><span class="line">                nums1.unshift(nums2[k]);</span><br><span class="line">                nums1.pop();</span><br><span class="line">                j++;</span><br><span class="line">                k++;</span><br><span class="line">                i = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
           
@@ -1533,7 +1730,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1616,7 +1813,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">4.4k</span>
+    <span title="Site words total count">5.1k</span>
   
 </div>
 
