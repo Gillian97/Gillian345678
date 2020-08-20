@@ -293,6 +293,253 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://gillian97.github.io/posts/1f6fbb87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gillian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_2.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gillian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/1f6fbb87/" itemprop="url">Backtracking</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-18T10:18:11+08:00">
+                2020-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="22-Generate-Parentheses"><a href="#22-Generate-Parentheses" class="headerlink" title="[22] Generate Parentheses"></a>[22] Generate Parentheses</h4><blockquote>
+<p>Given <em>n</em> pairs of parentheses, write a function to generate all combinations of well-formed parentheses.</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> generateParenthesis = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 思路: 2*n 是括号总数, 对括号进行排列组合, 再除去不合题意的部分</span></span><br><span class="line">  <span class="keyword">let</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">  <span class="keyword">let</span> level = <span class="number">0</span>, <span class="comment">// 实时记录字符串的长度</span></span><br><span class="line">    sum = <span class="number">2</span> * n, <span class="comment">// 括号总数</span></span><br><span class="line">    str = <span class="string">''</span>, <span class="comment">// 括号累加的字符串</span></span><br><span class="line">    left = <span class="number">0</span>, <span class="comment">// 记录左括号数目</span></span><br><span class="line">    right = <span class="number">0</span>; <span class="comment">// 记录右括号数目</span></span><br><span class="line">  <span class="comment">// recur1(level, sum, str, arr);</span></span><br><span class="line">  recur2(sum, str, arr, left, right);</span><br><span class="line">  <span class="comment">// console.log('arr: ', arr);</span></span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// solution 1: 暴力法</span></span><br><span class="line"><span class="keyword">var</span> recur1 = <span class="function">(<span class="params">level, sum, str, arr</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (level == sum &amp;&amp; str.length == sum) &#123;</span><br><span class="line">    <span class="comment">// 将合法的组合放进结果数组</span></span><br><span class="line">    <span class="keyword">if</span> (isValid(str)) &#123;</span><br><span class="line">      arr.push(str);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 通过递归生成所有的可能的组合</span></span><br><span class="line">  recur(level + <span class="number">1</span>, sum, str + <span class="string">'('</span>, arr);</span><br><span class="line">  recur(level + <span class="number">1</span>, sum, str + <span class="string">')'</span>, arr);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> isValid = <span class="function"><span class="keyword">function</span> (<span class="params">s</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (s.indexOf(<span class="string">'()'</span>) &gt;= <span class="number">0</span> || s.indexOf(<span class="string">'&#123;&#125;'</span>) &gt;= <span class="number">0</span> || s.indexOf(<span class="string">'[]'</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    s = s.replace(<span class="regexp">/\(\)/g</span>, <span class="string">''</span>)</span><br><span class="line">    s = s.replace(<span class="regexp">/\[\]/g</span>, <span class="string">''</span>)</span><br><span class="line">    s = s.replace(<span class="regexp">/\&#123;\&#125;/g</span>, <span class="string">''</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> s == <span class="string">''</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以进行优化</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 这四个条件确保放进结果数组里的字符串一定都是合法的</span></span><br><span class="line"><span class="comment"> * (感觉需要证明下)</span></span><br><span class="line"><span class="comment"> * 1. 左右括号一一对应</span></span><br><span class="line"><span class="comment"> * 2. 左右括号分别均为 n 个</span></span><br><span class="line"><span class="comment"> * 3. 当左括号数量大于右括号时，才加右括号</span></span><br><span class="line"><span class="comment"> * 4. 开头第一个一定是左括号</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> recur2 = <span class="function">(<span class="params">sum, str, arr, left, right</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (str.length == sum &amp;&amp; left == right) &#123;</span><br><span class="line">    <span class="comment">// 将合法的组合放进结果数组</span></span><br><span class="line">    arr.push(str);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 通过递归生成所有的可能的组合</span></span><br><span class="line">  <span class="comment">// 添加左括号, left + 1</span></span><br><span class="line">  <span class="comment">// 添加右括号, right + 1</span></span><br><span class="line">  <span class="comment">// 左括号的数量少于一半, 则加左括号</span></span><br><span class="line">  <span class="keyword">if</span> (left &lt;= <span class="built_in">parseInt</span>(sum / <span class="number">2</span>)) &#123;</span><br><span class="line">    recur2(sum, str + <span class="string">'('</span>, arr, left + <span class="number">1</span>, right);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 左括号数量大于右括号时, 才加右括号</span></span><br><span class="line">  <span class="keyword">if</span> (left &gt; right) &#123;</span><br><span class="line">    recur2(sum, str + <span class="string">')'</span>, arr, left, right + <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="46-Permutations"><a href="#46-Permutations" class="headerlink" title="[46] Permutations"></a>[46] Permutations</h4><blockquote>
+<p>Given a collection of <strong>distinct</strong> integers, return all possible permutations.</p>
+</blockquote>
+<p>时间复杂度: O(N*N!)</p>
+<p>全排列一共有 N! 种可能, 实现每一种可能需要遍历整个数组即O(N)时间, 所以可得.</p>
+<p>这个算法思路非常巧妙, 实现起来很清楚.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 算法思路是: 用一个数组维护每个数组元素的状态, true/false, 状态变量</span></span><br><span class="line"><span class="comment"> * 每次将未被放入的元素放入,每次放入一个元素后就再次dfs,再将没有放入的元素放入</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> permute = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">let</span> resArr = <span class="keyword">new</span> <span class="built_in">Array</span>(); <span class="comment">// 结果数组</span></span><br><span class="line">  <span class="keyword">let</span> path = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">  <span class="keyword">let</span> used = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">  <span class="comment">// 初始化状态变量</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    used.push(<span class="literal">false</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  dfs(resArr, nums, len, path, <span class="number">0</span>, used);</span><br><span class="line">  <span class="keyword">return</span> resArr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> dfs = <span class="function">(<span class="params">resArr, nums, len, path, depth, used</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (depth === len) &#123;</span><br><span class="line">    <span class="comment">// 注意不能resArr.push(path) 后面path改变会影响res里的值</span></span><br><span class="line">    <span class="comment">// js 值传递 传的是变量的地址</span></span><br><span class="line">    resArr.push(path.slice()); <span class="comment">// 需要将path的深拷贝放入</span></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!used[i]) &#123;</span><br><span class="line">      path.push(nums[i]);</span><br><span class="line">      used[i] = <span class="literal">true</span>;</span><br><span class="line">      dfs(resArr, nums, len, path, depth + <span class="number">1</span>, used);</span><br><span class="line">      used[i] = <span class="literal">false</span>; <span class="comment">// 由于重新开始放入元素, 将已经放入的元素的状态置false</span></span><br><span class="line">      path.pop(); <span class="comment">// 弹出最后一个元素 路径回到上一个状态</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="78-Subsets"><a href="#78-Subsets" class="headerlink" title="[78] Subsets"></a>[78] Subsets</h4><blockquote>
+<p>Given a set of <strong>distinct</strong> integers, <em>nums</em>, return all possible subsets (the power set).</p>
+<p><strong>Note:</strong> The solution set must not contain duplicate subsets.</p>
+</blockquote>
+<p>观察全排列/组合/子集问题，它们比较相似，且可以使用一些通用策略解决。</p>
+<p>首先，它们的解空间非常大：</p>
+<ul>
+<li>全排列：N!。</li>
+</ul>
+<ul>
+<li>组合：N!。</li>
+</ul>
+<ul>
+<li>子集：2^N, 每个元素都可能存在或不存在。</li>
+</ul>
+<p>在它们的指数级解法中，要确保生成的结果 <strong>完整</strong> 且 <strong>无冗余</strong>，有三种常用的方法：</p>
+<ol>
+<li>递归</li>
+<li>回溯</li>
+<li>基于二进制位掩码和对应位掩码之间的映射字典生成排列/组合/子集</li>
+</ol>
+<p>相比前两种方法，第三种方法将每种情况都简化为二进制数，易于实现和验证。</p>
+<p>此外，第三种方法具有<strong>最优的时间复杂度</strong>，可以生成按照字典顺序的输出结果。</p>
+<h5 id="solution-1-字典排序（二进制排序）-子集"><a href="#solution-1-字典排序（二进制排序）-子集" class="headerlink" title="solution 1 : 字典排序（二进制排序） 子集"></a>solution 1 : 字典排序（二进制排序） 子集</h5><p>这种解法很巧妙, 由于是全排列问题, 子集的数量与数组长度有关.</p>
+<p>数组中的元素, 每个只有在或者不在子集中这两种选择. 对于每一种可能, 都能用二进制来标记.</p>
+<p>因此该方法的思路如下:</p>
+<p>假设数组为[1, 2, 4], 则子集数量为 2^len= 2^3 = 8</p>
+<p>则从 0 - 7 的二进制对应分别为 000-111</p>
+<p>每一种可能都对应一种子集详情, 比如 101 对应 [1,4],  001 对应 [4].</p>
+<img src="/posts/undefined/bitmask4.png" class="" title="bitmask4">
+
+<p>需要注意的点是, 在将十进制转换为二进制时, 需要将二进制的位数扩充至与nums的长度相等.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> subsets = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">let</span> subSets = [];</span><br><span class="line">  <span class="comment">// 根据数组长度计算器其子集数量</span></span><br><span class="line">  <span class="keyword">let</span> subSetsNum = <span class="built_in">Math</span>.pow(<span class="number">2</span>, len);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; subSetsNum; i++) &#123;</span><br><span class="line">    <span class="comment">// 十进制转换为二进制</span></span><br><span class="line">    <span class="comment">// 每一个二进制都唯一对应一个子集</span></span><br><span class="line">    <span class="keyword">let</span> setNoStr = i.toString(<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">while</span> (setNoStr.length &lt; len) &#123;</span><br><span class="line">      <span class="comment">//如果长度不足 len，前面添加 0</span></span><br><span class="line">      setNoStr = <span class="string">'0'</span> + setNoStr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> setNoList = setNoStr.split(<span class="string">''</span>);</span><br><span class="line">    <span class="keyword">let</span> subSet = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; len; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (setNoList[j] == <span class="string">'1'</span>) &#123;</span><br><span class="line">        subSet.push(nums[j]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    subSets.push(subSet);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> subSets;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong></p>
+<ul>
+<li>时间复杂度：O(N×2^N)，生成所有的子集，并复制到输出列表中。</li>
+<li>空间复杂度：O(N×2^N)，存储所有子集，共 n 个元素，每个元素都有可能存在或者不存在。</li>
+</ul>
+<h5 id="solution-2-递归法"><a href="#solution-2-递归法" class="headerlink" title="solution 2 : 递归法"></a>solution 2 : 递归法</h5><p>这个解法挺巧妙的, 每次都把新元素加进已有的所有子集, 生成新的子集, 因为每个元素只有在和不在两种情况.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> subsets = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> subSets = [[]];</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">if</span> (len == <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> subSets</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> l = subSets.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; l; j++) &#123;</span><br><span class="line">      <span class="keyword">let</span> ele = subSets[j].concat([nums[i]]);</span><br><span class="line">      subSets.push(ele);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> subSets;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="Solution-3"><a href="#Solution-3" class="headerlink" title="Solution 3"></a>Solution 3</h5><p>回溯解法, 每次递归获得相同长度的子集</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> subsets = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">let</span> res = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= len; i++) &#123;</span><br><span class="line">    recur(i, <span class="number">0</span>, len, [], res, nums);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> recur = <span class="function">(<span class="params">depth, first, len, curr, res, nums</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (curr.length == depth) &#123;</span><br><span class="line">    res.push(curr.slice()); <span class="comment">// 将当前子集的深拷贝加入结果数组</span></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = first; i &lt; len; i++) &#123;</span><br><span class="line">    curr.push(nums[i]);</span><br><span class="line">    recur(depth, i + <span class="number">1</span>, len, curr, res, nums);</span><br><span class="line">    curr.pop(); <span class="comment">// 回溯 回到初始状态</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="90-Subsets-II"><a href="#90-Subsets-II" class="headerlink" title="[90] Subsets II"></a>[90] Subsets II</h4><blockquote>
+<p>Given a collection of integers that might contain duplicates, <strong><em>nums\</em></strong>, return all possible subsets (the power set).</p>
+<p><strong>Note:</strong> The solution set must not contain duplicate subsets.</p>
+</blockquote>
+<p>思路与子集时类似, 只是需要剪枝操作, <strong>将同一层其余相同的元素除去</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> subsetsWithDup = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  nums = nums.sort(); <span class="comment">// 排序操作 使得相同元素相邻</span></span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">let</span> res = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= len; i++) &#123;</span><br><span class="line">    recur(i, <span class="number">0</span>, len, [], res, nums);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(res);</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> recur = <span class="function">(<span class="params">depth, first, len, curr, res, nums</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (curr.length == depth) &#123;</span><br><span class="line">    res.push(curr.slice()); <span class="comment">// 将当前子集的深拷贝加入结果数组</span></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = first; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i &gt; first &amp;&amp; nums[i] == nums[i - <span class="number">1</span>]) &#123; <span class="comment">// 一开始写成了 i&gt;0 结果总是不对 后来知道每次加元素是从 first 开始 不是 0 开始</span></span><br><span class="line">      <span class="comment">// 每次当作为起始点往数组加入元素时,不能加入与上一个元素相同的元素</span></span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    curr.push(nums[i]);</span><br><span class="line">    recur(depth, i + <span class="number">1</span>, len, curr, res, nums);</span><br><span class="line">    curr.pop(); <span class="comment">// 回溯 回到初始状态</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <!--- The End --->
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://gillian97.github.io/posts/9912b79f/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -607,202 +854,6 @@
 <li><strong>正确的动态规划方程</strong></li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uniquePathsWithObstacles = <span class="function"><span class="keyword">function</span> (<span class="params">obstacleGrid</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> rowNum = obstacleGrid.length;</span><br><span class="line">  <span class="keyword">let</span> colNum = obstacleGrid[<span class="number">0</span>].length;</span><br><span class="line">  <span class="keyword">let</span> dp = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> flag1 = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; rowNum; i++) &#123;</span><br><span class="line">    <span class="comment">// 考虑障碍的情况</span></span><br><span class="line">    <span class="comment">// 边缘一有障碍, 则后面所有点的可到达路径数均为0</span></span><br><span class="line">    <span class="keyword">if</span> (obstacleGrid[i][<span class="number">0</span>] == <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> t = i; t &lt; rowNum; t++) &#123;</span><br><span class="line">        dp[key(t, <span class="number">0</span>)] = <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      flag1 = <span class="literal">false</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    dp[key(i, <span class="number">0</span>)] = (flag1 == <span class="literal">true</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> flag2 = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; colNum; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (obstacleGrid[<span class="number">0</span>][j] == <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> t = j; t &lt; colNum; t++) &#123;</span><br><span class="line">        dp[key(<span class="number">0</span>, t)] = <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      flag2 = <span class="literal">false</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    dp[key(<span class="number">0</span>, j)] = (flag2 == <span class="literal">true</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; rowNum; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">1</span>; j &lt; colNum; j++) &#123;</span><br><span class="line">      <span class="comment">// 考虑障碍的动态规划方程</span></span><br><span class="line">      <span class="keyword">if</span> (obstacleGrid[i][j] == <span class="number">1</span>)</span><br><span class="line">        dp[key(i, j)] = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        dp[key(i, j)] = dp[key(i - <span class="number">1</span>, j)] + dp[key(i, j - <span class="number">1</span>)];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// console.log(dp[key(rowNum - 1, colNum - 1)]);</span></span><br><span class="line">  <span class="keyword">return</span> dp[key(rowNum - <span class="number">1</span>, colNum - <span class="number">1</span>)];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> key = <span class="function">(<span class="params">i, j</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> i + <span class="string">'/'</span> + j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <!--- The End --->
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://gillian97.github.io/posts/91d834a1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Gillian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar_2.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Gillian's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/91d834a1/" itemprop="url">Permutations/Combinations/Subsets</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-03T15:36:23+08:00">
-                2020-08-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  698
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="78-Subsets"><a href="#78-Subsets" class="headerlink" title="[78] Subsets"></a>[78] Subsets</h4><blockquote>
-<p>Given a set of <strong>distinct</strong> integers, <em>nums</em>, return all possible subsets (the power set).</p>
-<p><strong>Note:</strong> The solution set must not contain duplicate subsets.</p>
-</blockquote>
-<p>观察全排列/组合/子集问题，它们比较相似，且可以使用一些通用策略解决。</p>
-<p>首先，它们的解空间非常大：</p>
-<ul>
-<li>全排列：N!。</li>
-</ul>
-<ul>
-<li>组合：N!。</li>
-</ul>
-<ul>
-<li>子集：2^N, 每个元素都可能存在或不存在。</li>
-</ul>
-<p>在它们的指数级解法中，要确保生成的结果 <strong>完整</strong> 且 <strong>无冗余</strong>，有三种常用的方法：</p>
-<ol>
-<li>递归</li>
-<li>回溯</li>
-<li>基于二进制位掩码和对应位掩码之间的映射字典生成排列/组合/子集</li>
-</ol>
-<p>相比前两种方法，第三种方法将每种情况都简化为二进制数，易于实现和验证。</p>
-<p>此外，第三种方法具有<strong>最优的时间复杂度</strong>，可以生成按照字典顺序的输出结果。</p>
-<h5 id="solution-1-字典排序（二进制排序）-子集"><a href="#solution-1-字典排序（二进制排序）-子集" class="headerlink" title="solution 1 : 字典排序（二进制排序） 子集"></a>solution 1 : 字典排序（二进制排序） 子集</h5><p>这种解法很巧妙, 由于是全排列问题, 子集的数量与数组长度有关.</p>
-<p>数组中的元素, 每个只有在或者不在子集中这两种选择. 对于每一种可能, 都能用二进制来标记.</p>
-<p>因此该方法的思路如下:</p>
-<p>假设数组为[1, 2, 4], 则子集数量为 2^len= 2^3 = 8</p>
-<p>则从 0 - 7 的二进制对应分别为 000-111</p>
-<p>每一种可能都对应一种子集详情, 比如 101 对应 [1,4],  001 对应 [4].</p>
-<img src="/posts/91d834a1/bitmask4.png" class="" title="bitmask4">
-
-<p>需要注意的点是, 在将十进制转换为二进制时, 需要将二进制的位数扩充至与nums的长度相等.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> subsets = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">let</span> subSets = [];</span><br><span class="line">  <span class="comment">// 根据数组长度计算器其子集数量</span></span><br><span class="line">  <span class="keyword">let</span> subSetsNum = <span class="built_in">Math</span>.pow(<span class="number">2</span>, len);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; subSetsNum; i++) &#123;</span><br><span class="line">    <span class="comment">// 十进制转换为二进制</span></span><br><span class="line">    <span class="comment">// 每一个二进制都唯一对应一个子集</span></span><br><span class="line">    <span class="keyword">let</span> setNoStr = i.toString(<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">while</span> (setNoStr.length &lt; len) &#123;</span><br><span class="line">      <span class="comment">//如果长度不足 len，前面添加 0</span></span><br><span class="line">      setNoStr = <span class="string">'0'</span> + setNoStr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> setNoList = setNoStr.split(<span class="string">''</span>);</span><br><span class="line">    <span class="keyword">let</span> subSet = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; len; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (setNoList[j] == <span class="string">'1'</span>) &#123;</span><br><span class="line">        subSet.push(nums[j]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    subSets.push(subSet);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> subSets;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>复杂度分析</strong></p>
-<ul>
-<li>时间复杂度：O(N×2^N)，生成所有的子集，并复制到输出列表中。</li>
-<li>空间复杂度：O(N×2^N)，存储所有子集，共 n 个元素，每个元素都有可能存在或者不存在。</li>
-</ul>
-<h5 id="solution-2-递归法"><a href="#solution-2-递归法" class="headerlink" title="solution 2 : 递归法"></a>solution 2 : 递归法</h5><p>这个解法挺巧妙的, 每次都把新元素加进已有的所有子集, 生成新的子集, 因为每个元素只有在和不在两种情况.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> subsets = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> subSets = [[]];</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">if</span> (len == <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> subSets</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> l = subSets.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; l; j++) &#123;</span><br><span class="line">      <span class="keyword">let</span> ele = subSets[j].concat([nums[i]]);</span><br><span class="line">      subSets.push(ele);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> subSets;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
 
 
           
@@ -1936,7 +1987,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -1997,7 +2048,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">5.9k</span>
+    <span title="Site words total count">7.1k</span>
   
 </div>
 
