@@ -106,28 +106,106 @@
       </tags>
   </entry>
   <entry>
-    <title>Binary Search</title>
-    <url>/2020/08/03/Binary-Search/</url>
-    <content><![CDATA[<h4 id="35-Search-Insert-Position"><a href="#35-Search-Insert-Position" class="headerlink" title="[35] Search Insert Position"></a>[35] Search Insert Position</h4><blockquote>
-<p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
-<p>You may assume no duplicates in the array.</p>
+    <title>JavaScript Notes</title>
+    <url>/2020/09/01/JavaScript-Notes/</url>
+    <content><![CDATA[<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><h4 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr0 = []; <span class="comment">// 字面</span></span><br><span class="line"><span class="keyword">let</span> arr1 = <span class="keyword">new</span> <span class="built_in">Array</span>(); <span class="comment">// 不固定长度</span></span><br><span class="line"><span class="keyword">let</span> arr2 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">5</span>); <span class="comment">// 固定长度</span></span><br><span class="line"><span class="keyword">let</span> arr3 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(arr0, arr1, arr2, arr3); <span class="comment">// [] [] [ &lt;5 empty items&gt; ] [ 1, 2, 3, 5 ]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><p><code>length</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr0 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]; <span class="comment">// 字面</span></span><br><span class="line"><span class="built_in">console</span>.log(arr0.length); <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+
+<p><code>constructor</code></p>
+<p>返回创建该对象的函数的引用, 因为js的一切变量都是对象, 是对象就有其构造函数.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> test=<span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="keyword">if</span> (test.constructor==<span class="built_in">Array</span>)&#123;</span><br><span class="line">	<span class="built_in">document</span>.write(test.constructor);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output: function Array() &#123; [native code] &#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p><code>join</code></p>
+<p>数组所有元素组成字符串, 可以指定分隔符.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr0 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr0.join()); <span class="comment">// 1,2,3,4 默认</span></span><br><span class="line"><span class="built_in">console</span>.log(arr0.join(<span class="string">'*'</span>)); <span class="comment">// 1*2*3*4</span></span><br></pre></td></tr></table></figure>
+
+<p><code>slice</code></p>
+<p>根据下标获取数组的一部分, 不改变原有数组, 返回新数组.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr1.slice(<span class="number">3</span>), arr1.slice(<span class="number">2</span>,<span class="number">4</span>), arr1);</span><br><span class="line"><span class="comment">// output: [ 4, 5 ] [ 3, 4 ] [ 1, 2, 3, 4, 5 ]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>concat</code></p>
+<p>拼接数组成一个新数组, 不改变原来的数组.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr0 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">5</span>, <span class="number">6</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr0.concat(arr1), arr0, arr1);</span><br><span class="line"><span class="comment">// output: [ 1, 2, 3, 4, 5, 6 ] [ 1, 2, 3, 4 ] [ 5, 6 ]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>pop</code></p>
+<p>删除数组的最后一个元素并返回该元素. 空数组返回<code>undefined</code>.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr0 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr0.pop(), arr0);</span><br><span class="line"><span class="comment">// output: 4 [ 1, 2, 3 ]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr1 = [];</span><br><span class="line"><span class="built_in">console</span>.log(arr1.pop(), arr1);</span><br><span class="line"><span class="comment">// output: undefined []</span></span><br></pre></td></tr></table></figure>
+
+<p><code>shift</code></p>
+<p>删除并返回数组的第一个元素, 改变原有数组</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr1.shift(), arr1);</span><br><span class="line"><span class="comment">// 1 [ 2, 3 ]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>unshift</code></p>
+<p>向数组的开头添加元素并返回现有长度</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr1.unshift(<span class="number">9</span>), arr1);</span><br><span class="line"><span class="comment">// 6 [ 9, 1, 2, 3, 4, 5 ]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>push</code></p>
+<p>向数组末尾添加元素并返回数组现有长度</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr1.push(<span class="number">4</span>), arr1);</span><br><span class="line"><span class="comment">// output: 4 [ 1, 2, 3, 4 ]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>reverse</code></p>
+<p>颠倒数组中元素顺序, 改变原有数组.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr1.reverse(), arr1);</span><br><span class="line"><span class="comment">// output: [ 3, 2, 1 ] [ 3, 2, 1 ]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><blockquote>
+<p>原因</p>
 </blockquote>
-<h6 id="My-solution"><a href="#My-solution" class="headerlink" title="My solution"></a>My solution</h6><p>我是哪里来的if-else怪物(为了边界情况, 疯狂if-else), 代码一点都不优雅, 考点应该是折半查找, 被我写成这个样子. 不说了, 我去找优雅解法去了…..</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> searchInsert = <span class="function"><span class="keyword">function</span> (<span class="params">nums, target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> start = <span class="number">0</span>,</span><br><span class="line">    end = nums.length - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> mid = start + index(end - start);</span><br><span class="line">  <span class="comment">// 数组len=1</span></span><br><span class="line">  <span class="keyword">if</span> (start == end) &#123;</span><br><span class="line">    <span class="keyword">if</span> (target &gt; nums[end])</span><br><span class="line">      <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (target &lt; nums[start])</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="keyword">return</span> start</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (end - start == <span class="number">1</span>) &#123; <span class="comment">// 数组len=2</span></span><br><span class="line">    <span class="keyword">if</span> (target &gt; nums[end])</span><br><span class="line">      <span class="keyword">return</span> end + <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (target &lt; nums[start])</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (target == nums[start])</span><br><span class="line">      <span class="keyword">return</span> start</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="keyword">return</span> end</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123; <span class="comment">// 数组len&gt;2</span></span><br><span class="line">    <span class="keyword">while</span> (end - start &gt; <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (target &lt; nums[mid]) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'target:'</span> + target + <span class="string">'&lt;'</span> + <span class="string">"nums["</span> + mid + <span class="string">"]:"</span> + nums[mid]);</span><br><span class="line">        end = mid;</span><br><span class="line">        <span class="keyword">if</span> (end - start == <span class="number">1</span>) &#123;</span><br><span class="line">          <span class="keyword">if</span> (target == nums[start]) &#123;</span><br><span class="line">            <span class="keyword">return</span> start</span><br><span class="line">          &#125; <span class="keyword">else</span> <span class="keyword">if</span> (target &lt; nums[start]) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> start + <span class="number">1</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          mid = start + index(end - start);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (target &gt; nums[mid]) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'target:'</span> + target + <span class="string">'&gt;'</span> + <span class="string">"nums["</span> + mid + <span class="string">"]:"</span> + nums[mid]);</span><br><span class="line">        start = mid;</span><br><span class="line">        <span class="keyword">if</span> (end - start == <span class="number">1</span>) &#123;</span><br><span class="line">          <span class="keyword">if</span> (target == nums[end]) &#123;</span><br><span class="line">            <span class="keyword">return</span> end</span><br><span class="line">          &#125; <span class="keyword">else</span> <span class="keyword">if</span> (target &gt; nums[end]) &#123;</span><br><span class="line">            <span class="keyword">return</span> end + <span class="number">1</span></span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> start + <span class="number">1</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          mid = start + index(end - start);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// console.log(mid);</span></span><br><span class="line">        <span class="keyword">return</span> mid;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> index = <span class="function">(<span class="params">gap</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (gap % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> gap / <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> (gap + <span class="number">1</span>) / <span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>js代码中会出现错误, 由于编写代码/编译/用户输入等各种各样的原因.</p>
+<blockquote>
+<p>处理</p>
+</blockquote>
+<p>发生错误时, js引擎会停止并生成一个错误消息.</p>
+<p>try与catch成对出现, finally是最后一定会执行的语句(可以没有).</p>
+<p>throw抛出错误, 实际上就是抛出一个表示错误信息的字符串s, 因此可以自定义错误.</p>
+<p>在catch中可以捕获s,实际上就是可以获得s的值并打印出来.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">test = <span class="function">(<span class="params">x</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (x === <span class="string">''</span>) <span class="keyword">throw</span> <span class="string">'is kong'</span></span><br><span class="line">    <span class="keyword">if</span> (x === <span class="string">'1'</span>) <span class="keyword">throw</span> <span class="string">'is 1'</span></span><br><span class="line">    <span class="keyword">if</span> (x === <span class="string">'2'</span>) <span class="keyword">throw</span> <span class="string">'is 2'</span></span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">  	<span class="built_in">console</span>.log(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">test(<span class="string">'1'</span>); <span class="comment">// is 1</span></span><br><span class="line">test(<span class="string">''</span>); <span class="comment">// is kong</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h6 id="solution-on-the-Internet"><a href="#solution-on-the-Internet" class="headerlink" title="solution on the Internet"></a>solution on the Internet</h6><p>参考网上的解法, 优化了一下, 感觉稍微简洁了些, 这里的mid取值是靠左的.所以一开始判断end值</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> searchInsert = <span class="function"><span class="keyword">function</span> (<span class="params">nums, target</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (nums.length == <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> start = <span class="number">0</span>, end = nums.length - <span class="number">1</span>, mid = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> (target &gt; nums[end])</span><br><span class="line">    <span class="keyword">return</span> end + <span class="number">1</span>;</span><br><span class="line">  <span class="comment">// if (target &lt; nums[start])</span></span><br><span class="line">  <span class="comment">//   return 0;</span></span><br><span class="line">  <span class="comment">// if (target == nums[start])</span></span><br><span class="line">  <span class="comment">//   return start</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (end &gt; start) &#123;</span><br><span class="line">    mid = start + <span class="built_in">parseInt</span>((end - start) / <span class="number">2</span>); <span class="comment">// parseInt 直接丢弃小数部分, 保留整数部分</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'mid: '</span>, mid, <span class="string">' start: '</span>, start, <span class="string">' end: '</span>, end);</span><br><span class="line">    <span class="keyword">if</span> (target == nums[start])</span><br><span class="line">      <span class="keyword">return</span> start;</span><br><span class="line">    <span class="keyword">if</span> (target == nums[end])</span><br><span class="line">      <span class="keyword">return</span> end;</span><br><span class="line">    <span class="keyword">if</span> (target == nums[mid])</span><br><span class="line">      <span class="keyword">return</span> mid;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (target &gt; nums[mid]) &#123;</span><br><span class="line">      start = mid + <span class="number">1</span>;</span><br><span class="line">      <span class="comment">// console.log('target &gt; mid', 'start: ', start);</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      end = mid;</span><br><span class="line">      <span class="comment">// console.log('target &lt; mid', 'end: ', end);</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> start</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
+<h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><blockquote>
+<p>操作</p>
+</blockquote>
+<p>设置断点, 检查变量值, 浏览器内置调试器(按下F12, 选择<code>console</code>)</p>
+<blockquote>
+<p><code>debugger</code>关键字</p>
+</blockquote>
+<p>代码会在<code>debugger</code>行停下, 并执行调试函数. 没有调试函数则不起作用.</p>
+<p>与在调试工具中设置断点效果一样.</p>
+<h3 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h3><blockquote>
+<p>原因</p>
+</blockquote>
+<p><code>use strict</code> </p>
+<p>消除js语法的不合理之处, 保证代码安全; 增加编译效率;</p>
+<blockquote>
+<p>使用</p>
+</blockquote>
+<p>只能放在脚本或者函数的开头</p>
+<blockquote>
+<p>具体内容</p>
+</blockquote>
+<ul>
+<li>禁止使用未定义/声明的变量</li>
+<li>禁止删除变量/函数</li>
+<li>禁止变量重名</li>
+<li>禁止使用八进制/转义字符</li>
+<li>禁止对只读属性赋值</li>
+<li>禁止删除不能删除的属性, 比如prototype</li>
+<li>禁止变量名为eval/arguments</li>
+<li>禁止使用右侧类似语句 with (Math){x = cos(2)};</li>
+<li>禁止在作用域eval创建的变量被使用</li>
+<li>禁止this指向全局对象</li>
+</ul>
 ]]></content>
-      <categories>
-        <category>Algorithm</category>
-      </categories>
       <tags>
-        <tag>LeetCode</tag>
+        <tag>-JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -173,105 +251,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript Notes</title>
-    <url>/2020/09/01/JavaScript-Notes/</url>
-    <content><![CDATA[<h4 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h4><blockquote>
-<p>原因</p>
-</blockquote>
-<p>js代码中会出现错误, 由于编写代码/编译/用户输入等各种各样的原因.</p>
-<blockquote>
-<p>处理</p>
-</blockquote>
-<p>发生错误时, js引擎会停止并生成一个错误消息.</p>
-<p>try与catch成对出现, finally是最后一定会执行的语句(可以没有).</p>
-<p>throw抛出错误, 实际上就是抛出一个表示错误信息的字符串s, 因此可以自定义错误.</p>
-<p>在catch中可以捕获s,实际上就是可以获得s的值并打印出来.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">test = <span class="function">(<span class="params">x</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (x === <span class="string">''</span>) <span class="keyword">throw</span> <span class="string">'is kong'</span></span><br><span class="line">    <span class="keyword">if</span> (x === <span class="string">'1'</span>) <span class="keyword">throw</span> <span class="string">'is 1'</span></span><br><span class="line">    <span class="keyword">if</span> (x === <span class="string">'2'</span>) <span class="keyword">throw</span> <span class="string">'is 2'</span></span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">  	<span class="built_in">console</span>.log(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">test(<span class="string">'1'</span>); <span class="comment">// is 1</span></span><br><span class="line">test(<span class="string">''</span>); <span class="comment">// is kong</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><blockquote>
-<p>操作</p>
-</blockquote>
-<p>设置断点, 检查变量值, 浏览器内置调试器(按下F12, 选择<code>console</code>)</p>
-<blockquote>
-<p><code>debugger</code>关键字</p>
-</blockquote>
-<p>代码会在<code>debugger</code>行停下, 并执行调试函数. 没有调试函数则不起作用.</p>
-<p>与在调试工具中设置断点效果一样.</p>
-<h4 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h4><blockquote>
-<p>原因</p>
-</blockquote>
-<p><code>use strict</code> </p>
-<p>消除js语法的不合理之处, 保证代码安全; 增加编译效率;</p>
-<blockquote>
-<p>使用</p>
-</blockquote>
-<p>只能放在脚本或者函数的开头</p>
-<blockquote>
-<p>具体内容</p>
-</blockquote>
-<ul>
-<li>禁止使用未定义/声明的变量</li>
-<li>禁止删除变量/函数</li>
-<li>禁止变量重名</li>
-<li>禁止使用八进制/转义字符</li>
-<li>禁止对只读属性赋值</li>
-<li>禁止删除不能删除的属性, 比如prototype</li>
-<li>禁止变量名为eval/arguments</li>
-<li>禁止使用右侧类似语句 with (Math){x = cos(2)};</li>
-<li>禁止在作用域eval创建的变量被使用</li>
-<li>禁止this指向全局对象</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>-JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Greedy Algorithm</title>
-    <url>/2020/08/03/Greedy-Algorithm/</url>
-    <content><![CDATA[<h4 id="45-Jump-Game-II"><a href="#45-Jump-Game-II" class="headerlink" title="[45] Jump Game II"></a>[45] Jump Game II</h4><blockquote>
-<p> Given an array of non-negative integers, you are initially positioned at the first index of the array.</p>
-<p> Each element in the array represents your maximum jump length at that position.</p>
-<p> Your goal is to reach the last index in the minimum number of jumps.</p>
-</blockquote>
-<p>贪心算法, 局部解得到最优解.</p>
-<p>解题思路: 每次查找当前位置能够到达的位置中, 能跳到最远位置的位置A, 下次就跳到位置A, 然后再从位置A能到达的位置中, 再找能跳到最远位置的位置, 如此循环.</p>
-<p>但是官方解答虽然简洁, 但是我不是看的很明白, 还是暂时先贴自己的直白解法吧.</p>
-<img src="/2020/08/03/Greedy-Algorithm/45_fig1.png" class="" title="45_fig1">
-
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 对于当前index, 每次在能跳到的范围内</span></span><br><span class="line"><span class="comment">// 跳到能跳到更远地方的index</span></span><br><span class="line"><span class="keyword">var</span> jump = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">if</span> (len == <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> (nums[<span class="number">0</span>] &gt;= len - <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> step = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> nextPosMap = &#123; <span class="string">'index'</span>: <span class="number">0</span>, <span class="string">'maxIndex'</span>: <span class="number">0</span> + nums[<span class="number">0</span>] &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len;) &#123;</span><br><span class="line">    <span class="keyword">let</span> indexLimit = i + nums[i];</span><br><span class="line">    <span class="comment">// 在寻找下一步跳的位置时, 步数加一</span></span><br><span class="line">    step++;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt;= indexLimit &amp;&amp; j &lt; len; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (j + nums[j] &gt; nextPosMap.maxIndex) &#123;</span><br><span class="line">        nextPosMap.index = j;</span><br><span class="line">        nextPosMap.maxIndex = j + nums[j];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// index != i, 说明能跳到更远距离的index更新了, 这时才需要将当前节点 i 移到index</span></span><br><span class="line">    <span class="comment">// 其实肯定更新, 题目已经说了能跳到最后</span></span><br><span class="line">    <span class="comment">// 移动才算跳了一步</span></span><br><span class="line">    <span class="comment">// 同时能跳到的最远位置不要超过数组边界</span></span><br><span class="line">    <span class="comment">// 超过数组边界则表示步数已经能计算出来了 return</span></span><br><span class="line">    <span class="keyword">if</span> (nextPosMap.maxIndex &lt; len - <span class="number">1</span>) &#123;</span><br><span class="line">      i = nextPosMap.index;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 当最大位置能到达最后时, 返回step+1</span></span><br><span class="line">      <span class="comment">// 把跳到最后位置的一步也加上</span></span><br><span class="line">      <span class="keyword">return</span> step + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="55-Jump-Game"><a href="#55-Jump-Game" class="headerlink" title="[55] Jump Game"></a>[55] Jump Game</h4><blockquote>
-<p>Given an array of non-negative integers, you are initially positioned at the first index of the array.</p>
-<p>Each element in the array represents your maximum jump length at that position.</p>
-<p>Determine if you are able to reach the last index.</p>
-</blockquote>
-<p>一开始尝试使用递归做法, 计算所有的可能性, 但是想也不是最好的解法, 最后很可能超时, 果不其然超时.</p>
-<p>于是就去看网上解法, 这里的考点是<strong>贪心算法</strong>.</p>
-<blockquote>
-<p>贪心算法（又称贪婪算法）是指，在对<a href="https://baike.baidu.com/item/问题求解/6693186" target="_blank" rel="noopener">问题求解</a>时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，算法得到的是在某种意义上的局部最优解</p>
-</blockquote>
-<p>该题的大概思路是:</p>
-<p>数组的第一个元素的值为 reach, 从数组的第一个元素开始, 每次计算在reach范围内的元素们所能到达的最远距离, 是否超过reach, 如果超过了, 就更新reach值为较大值. 直至reach的值超过lastIndex 返回 true.</p>
-<img src="/2020/08/03/Greedy-Algorithm/largen-reach.png" class="" title="largen-reach">
-
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;boolean&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 递归超时 使用贪心算法求解</span></span><br><span class="line"><span class="comment">// 局部能够到达的最大范围, 也是全局能够到达的最大范围</span></span><br><span class="line"><span class="keyword">var</span> canJump = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> reach = nums[<span class="number">0</span>];</span><br><span class="line">  <span class="comment">// 需要注意的点是,这里reach的值不一定就&gt;1, 所以i不一定就从1开始</span></span><br><span class="line">  <span class="comment">// 还是从0开始能够包含所有情况, 这么写因为有个特例 [0]</span></span><br><span class="line">  <span class="comment">// 同时注意限制 i 的范围, i 是指 reach 能够到达的位置范围, 不能超过 reach</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length &amp;&amp; i &lt;= reach; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[i] + i &gt; reach) &#123;</span><br><span class="line">      reach = nums[i] + i;</span><br><span class="line">      <span class="comment">// console.log(reach);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 当能到达的范围超过数组的最后 index 时, 返回 true</span></span><br><span class="line">    <span class="keyword">if</span> (reach &gt;= nums.length - <span class="number">1</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 能到达的元素位置都尝试了, 但是没有一个位置可以到达最后一个元素</span></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>Algorithm</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>String</title>
     <url>/2020/08/17/String/</url>
     <content><![CDATA[<h4 id="43-Multiply-Strings"><a href="#43-Multiply-Strings" class="headerlink" title="[43] Multiply Strings"></a>[43] Multiply Strings</h4><blockquote>
@@ -290,16 +269,47 @@
       </tags>
   </entry>
   <entry>
-    <title>Vue Learning</title>
-    <url>/2020/07/29/Vue-Learning/</url>
-    <content><![CDATA[]]></content>
+    <title>Binary Search</title>
+    <url>/2020/08/03/Binary-Search/</url>
+    <content><![CDATA[<h4 id="35-Search-Insert-Position"><a href="#35-Search-Insert-Position" class="headerlink" title="[35] Search Insert Position"></a>[35] Search Insert Position</h4><blockquote>
+<p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
+<p>You may assume no duplicates in the array.</p>
+</blockquote>
+<h6 id="My-solution"><a href="#My-solution" class="headerlink" title="My solution"></a>My solution</h6><p>我是哪里来的if-else怪物(为了边界情况, 疯狂if-else), 代码一点都不优雅, 考点应该是折半查找, 被我写成这个样子. 不说了, 我去找优雅解法去了…..</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> searchInsert = <span class="function"><span class="keyword">function</span> (<span class="params">nums, target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> start = <span class="number">0</span>,</span><br><span class="line">    end = nums.length - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> mid = start + index(end - start);</span><br><span class="line">  <span class="comment">// 数组len=1</span></span><br><span class="line">  <span class="keyword">if</span> (start == end) &#123;</span><br><span class="line">    <span class="keyword">if</span> (target &gt; nums[end])</span><br><span class="line">      <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (target &lt; nums[start])</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="keyword">return</span> start</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (end - start == <span class="number">1</span>) &#123; <span class="comment">// 数组len=2</span></span><br><span class="line">    <span class="keyword">if</span> (target &gt; nums[end])</span><br><span class="line">      <span class="keyword">return</span> end + <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (target &lt; nums[start])</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (target == nums[start])</span><br><span class="line">      <span class="keyword">return</span> start</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="keyword">return</span> end</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123; <span class="comment">// 数组len&gt;2</span></span><br><span class="line">    <span class="keyword">while</span> (end - start &gt; <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (target &lt; nums[mid]) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'target:'</span> + target + <span class="string">'&lt;'</span> + <span class="string">"nums["</span> + mid + <span class="string">"]:"</span> + nums[mid]);</span><br><span class="line">        end = mid;</span><br><span class="line">        <span class="keyword">if</span> (end - start == <span class="number">1</span>) &#123;</span><br><span class="line">          <span class="keyword">if</span> (target == nums[start]) &#123;</span><br><span class="line">            <span class="keyword">return</span> start</span><br><span class="line">          &#125; <span class="keyword">else</span> <span class="keyword">if</span> (target &lt; nums[start]) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> start + <span class="number">1</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          mid = start + index(end - start);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (target &gt; nums[mid]) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'target:'</span> + target + <span class="string">'&gt;'</span> + <span class="string">"nums["</span> + mid + <span class="string">"]:"</span> + nums[mid]);</span><br><span class="line">        start = mid;</span><br><span class="line">        <span class="keyword">if</span> (end - start == <span class="number">1</span>) &#123;</span><br><span class="line">          <span class="keyword">if</span> (target == nums[end]) &#123;</span><br><span class="line">            <span class="keyword">return</span> end</span><br><span class="line">          &#125; <span class="keyword">else</span> <span class="keyword">if</span> (target &gt; nums[end]) &#123;</span><br><span class="line">            <span class="keyword">return</span> end + <span class="number">1</span></span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> start + <span class="number">1</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          mid = start + index(end - start);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// console.log(mid);</span></span><br><span class="line">        <span class="keyword">return</span> mid;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> index = <span class="function">(<span class="params">gap</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (gap % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> gap / <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> (gap + <span class="number">1</span>) / <span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="solution-on-the-Internet"><a href="#solution-on-the-Internet" class="headerlink" title="solution on the Internet"></a>solution on the Internet</h6><p>参考网上的解法, 优化了一下, 感觉稍微简洁了些, 这里的mid取值是靠左的.所以一开始判断end值</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> searchInsert = <span class="function"><span class="keyword">function</span> (<span class="params">nums, target</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (nums.length == <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> start = <span class="number">0</span>, end = nums.length - <span class="number">1</span>, mid = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> (target &gt; nums[end])</span><br><span class="line">    <span class="keyword">return</span> end + <span class="number">1</span>;</span><br><span class="line">  <span class="comment">// if (target &lt; nums[start])</span></span><br><span class="line">  <span class="comment">//   return 0;</span></span><br><span class="line">  <span class="comment">// if (target == nums[start])</span></span><br><span class="line">  <span class="comment">//   return start</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (end &gt; start) &#123;</span><br><span class="line">    mid = start + <span class="built_in">parseInt</span>((end - start) / <span class="number">2</span>); <span class="comment">// parseInt 直接丢弃小数部分, 保留整数部分</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'mid: '</span>, mid, <span class="string">' start: '</span>, start, <span class="string">' end: '</span>, end);</span><br><span class="line">    <span class="keyword">if</span> (target == nums[start])</span><br><span class="line">      <span class="keyword">return</span> start;</span><br><span class="line">    <span class="keyword">if</span> (target == nums[end])</span><br><span class="line">      <span class="keyword">return</span> end;</span><br><span class="line">    <span class="keyword">if</span> (target == nums[mid])</span><br><span class="line">      <span class="keyword">return</span> mid;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (target &gt; nums[mid]) &#123;</span><br><span class="line">      start = mid + <span class="number">1</span>;</span><br><span class="line">      <span class="comment">// console.log('target &gt; mid', 'start: ', start);</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      end = mid;</span><br><span class="line">      <span class="comment">// console.log('target &lt; mid', 'end: ', end);</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> start</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
       <categories>
-        <category>前端框架</category>
+        <category>Algorithm</category>
       </categories>
       <tags>
-        <tag>Vue</tag>
-        <tag>js</tag>
+        <tag>LeetCode</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/07/28/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>Two Pointers</title>
@@ -433,21 +443,58 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2020/07/28/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+    <title>Vue Learning</title>
+    <url>/2020/07/29/Vue-Learning/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>前端框架</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Greedy Algorithm</title>
+    <url>/2020/08/03/Greedy-Algorithm/</url>
+    <content><![CDATA[<h4 id="45-Jump-Game-II"><a href="#45-Jump-Game-II" class="headerlink" title="[45] Jump Game II"></a>[45] Jump Game II</h4><blockquote>
+<p> Given an array of non-negative integers, you are initially positioned at the first index of the array.</p>
+<p> Each element in the array represents your maximum jump length at that position.</p>
+<p> Your goal is to reach the last index in the minimum number of jumps.</p>
+</blockquote>
+<p>贪心算法, 局部解得到最优解.</p>
+<p>解题思路: 每次查找当前位置能够到达的位置中, 能跳到最远位置的位置A, 下次就跳到位置A, 然后再从位置A能到达的位置中, 再找能跳到最远位置的位置, 如此循环.</p>
+<p>但是官方解答虽然简洁, 但是我不是看的很明白, 还是暂时先贴自己的直白解法吧.</p>
+<img src="/2020/08/03/Greedy-Algorithm/45_fig1.png" class="" title="45_fig1">
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 对于当前index, 每次在能跳到的范围内</span></span><br><span class="line"><span class="comment">// 跳到能跳到更远地方的index</span></span><br><span class="line"><span class="keyword">var</span> jump = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">if</span> (len == <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> (nums[<span class="number">0</span>] &gt;= len - <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> step = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> nextPosMap = &#123; <span class="string">'index'</span>: <span class="number">0</span>, <span class="string">'maxIndex'</span>: <span class="number">0</span> + nums[<span class="number">0</span>] &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len;) &#123;</span><br><span class="line">    <span class="keyword">let</span> indexLimit = i + nums[i];</span><br><span class="line">    <span class="comment">// 在寻找下一步跳的位置时, 步数加一</span></span><br><span class="line">    step++;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt;= indexLimit &amp;&amp; j &lt; len; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (j + nums[j] &gt; nextPosMap.maxIndex) &#123;</span><br><span class="line">        nextPosMap.index = j;</span><br><span class="line">        nextPosMap.maxIndex = j + nums[j];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// index != i, 说明能跳到更远距离的index更新了, 这时才需要将当前节点 i 移到index</span></span><br><span class="line">    <span class="comment">// 其实肯定更新, 题目已经说了能跳到最后</span></span><br><span class="line">    <span class="comment">// 移动才算跳了一步</span></span><br><span class="line">    <span class="comment">// 同时能跳到的最远位置不要超过数组边界</span></span><br><span class="line">    <span class="comment">// 超过数组边界则表示步数已经能计算出来了 return</span></span><br><span class="line">    <span class="keyword">if</span> (nextPosMap.maxIndex &lt; len - <span class="number">1</span>) &#123;</span><br><span class="line">      i = nextPosMap.index;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 当最大位置能到达最后时, 返回step+1</span></span><br><span class="line">      <span class="comment">// 把跳到最后位置的一步也加上</span></span><br><span class="line">      <span class="keyword">return</span> step + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h4 id="55-Jump-Game"><a href="#55-Jump-Game" class="headerlink" title="[55] Jump Game"></a>[55] Jump Game</h4><blockquote>
+<p>Given an array of non-negative integers, you are initially positioned at the first index of the array.</p>
+<p>Each element in the array represents your maximum jump length at that position.</p>
+<p>Determine if you are able to reach the last index.</p>
+</blockquote>
+<p>一开始尝试使用递归做法, 计算所有的可能性, 但是想也不是最好的解法, 最后很可能超时, 果不其然超时.</p>
+<p>于是就去看网上解法, 这里的考点是<strong>贪心算法</strong>.</p>
+<blockquote>
+<p>贪心算法（又称贪婪算法）是指，在对<a href="https://baike.baidu.com/item/问题求解/6693186" target="_blank" rel="noopener">问题求解</a>时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，算法得到的是在某种意义上的局部最优解</p>
+</blockquote>
+<p>该题的大概思路是:</p>
+<p>数组的第一个元素的值为 reach, 从数组的第一个元素开始, 每次计算在reach范围内的元素们所能到达的最远距离, 是否超过reach, 如果超过了, 就更新reach值为较大值. 直至reach的值超过lastIndex 返回 true.</p>
+<img src="/2020/08/03/Greedy-Algorithm/largen-reach.png" class="" title="largen-reach">
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;boolean&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 递归超时 使用贪心算法求解</span></span><br><span class="line"><span class="comment">// 局部能够到达的最大范围, 也是全局能够到达的最大范围</span></span><br><span class="line"><span class="keyword">var</span> canJump = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> reach = nums[<span class="number">0</span>];</span><br><span class="line">  <span class="comment">// 需要注意的点是,这里reach的值不一定就&gt;1, 所以i不一定就从1开始</span></span><br><span class="line">  <span class="comment">// 还是从0开始能够包含所有情况, 这么写因为有个特例 [0]</span></span><br><span class="line">  <span class="comment">// 同时注意限制 i 的范围, i 是指 reach 能够到达的位置范围, 不能超过 reach</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length &amp;&amp; i &lt;= reach; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[i] + i &gt; reach) &#123;</span><br><span class="line">      reach = nums[i] + i;</span><br><span class="line">      <span class="comment">// console.log(reach);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 当能到达的范围超过数组的最后 index 时, 返回 true</span></span><br><span class="line">    <span class="keyword">if</span> (reach &gt;= nums.length - <span class="number">1</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 能到达的元素位置都尝试了, 但是没有一个位置可以到达最后一个元素</span></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
 ]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
   </entry>
 </search>

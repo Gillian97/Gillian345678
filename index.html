@@ -356,7 +356,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  404
+                  863
                 </span>
               
 
@@ -372,7 +372,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  3
                 </span>
               
             </div>
@@ -395,7 +395,54 @@
       
         
           
-            <h4 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h4><blockquote>
+            <h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><h4 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr0 = []; <span class="comment">// 字面</span></span><br><span class="line"><span class="keyword">let</span> arr1 = <span class="keyword">new</span> <span class="built_in">Array</span>(); <span class="comment">// 不固定长度</span></span><br><span class="line"><span class="keyword">let</span> arr2 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">5</span>); <span class="comment">// 固定长度</span></span><br><span class="line"><span class="keyword">let</span> arr3 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(arr0, arr1, arr2, arr3); <span class="comment">// [] [] [ &lt;5 empty items&gt; ] [ 1, 2, 3, 5 ]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><p><code>length</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr0 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]; <span class="comment">// 字面</span></span><br><span class="line"><span class="built_in">console</span>.log(arr0.length); <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+
+<p><code>constructor</code></p>
+<p>返回创建该对象的函数的引用, 因为js的一切变量都是对象, 是对象就有其构造函数.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test=<span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="keyword">if</span> (test.constructor==<span class="built_in">Array</span>)&#123;</span><br><span class="line">	<span class="built_in">document</span>.write(test.constructor);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output: function Array() &#123; [native code] &#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p><code>join</code></p>
+<p>数组所有元素组成字符串, 可以指定分隔符.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr0 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr0.join()); <span class="comment">// 1,2,3,4 默认</span></span><br><span class="line"><span class="built_in">console</span>.log(arr0.join(<span class="string">'*'</span>)); <span class="comment">// 1*2*3*4</span></span><br></pre></td></tr></table></figure>
+
+<p><code>slice</code></p>
+<p>根据下标获取数组的一部分, 不改变原有数组, 返回新数组.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr1.slice(<span class="number">3</span>), arr1.slice(<span class="number">2</span>,<span class="number">4</span>), arr1);</span><br><span class="line"><span class="comment">// output: [ 4, 5 ] [ 3, 4 ] [ 1, 2, 3, 4, 5 ]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>concat</code></p>
+<p>拼接数组成一个新数组, 不改变原来的数组.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr0 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">5</span>, <span class="number">6</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr0.concat(arr1), arr0, arr1);</span><br><span class="line"><span class="comment">// output: [ 1, 2, 3, 4, 5, 6 ] [ 1, 2, 3, 4 ] [ 5, 6 ]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>pop</code></p>
+<p>删除数组的最后一个元素并返回该元素. 空数组返回<code>undefined</code>.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr0 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr0.pop(), arr0);</span><br><span class="line"><span class="comment">// output: 4 [ 1, 2, 3 ]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr1 = [];</span><br><span class="line"><span class="built_in">console</span>.log(arr1.pop(), arr1);</span><br><span class="line"><span class="comment">// output: undefined []</span></span><br></pre></td></tr></table></figure>
+
+<p><code>shift</code></p>
+<p>删除并返回数组的第一个元素, 改变原有数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr1.shift(), arr1);</span><br><span class="line"><span class="comment">// 1 [ 2, 3 ]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>unshift</code></p>
+<p>向数组的开头添加元素并返回现有长度</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr1.unshift(<span class="number">9</span>), arr1);</span><br><span class="line"><span class="comment">// 6 [ 9, 1, 2, 3, 4, 5 ]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>push</code></p>
+<p>向数组末尾添加元素并返回数组现有长度</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr1.push(<span class="number">4</span>), arr1);</span><br><span class="line"><span class="comment">// output: 4 [ 1, 2, 3, 4 ]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>reverse</code></p>
+<p>颠倒数组中元素顺序, 改变原有数组.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr1.reverse(), arr1);</span><br><span class="line"><span class="comment">// output: [ 3, 2, 1 ] [ 3, 2, 1 ]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><blockquote>
 <p>原因</p>
 </blockquote>
 <p>js代码中会出现错误, 由于编写代码/编译/用户输入等各种各样的原因.</p>
@@ -410,7 +457,7 @@
 
 
 
-<h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><blockquote>
+<h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><blockquote>
 <p>操作</p>
 </blockquote>
 <p>设置断点, 检查变量值, 浏览器内置调试器(按下F12, 选择<code>console</code>)</p>
@@ -419,7 +466,7 @@
 </blockquote>
 <p>代码会在<code>debugger</code>行停下, 并执行调试函数. 没有调试函数则不起作用.</p>
 <p>与在调试工具中设置断点效果一样.</p>
-<h4 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h4><blockquote>
+<h3 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h3><blockquote>
 <p>原因</p>
 </blockquote>
 <p><code>use strict</code> </p>
@@ -2268,7 +2315,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">8.3k</span>
+    <span title="Site words total count">8.7k</span>
   
 </div>
 
