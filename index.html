@@ -356,7 +356,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  863
+                  1.1k
                 </span>
               
 
@@ -372,7 +372,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  3
+                  4
                 </span>
               
             </div>
@@ -395,22 +395,43 @@
       
         
           
-            <h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><h4 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr0 = []; <span class="comment">// 字面</span></span><br><span class="line"><span class="keyword">let</span> arr1 = <span class="keyword">new</span> <span class="built_in">Array</span>(); <span class="comment">// 不固定长度</span></span><br><span class="line"><span class="keyword">let</span> arr2 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">5</span>); <span class="comment">// 固定长度</span></span><br><span class="line"><span class="keyword">let</span> arr3 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(arr0, arr1, arr2, arr3); <span class="comment">// [] [] [ &lt;5 empty items&gt; ] [ 1, 2, 3, 5 ]</span></span><br></pre></td></tr></table></figure>
-
-
+            <h3 id="字符串-String"><a href="#字符串-String" class="headerlink" title="字符串 String"></a>字符串 String</h3><h4 id="创建字符串"><a href="#创建字符串" class="headerlink" title="创建字符串"></a>创建字符串</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="string">'hello'</span>; <span class="comment">// 字面量创建</span></span><br><span class="line"><span class="keyword">let</span> thing = <span class="number">98</span>; <span class="comment">// 任何可以转换成字符串的值</span></span><br><span class="line"><span class="comment">/* String 函数 生成或者将值转换为字符串 */</span></span><br><span class="line"><span class="keyword">let</span> s2 = <span class="built_in">String</span>(thing); <span class="comment">// 将thing转换为原始字符串</span></span><br><span class="line"><span class="keyword">let</span> s3 = <span class="keyword">new</span> <span class="built_in">String</span>(thing); <span class="comment">// 新建String对象, 并存储thing的字符串表示</span></span><br><span class="line"><span class="built_in">console</span>.log(s1, <span class="keyword">typeof</span> s1); <span class="comment">// hello string</span></span><br><span class="line"><span class="built_in">console</span>.log(s2, <span class="keyword">typeof</span> s2); <span class="comment">// 98 string</span></span><br><span class="line"><span class="built_in">console</span>.log(s3, <span class="keyword">typeof</span> s3); <span class="comment">// [String: '98'] object</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><p><code>length</code></p>
+<p>字符串长度</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="string">'hello'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(s.length); <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
+
+<p><code>constructor</code></p>
+<p>对创建该对象的函数的引用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="string">'hello'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(s.constructor); <span class="comment">// [Function: String]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p><code>toUpperCase</code>  </p>
+<p>字符串变大写</p>
+<p><code>toLowerCase</code>  </p>
+<p>字符串变小写</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="string">'hello'</span>, t = <span class="string">'JINLING'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(s.toUpperCase()); <span class="comment">// HELLO</span></span><br><span class="line"><span class="built_in">console</span>.log(t.toLowerCase()); <span class="comment">// jinling</span></span><br></pre></td></tr></table></figure>
+
+<p><code>split</code> </p>
+<p>根据分隔符将字符串分割为数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="string">'hel,l,o'</span>;</span><br><span class="line"><span class="comment">// 不切割 整个字符串视作数组的一个元素</span></span><br><span class="line"><span class="built_in">console</span>.log(s.split());  <span class="comment">// [ 'hel,l,o' ]</span></span><br><span class="line"><span class="comment">// 每个字符都是数组中的元素</span></span><br><span class="line"><span class="built_in">console</span>.log(s.split(<span class="string">''</span>));</span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">[</span></span><br><span class="line"><span class="comment"> 'h', 'e', 'l',</span></span><br><span class="line"><span class="comment"> ',', 'l', ',',</span></span><br><span class="line"><span class="comment"> 'o'</span></span><br><span class="line"><span class="comment">]</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">// 以逗号分割</span></span><br><span class="line"><span class="built_in">console</span>.log(s.split(<span class="string">','</span>)); <span class="comment">// [ 'hel', 'l', 'o' ]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="数组-Array"><a href="#数组-Array" class="headerlink" title="数组 Array"></a>数组 Array</h3><h4 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr0 = []; <span class="comment">// 字面</span></span><br><span class="line"><span class="keyword">let</span> arr1 = <span class="keyword">new</span> <span class="built_in">Array</span>(); <span class="comment">// 不固定长度</span></span><br><span class="line"><span class="keyword">let</span> arr2 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">5</span>); <span class="comment">// 固定长度</span></span><br><span class="line"><span class="keyword">let</span> arr3 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(arr0, arr1, arr2, arr3); <span class="comment">// [] [] [ &lt;5 empty items&gt; ] [ 1, 2, 3, 5 ]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h4><p><code>length</code></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr0 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]; <span class="comment">// 字面</span></span><br><span class="line"><span class="built_in">console</span>.log(arr0.length); <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
 
 <p><code>constructor</code></p>
 <p>返回创建该对象的函数的引用, 因为js的一切变量都是对象, 是对象就有其构造函数.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test=<span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="keyword">if</span> (test.constructor==<span class="built_in">Array</span>)&#123;</span><br><span class="line">	<span class="built_in">document</span>.write(test.constructor);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output: function Array() &#123; [native code] &#125;</span></span><br></pre></td></tr></table></figure>
 
-
-
-<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p><code>join</code></p>
+<h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h4><p><code>join</code> </p>
+<p><code>toString</code></p>
 <p>数组所有元素组成字符串, 可以指定分隔符.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr0 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr0.join()); <span class="comment">// 1,2,3,4 默认</span></span><br><span class="line"><span class="built_in">console</span>.log(arr0.join(<span class="string">'*'</span>)); <span class="comment">// 1*2*3*4</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr0 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr0.join(), arr0.toString()); <span class="comment">// 1,2,3,4  1,2,3,4</span></span><br><span class="line"><span class="built_in">console</span>.log(arr0.join(<span class="string">'*'</span>)); <span class="comment">// 1*2*3*4</span></span><br></pre></td></tr></table></figure>
 
 <p><code>slice</code></p>
 <p>根据下标获取数组的一部分, 不改变原有数组, 返回新数组.</p>
@@ -2315,7 +2336,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">8.7k</span>
+    <span title="Site words total count">9k</span>
   
 </div>
 
