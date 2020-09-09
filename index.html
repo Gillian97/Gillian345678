@@ -356,7 +356,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.1k
+                  1.3k
                 </span>
               
 
@@ -372,7 +372,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  4
+                  5
                 </span>
               
             </div>
@@ -460,6 +460,23 @@
 <p><code>reverse</code></p>
 <p>颠倒数组中元素顺序, 改变原有数组.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr1.reverse(), arr1);</span><br><span class="line"><span class="comment">// output: [ 3, 2, 1 ] [ 3, 2, 1 ]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><h5 id="Object-的静态方法"><a href="#Object-的静态方法" class="headerlink" title="Object 的静态方法"></a>Object 的静态方法</h5><blockquote>
+<p>部署在object对象自身的方法</p>
+</blockquote>
+<p><code>Object.values</code> 获取对象的所有key, 输出类型为数组</p>
+<p><code>Object.keys</code> 获取对象的所有value, 输出类型为数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">key1</span>:<span class="string">'val1'</span>, <span class="attr">key2</span>:<span class="string">'val2'</span>, <span class="attr">key3</span>:<span class="string">'val3'</span>&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(obj)); <span class="comment">// [ 'key1', 'key2', 'key3' ]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.values(obj)); <span class="comment">// [ 'val1', 'val2', 'val3' ]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Object.getOwnPropertyNames</code> 也是返回对象的所有属性名, 但是还会返回不可枚举的属性; 可枚举属性方面, 与<code>Object.keys</code>相同</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不可枚举属性 二者不同</span></span><br><span class="line"><span class="keyword">let</span> obj1 = [<span class="string">'hello'</span>, <span class="string">'world'</span>, <span class="string">'jinling'</span>]</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(obj1)); <span class="comment">// [ '0', '1', '2' ]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyNames(obj1)); <span class="comment">// [ '0', '1', '2', 'length' ] 包含不可枚举属性</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 可枚举属性 二者相同</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">key1</span>:<span class="string">'val1'</span>, <span class="attr">key2</span>:<span class="string">'val2'</span>, <span class="attr">key3</span>:<span class="string">'val3'</span>&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(obj)); <span class="comment">// [ 'key1', 'key2', 'key3' ]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyNames(obj)); <span class="comment">// [ 'key1', 'key2', 'key3' ]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="Object-的实例方法"><a href="#Object-的实例方法" class="headerlink" title="Object 的实例方法"></a>Object 的实例方法</h5><p><code>Object.hasOwnProperty</code>判断对象是否拥有某项属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">key1</span>:<span class="string">'val1'</span>, <span class="attr">key2</span>:<span class="string">'val2'</span>, <span class="attr">key3</span>:<span class="string">'val3'</span>&#125;</span><br><span class="line"><span class="built_in">console</span>.log(obj.hasOwnProperty(<span class="string">'key2'</span>)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -2336,7 +2353,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">9k</span>
+    <span title="Site words total count">9.2k</span>
   
 </div>
 

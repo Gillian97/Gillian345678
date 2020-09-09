@@ -4,7 +4,7 @@
   <url>
     <loc>https://blog.zhangjinling.top/2020/09/01/JavaScript-Notes/</loc>
     
-    <lastmod>2020-09-04</lastmod>
+    <lastmod>2020-09-09</lastmod>
     
   </url>
   
@@ -88,7 +88,7 @@
 
   <url>
     <loc>https://blog.zhangjinling.top/</loc>
-    <lastmod>2020-09-04</lastmod>
+    <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -96,63 +96,63 @@
   
   <url>
     <loc>https://blog.zhangjinling.top/tags/LeetCode/</loc>
-    <lastmod>2020-09-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhangjinling.top/tags/Backtracking/</loc>
-    <lastmod>2020-09-04</lastmod>
+    <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.zhangjinling.top/tags/Array/</loc>
-    <lastmod>2020-09-04</lastmod>
+    <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.zhangjinling.top/tags/Dynamic-Programming/</loc>
-    <lastmod>2020-09-04</lastmod>
+    <lastmod>2020-09-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhangjinling.top/tags/Backtracking/</loc>
+    <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.zhangjinling.top/tags/JavaScript/</loc>
-    <lastmod>2020-09-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhangjinling.top/tags/array/</loc>
-    <lastmod>2020-09-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.zhangjinling.top/tags/two-pointers/</loc>
-    <lastmod>2020-09-04</lastmod>
+    <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.zhangjinling.top/tags/Vue/</loc>
-    <lastmod>2020-09-04</lastmod>
+    <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.zhangjinling.top/tags/js/</loc>
-    <lastmod>2020-09-04</lastmod>
+    <lastmod>2020-09-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhangjinling.top/tags/array/</loc>
+    <lastmod>2020-09-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhangjinling.top/tags/two-pointers/</loc>
+    <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -161,14 +161,14 @@
   
   <url>
     <loc>https://blog.zhangjinling.top/categories/Algorithm/</loc>
-    <lastmod>2020-09-04</lastmod>
+    <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.zhangjinling.top/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/</loc>
-    <lastmod>2020-09-04</lastmod>
+    <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
