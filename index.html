@@ -356,7 +356,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.3k
+                  1.8k
                 </span>
               
 
@@ -372,7 +372,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  5
+                  7
                 </span>
               
             </div>
@@ -463,7 +463,7 @@
 
 
 
-<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><h5 id="Object-的静态方法"><a href="#Object-的静态方法" class="headerlink" title="Object 的静态方法"></a>Object 的静态方法</h5><blockquote>
+<h3 id="对象-Object"><a href="#对象-Object" class="headerlink" title="对象 Object"></a>对象 Object</h3><h4 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h4><blockquote>
 <p>部署在object对象自身的方法</p>
 </blockquote>
 <p><code>Object.values</code> 获取对象的所有key, 输出类型为数组</p>
@@ -475,8 +475,34 @@
 
 
 
-<h5 id="Object-的实例方法"><a href="#Object-的实例方法" class="headerlink" title="Object 的实例方法"></a>Object 的实例方法</h5><p><code>Object.hasOwnProperty</code>判断对象是否拥有某项属性</p>
+<h4 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h4><p><code>Object.hasOwnProperty</code>判断对象是否拥有某项属性</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">key1</span>:<span class="string">'val1'</span>, <span class="attr">key2</span>:<span class="string">'val2'</span>, <span class="attr">key3</span>:<span class="string">'val3'</span>&#125;</span><br><span class="line"><span class="built_in">console</span>.log(obj.hasOwnProperty(<span class="string">'key2'</span>)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="操作符-typeof"><a href="#操作符-typeof" class="headerlink" title="操作符 typeof"></a>操作符 typeof</h3><h4 id="判断变量数据类型"><a href="#判断变量数据类型" class="headerlink" title="判断变量数据类型"></a>判断变量数据类型</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(</span><br><span class="line">  <span class="comment">// 通用数据类型</span></span><br><span class="line">	<span class="keyword">typeof</span> <span class="string">'jinling'</span> + <span class="string">'\n'</span> +  <span class="comment">// string</span></span><br><span class="line">	<span class="keyword">typeof</span> <span class="number">23</span> + <span class="string">'\n'</span> + <span class="comment">// number</span></span><br><span class="line">	<span class="keyword">typeof</span> <span class="literal">true</span> + <span class="string">'\n'</span> +  <span class="comment">// boolean</span></span><br><span class="line">	<span class="keyword">typeof</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] + <span class="string">'\n'</span> + <span class="comment">// object</span></span><br><span class="line">	<span class="keyword">typeof</span> &#123;<span class="attr">k1</span>:<span class="string">'v1'</span>, <span class="attr">k2</span>:<span class="string">'v2'</span>&#125; + <span class="string">'\n'</span> <span class="comment">// object</span></span><br><span class="line">  <span class="comment">// 特殊字符类型</span></span><br><span class="line">  <span class="keyword">typeof</span> <span class="literal">null</span> + <span class="string">'\n'</span> + <span class="comment">// object</span></span><br><span class="line">	<span class="keyword">typeof</span> <span class="literal">undefined</span> + <span class="string">'\n'</span> + <span class="comment">// undefined</span></span><br><span class="line">	<span class="keyword">typeof</span> <span class="literal">NaN</span> + <span class="string">'\n'</span> <span class="comment">// number</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// undefined与null值相同,但类型不同</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">undefined</span>===<span class="literal">null</span>, <span class="literal">undefined</span>==<span class="literal">null</span>); <span class="comment">// false true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断数组可以用 Array.isArray</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.isArray([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.isArray(&#123;<span class="attr">k1</span>:<span class="string">'v1'</span>, <span class="attr">k2</span>:<span class="string">'v2'</span>&#125;)) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="undefined-与-null-区别"><a href="#undefined-与-null-区别" class="headerlink" title="undefined 与 null 区别"></a>undefined 与 null 区别</h4><p><code>undefined</code>  : 一般表示某个变量被声明过, 但从未被赋过值, 则默认赋值<code>undefined</code>.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="keyword">let</span> b;</span><br><span class="line"><span class="built_in">console</span>.log(a,b); <span class="comment">// undefined undefined</span></span><br></pre></td></tr></table></figure>
+
+<p><code>null</code> : 表示主动释放指向对象的引用.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line">a = <span class="literal">null</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 释放指向数组的引用</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="关键字-this"><a href="#关键字-this" class="headerlink" title="关键字 this"></a>关键字 this</h3><blockquote>
+<p>js中this随着执行环境的变化而变化</p>
+</blockquote>
+<h4 id="方法中的this"><a href="#方法中的this" class="headerlink" title="方法中的this"></a>方法中的<code>this</code></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	size : <span class="number">14</span>,</span><br><span class="line">	color: <span class="string">'red'</span>,</span><br><span class="line">	getColor: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">'颜色是'</span> + <span class="keyword">this</span>.color</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 该实例中, this指向getColor方法所在的对象</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.getColor) <span class="comment">// [Function: getColor]</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.getColor()) <span class="comment">// 颜色是red (加括号表示调用方法)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法中的this单独打印, 会打印出所属对象的内容</span></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  firstName  : <span class="string">"John"</span>,</span><br><span class="line">  lastName   : <span class="string">"Doe"</span>,</span><br><span class="line">  id         : <span class="number">5566</span>,</span><br><span class="line">  myFunction : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(person.myFunction()); </span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  firstName: 'John',</span></span><br><span class="line"><span class="comment">  lastName: 'Doe',</span></span><br><span class="line"><span class="comment">  id: 5566,</span></span><br><span class="line"><span class="comment">  myFunction: [Function: myFunction]</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="单独使用this"><a href="#单独使用this" class="headerlink" title="单独使用this"></a>单独使用<code>this</code></h4><p>无论有无严格模式, <code>this</code>始终指向全局对象. 浏览器中, 全局对象为<code>[object Window]</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 'use strict'</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">// &#123;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="函数中使用this"><a href="#函数中使用this" class="headerlink" title="函数中使用this"></a>函数中使用<code>this</code></h4><p>函数中, 默认<code>this</code>指向全局对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fun = <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fun()); <span class="comment">// &#123;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>严格模式下不允许默认绑定, 所以函数中的<code>this</code>为<code>undefined</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 严格模式</span></span><br><span class="line"><span class="meta">"use strict"</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(myFunction()); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -2353,7 +2379,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">9.2k</span>
+    <span title="Site words total count">9.6k</span>
   
 </div>
 
