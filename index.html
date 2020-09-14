@@ -293,6 +293,190 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.zhangjinling.top/2020/09/11/Linked-list/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gillian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_2.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gillian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/11/Linked-list/" itemprop="url">Linked-list</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-11T14:57:16+08:00">
+                2020-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="2-Add-Two-Numbers"><a href="#2-Add-Two-Numbers" class="headerlink" title="[2] Add Two Numbers"></a>[2] Add Two Numbers</h4><blockquote>
+<p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong> and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+</blockquote>
+<p>复杂的数据结构是我的超级短板. 但是也算勉强看懂了js是如何表示链表的.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;ListNode&#125;</span> <span class="variable">l1</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;ListNode&#125;</span> <span class="variable">l2</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;ListNode&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 这个链表的存储结构是嵌套的, 即next指向的是嵌套的.</span></span><br><span class="line"><span class="keyword">var</span> addTwoNumbers = <span class="function"><span class="keyword">function</span> (<span class="params">l1, l2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 定义存储想关节点的变量</span></span><br><span class="line">  <span class="keyword">let</span> result = <span class="keyword">new</span> ListNode(<span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">let</span> lastNode = result;</span><br><span class="line">  <span class="keyword">let</span> carry = <span class="number">0</span>; <span class="comment">// 进位</span></span><br><span class="line">  <span class="keyword">let</span> val = <span class="number">0</span>; <span class="comment">// 相加之后赋给当前位置的值</span></span><br><span class="line">  <span class="comment">// 当l1或者l2任何一方有值时, 都需要进行相加</span></span><br><span class="line">  <span class="keyword">while</span> (l1 || l2) &#123;</span><br><span class="line">    <span class="comment">// 获取两个链表的初始值</span></span><br><span class="line">    <span class="keyword">let</span> x = l1 == <span class="literal">null</span> ? <span class="number">0</span> : l1.val;</span><br><span class="line">    <span class="keyword">let</span> y = l2 == <span class="literal">null</span> ? <span class="number">0</span> : l2.val;</span><br><span class="line">    <span class="comment">// 两者相加</span></span><br><span class="line">    <span class="keyword">let</span> num = x + y + carry;</span><br><span class="line">    carry = <span class="built_in">Math</span>.floor(num / <span class="number">10</span>); <span class="comment">// 商</span></span><br><span class="line">    val = num % <span class="number">10</span>; <span class="comment">// 相加之后赋给当前位置的值</span></span><br><span class="line">    <span class="comment">// 新建节点添加到链表末尾</span></span><br><span class="line">    lastNode.next = <span class="keyword">new</span> ListNode(val);</span><br><span class="line">    <span class="comment">// 最后节点位置更新</span></span><br><span class="line">    lastNode = lastNode.next;</span><br><span class="line">    <span class="comment">// 进行下一位置的加法</span></span><br><span class="line">    <span class="keyword">if</span> (l1 !== <span class="literal">null</span>) l1 = l1.next;</span><br><span class="line">    <span class="keyword">if</span> (l2 !== <span class="literal">null</span>) l2 = l2.next;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 当两个加数位数都加完了</span></span><br><span class="line">  <span class="comment">// 但是仍然可能会有进位的可能</span></span><br><span class="line">  <span class="keyword">if</span> (carry != <span class="number">0</span>) &#123;</span><br><span class="line">    lastNode.next = <span class="keyword">new</span> ListNode(carry);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result.next;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">示例结果</span></span><br><span class="line"><span class="comment">====result.next</span></span><br><span class="line"><span class="comment">ListNode &#123;</span></span><br><span class="line"><span class="comment">  val: 7,</span></span><br><span class="line"><span class="comment">  next: ListNode &#123;</span></span><br><span class="line"><span class="comment">    val: 0,</span></span><br><span class="line"><span class="comment">    next: ListNode &#123;</span></span><br><span class="line"><span class="comment">      val: 8,</span></span><br><span class="line"><span class="comment">      next: null</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="21-Merge-Two-Sorted-Lists"><a href="#21-Merge-Two-Sorted-Lists" class="headerlink" title="[21] Merge Two Sorted Lists"></a>[21] Merge Two Sorted Lists</h4><blockquote>
+<p>Merge two sorted linked lists and return it as a new <strong>sorted</strong> list. The new list should be made by splicing together the nodes of the first two lists.</p>
+</blockquote>
+<p>解题的重点在于, 一直将l1和l2的链表头作比较, 不断将较小的node加入结果链表, 直至l1或者l2为空, 说明遍历结束. 把不为空的链表剩余的部分直接接入结果列表.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mergeTwoLists = <span class="function"><span class="keyword">function</span> (<span class="params">l1, l2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 处理有链表为空的情况</span></span><br><span class="line">  <span class="keyword">if</span> (l1 == <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> l2;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (l2 == <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> l1</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> res = <span class="keyword">new</span> ListNode(<span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">let</span> curr = res;</span><br><span class="line">  <span class="comment">// 网上的做法好简洁</span></span><br><span class="line">  <span class="keyword">while</span> (l1 &amp;&amp; l2) &#123;</span><br><span class="line">    <span class="keyword">if</span> (l1.val &gt; l2.val) &#123;</span><br><span class="line">      curr.next = l2;</span><br><span class="line">      l2 = l2.next;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      curr.next = l1;</span><br><span class="line">      l1 = l1.next;</span><br><span class="line">    &#125;</span><br><span class="line">    curr = curr.next;</span><br><span class="line">  &#125;</span><br><span class="line">  curr.next = l1 == <span class="literal">null</span> ? l2 : l1;</span><br><span class="line">  <span class="keyword">return</span> res.next;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="24-Swap-Nodes-in-Pairs"><a href="#24-Swap-Nodes-in-Pairs" class="headerlink" title="[24] Swap Nodes in Pairs"></a>[24] Swap Nodes in Pairs</h4><blockquote>
+<p>Given a linked list, swap every two adjacent nodes and return its head.</p>
+<p>You may <strong>not</strong> modify the values in the list’s nodes, only nodes itself may be changed.</p>
+</blockquote>
+<p>在交换链表的时候, 第一次交换需要记住链表头.</p>
+<p>确定 <code>curr</code> 之后, 只有 <code>curr.next!=null</code> 时才有交换的必要, 否则说明交换到头了, 返回 <code>head</code> 即可.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;ListNode&#125;</span> <span class="variable">head</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;ListNode&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> swapPairs = <span class="function"><span class="keyword">function</span> (<span class="params">head</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> curr = head;</span><br><span class="line">  <span class="keyword">let</span> left = <span class="keyword">new</span> ListNode(<span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>; <span class="comment">// 第一次交换的时候 需要记住链表头 后面就不需要了</span></span><br><span class="line">  <span class="comment">// 只有当 curr.next 也有值的时候, 才交换</span></span><br><span class="line">  <span class="comment">// 否则就直接返回</span></span><br><span class="line">  <span class="keyword">while</span> (curr &amp;&amp; curr.next) &#123;</span><br><span class="line">    <span class="keyword">let</span> temp = curr.next.next;</span><br><span class="line">    <span class="keyword">let</span> nextNode = curr.next;</span><br><span class="line">    nextNode.next = curr;</span><br><span class="line">    left.next = nextNode;</span><br><span class="line">    curr.next = temp;</span><br><span class="line">    left = curr;</span><br><span class="line">    curr = curr.next;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">0</span>)</span><br><span class="line">      head = nextNode;</span><br><span class="line">    i++;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> head;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="61-Rotate-List"><a href="#61-Rotate-List" class="headerlink" title="[61] Rotate List"></a>[61] Rotate List</h4><blockquote>
+<p>Given a linked list, rotate the list to the right by <em>k</em> places, where <em>k</em> is non-negative.</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;ListNode&#125;</span> <span class="variable">head</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">k</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;ListNode&#125;</span></span></span></span><br><span class="line"><span class="comment"> * 大体思路是: </span></span><br><span class="line"><span class="comment"> * 先计算出链表的长度len, 再将k与len进行比较, </span></span><br><span class="line"><span class="comment"> * k&gt;len的话, 将k中len的整数倍减去之后, 就是最后需要移动的元素的个数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rotateRight = <span class="function"><span class="keyword">function</span> (<span class="params">head, k</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (head == <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 计算链表长度</span></span><br><span class="line">  <span class="comment">// 此时right指向最后一个元素</span></span><br><span class="line">  <span class="keyword">let</span> left = head, right = head, len = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (right.next) &#123;</span><br><span class="line">    right = right.next;</span><br><span class="line">    len++;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (len == <span class="number">1</span> || k == len) &#123;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 取余之后是实际上需要移动的元素</span></span><br><span class="line">  <span class="keyword">let</span> num = k % len;</span><br><span class="line">  <span class="comment">// 由于在计算链表长度的时候, right已经指向链表尾部</span></span><br><span class="line">  <span class="comment">// 左右指针间隔k-1个元素</span></span><br><span class="line">  <span class="comment">// 所以左指针需要向右移动len-num-1个位置</span></span><br><span class="line">  <span class="comment">// 具体的边界条件可以在测试中验证是否正确</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len - num - <span class="number">1</span>; i++) &#123;</span><br><span class="line">    left = left.next;</span><br><span class="line">  &#125;</span><br><span class="line">  right.next = head;</span><br><span class="line">  head = left.next;</span><br><span class="line">  left.next = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">return</span> head;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <!--- The End --->
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://blog.zhangjinling.top/2020/09/01/JavaScript-Notes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2456,7 +2640,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2539,7 +2723,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">11.6k</span>
+    <span title="Site words total count">12.6k</span>
   
 </div>
 
