@@ -293,6 +293,169 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.zhangjinling.top/2020/09/21/Array/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gillian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_2.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gillian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/21/Array/" itemprop="url">Array</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-21T21:47:45+08:00">
+                2020-09-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  423
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="56-Merge-Intervals"><a href="#56-Merge-Intervals" class="headerlink" title="[56] Merge Intervals"></a>[56] Merge Intervals</h4><blockquote>
+<p>Given a collection of intervals, merge all overlapping intervals.</p>
+</blockquote>
+<p><strong>时间复杂度</strong>:</p>
+<p>排序时间($O(NlogN)$) + 遍历数组($O(N)$)</p>
+<p><strong>空间复杂度</strong>: 直接借用js数组特性splice对原数组进行修改, 没有使用额外的空间. 因此为$O(1)$.</p>
+<p><strong>数组的sort方法</strong>:</p>
+<p>当数组长度&lt;=10的时候，采用插入排序($O(N^2)$)，&gt;10的时候，采用快排($O(NlogN)$)。</p>
+<p>对于长度&gt;1000的数组，采用的是快排与插入排序混合的方式进行排序.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 合并有交集的若干个区间</span></span><br><span class="line"><span class="keyword">var</span> merge = <span class="function"><span class="keyword">function</span> (<span class="params">intervals</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = intervals.length</span><br><span class="line">  <span class="keyword">if</span> (len == <span class="number">0</span> || len == <span class="number">1</span>) <span class="keyword">return</span> intervals;</span><br><span class="line">  <span class="comment">// 首先对区间进行排序 根据数组的第一列进行排序</span></span><br><span class="line">  <span class="comment">// 如果不排序 后面在合并区间时也会两两交换 等于排序</span></span><br><span class="line">  intervals.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a[<span class="number">0</span>] - b[<span class="number">0</span>]);</span><br><span class="line">  <span class="comment">// 将数组中的区间进行两两合并</span></span><br><span class="line">  <span class="comment">// 如果某两个邻近区间a1 a2没有合并完成</span></span><br><span class="line">  <span class="comment">// 那么由于排序的原因 a1更不会和a3合并</span></span><br><span class="line">  <span class="keyword">let</span> preIndex = <span class="number">0</span>, currIndex = <span class="number">1</span>, mergeRes;</span><br><span class="line">  <span class="keyword">while</span> (currIndex &lt; len) &#123;</span><br><span class="line">    <span class="comment">// 判断两个区间是否能合并</span></span><br><span class="line">    <span class="comment">// 不能返回false 能则返回合并后的结果</span></span><br><span class="line">    mergeRes = isMerge(intervals[preIndex], intervals[currIndex]);</span><br><span class="line">    <span class="comment">// 不能合并</span></span><br><span class="line">    <span class="keyword">if</span> (mergeRes == <span class="literal">false</span>) &#123;</span><br><span class="line">      preIndex = currIndex;</span><br><span class="line">      currIndex++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123; <span class="comment">// 进行合并</span></span><br><span class="line">      intervals[preIndex] = mergeRes;</span><br><span class="line">      intervals.splice(currIndex, <span class="number">1</span>);</span><br><span class="line">      <span class="comment">// currIndex 此时不变</span></span><br><span class="line">      len = intervals.length;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> intervals;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> isMerge = <span class="function">(<span class="params">inter1, inter2</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 两个区间能合并的前提条件是 有交集</span></span><br><span class="line">  <span class="keyword">let</span> num0 = inter1[<span class="number">0</span>], num1 = inter1[<span class="number">1</span>], num2 = inter2[<span class="number">0</span>], num3 = inter2[<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">if</span> (num1 &lt; num2) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num1 &gt;= num2 &amp;&amp; num1 &lt;= num3) &#123; <span class="comment">// 不是包含关系的交集</span></span><br><span class="line">    <span class="keyword">return</span> [num0, num3];</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123; <span class="comment">// 前一个区间包含后一个区间</span></span><br><span class="line">    <span class="keyword">return</span> inter1;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <!--- The End --->
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://blog.zhangjinling.top/2020/09/17/Sort/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1680,7 +1843,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  843
+                  1.7k
                 </span>
               
 
@@ -1696,7 +1859,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  3
+                  7
                 </span>
               
             </div>
@@ -1736,6 +1899,23 @@
 <p>时间复杂度: 遍历整个字符串, $O(N)$</p>
 <p>空间复杂度: 常数级别.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 罗马数字一共三种情况</span></span><br><span class="line"><span class="comment">// 百位数字&gt;十位数字&gt;个位数字</span></span><br><span class="line"><span class="comment">// 出现左侧数字比右侧数字小, 只会在某一个数位内部</span></span><br><span class="line"><span class="keyword">var</span> romanToInt = <span class="function"><span class="keyword">function</span> (<span class="params">s</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 从左往右遍历</span></span><br><span class="line">  <span class="keyword">let</span> pre = getVal(s[<span class="number">0</span>]), sum = <span class="number">0</span>, num;</span><br><span class="line">  <span class="keyword">let</span> len = s.length;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</span><br><span class="line">    num = getVal(s[i]);</span><br><span class="line">    <span class="comment">// 前一个数字不小于后一个数字, 加上pre</span></span><br><span class="line">    <span class="comment">// 反之, 说明pre是某一数位内部的需要减去的数字, 则减去pre</span></span><br><span class="line">    <span class="comment">// 左侧的被减去的数字只出现一次或者不出现, 不会出现两次</span></span><br><span class="line">    <span class="keyword">if</span> (pre &gt;= num) &#123;</span><br><span class="line">      sum += pre;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      sum -= pre;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 更新pre的值</span></span><br><span class="line">    pre = num;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 最后一位不会再比右边哪个元素小了</span></span><br><span class="line">  <span class="comment">// 所以需要将最后一位加上</span></span><br><span class="line">  sum += getVal(s[len - <span class="number">1</span>]);</span><br><span class="line">  <span class="keyword">return</span> sum;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> getVal = <span class="function">(<span class="params">ch</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">switch</span> (ch) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'I'</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'V'</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'X'</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'L'</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="number">50</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'V'</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'C'</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'D'</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="number">500</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'M'</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="number">1000</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="12-Integer-to-Roman"><a href="#12-Integer-to-Roman" class="headerlink" title="[12] Integer to Roman"></a>[12] Integer to Roman</h4><blockquote>
+<p>Roman numerals are represented by seven different symbols: <code>I</code>, <code>V</code>, <code>X</code>, <code>L</code>, <code>C</code>, <code>D</code> and <code>M</code>.</p>
+<p>For example, two is written as <code>II</code> in Roman numeral, just two one’s added together. Twelve is written as, <code>XII</code>, which is simply <code>X</code> + <code>II</code>. The number twenty seven is written as <code>XXVII</code>, which is <code>XX</code> + <code>V</code> + <code>II</code>.</p>
+</blockquote>
+<p>主要是不同数位的数字转换, 需要对数位进行分情况讨论. 不同数位的相同数字, 对应使用的罗马字符也不同.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 主要思路就是, 逐步整除, 然后对商进行对应数位的转换</span></span><br><span class="line"><span class="keyword">var</span> intToRoman = <span class="function"><span class="keyword">function</span> (<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> items = [<span class="number">1000</span>, <span class="number">100</span>, <span class="number">10</span>, <span class="number">1</span>];</span><br><span class="line">  <span class="keyword">let</span> n, res = <span class="string">''</span>; <span class="comment">// res需要初始化 否则res+=操作时, 由于res的值为udefined, 会在结果头部留一个udefined</span></span><br><span class="line">  <span class="comment">// 从千位除到个位</span></span><br><span class="line">  <span class="comment">// 注意 用let i in items时, typeof i = string</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">    <span class="comment">// 得到商</span></span><br><span class="line">    n = <span class="built_in">Math</span>.floor(num / items[i]);</span><br><span class="line">    <span class="comment">// 根据数位以及商的大小确定对应的罗马数字</span></span><br><span class="line">    <span class="comment">// 并对每一步得到的罗马数字进行拼接</span></span><br><span class="line">    <span class="comment">// 使用索引顺便标记数位</span></span><br><span class="line">    res += toRoman(i, n);</span><br><span class="line">    <span class="comment">// 后一轮需要被整除的数是当前一轮整除后得到的余数</span></span><br><span class="line">    num = num % items[i];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> toRoman = <span class="function">(<span class="params">type, n</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> sma = <span class="string">''</span>, mid = <span class="string">''</span>, top = <span class="string">''</span>;</span><br><span class="line">  <span class="comment">// 数位不同 相同数字的表达方法不同</span></span><br><span class="line">  <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>: <span class="comment">// 千位</span></span><br><span class="line">      sma = <span class="string">'M'</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>: <span class="comment">// 百位</span></span><br><span class="line">      sma = <span class="string">'C'</span>; mid = <span class="string">'D'</span>; top = <span class="string">'M'</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>: <span class="comment">// 十位</span></span><br><span class="line">      sma = <span class="string">'X'</span>; mid = <span class="string">'L'</span>; top = <span class="string">'C'</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>: <span class="comment">// 个位</span></span><br><span class="line">      sma = <span class="string">'I'</span>; mid = <span class="string">'V'</span>; top = <span class="string">'X'</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> roman = <span class="string">''</span>;</span><br><span class="line">  <span class="comment">// 根据 n 的大小, 转换成对应的罗马数字</span></span><br><span class="line">  <span class="comment">// 千位不会超过3</span></span><br><span class="line">  <span class="keyword">if</span> (n &gt;= <span class="number">0</span> &amp;&amp; n &lt;= <span class="number">3</span>) &#123; <span class="comment">// [0,3]</span></span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; n) &#123;</span><br><span class="line">      roman += sma;</span><br><span class="line">      i++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (n == <span class="number">4</span> || n == <span class="number">9</span>) &#123; <span class="comment">// 4/9</span></span><br><span class="line">    roman = n == <span class="number">4</span> ? sma + mid : sma + top;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123; <span class="comment">// [5, 8]</span></span><br><span class="line">    <span class="keyword">let</span> k = <span class="number">0</span>;</span><br><span class="line">    roman = mid;</span><br><span class="line">    <span class="keyword">while</span> (k &lt; n - <span class="number">5</span>) &#123;</span><br><span class="line">      roman += sma;</span><br><span class="line">      k++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> roman;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="49-Group-Anagrams"><a href="#49-Group-Anagrams" class="headerlink" title="[49] Group Anagrams"></a>[49] Group Anagrams</h4><blockquote>
+<p>Given an array of strings <code>strs</code>, group <strong>the anagrams</strong> together. You can return the answer in <strong>any order</strong>.</p>
+<p>An <strong>Anagram</strong> is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将字符串按照构成分组</span></span><br><span class="line"><span class="comment">// 我的思路是: 将每个字符串按照字符拆分,然后排序,然后作为字典的key</span></span><br><span class="line"><span class="comment">// 相同key的就将元素index加入key对应的数组[]</span></span><br><span class="line"><span class="comment">// 将字符串按照构成分组</span></span><br><span class="line"><span class="comment">// 我的思路是: 将每个字符串按照字符拆分,然后排序,然后作为map的key</span></span><br><span class="line"><span class="comment">// 相同key的就将元素index加入key对应的数组[]</span></span><br><span class="line"><span class="keyword">var</span> groupAnagrams = <span class="function"><span class="keyword">function</span> (<span class="params">strs</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = strs.length;</span><br><span class="line">  <span class="keyword">if</span> (len == <span class="number">1</span>) <span class="keyword">return</span> [strs];</span><br><span class="line">  <span class="keyword">let</span> map = &#123;&#125;, key;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="comment">// 对每个字符串的字符拆分-排序-重组为string</span></span><br><span class="line">    <span class="comment">// 以至于相同字母组成的str的key会一致</span></span><br><span class="line">    key = strs[i].split(<span class="string">''</span>).sort().toString();</span><br><span class="line">    <span class="comment">// 看map是否存在</span></span><br><span class="line">    <span class="comment">// 不存在生成[]</span></span><br><span class="line">    <span class="comment">// 存在往[]里push元素</span></span><br><span class="line">    <span class="keyword">if</span> (map[key] == <span class="literal">undefined</span>) &#123;</span><br><span class="line">      map[key] = [i];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      map[key].push(i);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// map中value是数组, 包含字母组成相同的一组字符串的index</span></span><br><span class="line">  <span class="comment">// 遍历每一个数组, 将index替换为strs里对应的str</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> k <span class="keyword">in</span> map) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; map[k].length; i++) &#123;</span><br><span class="line">      map[k][i] = strs[map[k][i]];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 直接返回对象的values, 所有value被添加进[]并返回</span></span><br><span class="line">  <span class="comment">// 本来是又新创建了个数组来存储结果, 这样直接返回values更节省空间</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.values(map);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
           
@@ -2655,180 +2835,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.zhangjinling.top/2020/07/29/Vue-Learning/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Gillian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar_2.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Gillian's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/29/Vue-Learning/" itemprop="url">Vue Learning</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-29T13:34:01+08:00">
-                2020-07-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index">
-                    <span itemprop="name">前端框架</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  0
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <!--- The End --->
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2881,7 +2887,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2964,7 +2970,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">19.2k</span>
+    <span title="Site words total count">20.5k</span>
   
 </div>
 
