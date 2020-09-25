@@ -85,7 +85,7 @@
 <meta property="og:description" content="[43] Multiply Strings Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.  算法答题思路就是模拟乘法累加的过程.  需要注意的是, js大数相加会丢失精度,">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-17T09:16:00.722Z">
-<meta property="article:modified_time" content="2020-09-22T16:14:02.373Z">
+<meta property="article:modified_time" content="2020-09-25T05:53:25.304Z">
 <meta property="article:author" content="Gillian">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.9k
+                  2.2k
                 </span>
               
 
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  8
+                  10
                 </span>
               
             </div>
@@ -464,6 +464,16 @@
 <p>时间复杂度:</p>
 <p>假设两个串的长度分别为M/N, 则时间复杂度为 $O(max(M, N))$.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> addBinary = <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> i = a.length - <span class="number">1</span>, j = b.length - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> num, carry = <span class="literal">false</span>, sum = <span class="string">''</span>, charA, charB;</span><br><span class="line">  <span class="keyword">while</span> (a[i] || b[j]) &#123;</span><br><span class="line">    <span class="comment">// 考虑到两个串长度不一致时的处理</span></span><br><span class="line">    charA = (a[i] == <span class="literal">undefined</span>) ? <span class="string">'0'</span> : a[i];</span><br><span class="line">    charB = (b[j] == <span class="literal">undefined</span>) ? <span class="string">'0'</span> : b[j];</span><br><span class="line">    <span class="comment">// 由于二进制不是十进制加法, 所以需要对相加结果进行分类讨论</span></span><br><span class="line">    <span class="keyword">if</span> (charA == charB) &#123;</span><br><span class="line">      num = carry ? <span class="string">'1'</span> : <span class="string">'0'</span>;</span><br><span class="line">      carry = charA == <span class="string">'1'</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      num = carry ? <span class="string">'0'</span> : <span class="string">'1'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sum = num + sum;</span><br><span class="line">    i--;</span><br><span class="line">    j--;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 如果两数的每一位均已对应相加完成, 但是还有进位, 需要把进位也加入结果中</span></span><br><span class="line">  sum = carry ? <span class="string">'1'</span> + sum : sum;</span><br><span class="line">  <span class="keyword">return</span> sum;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="28-Implement-strStr"><a href="#28-Implement-strStr" class="headerlink" title="[28] Implement strStr()"></a>[28] Implement strStr()</h4><blockquote>
+<p>Implement <a href="http://www.cplusplus.com/reference/cstring/strstr/" target="_blank" rel="noopener">strStr()</a>.</p>
+<p>Return the index of the first occurrence of needle in haystack, or <strong>-1</strong> if needle is not part of haystack.</p>
+</blockquote>
+<p>时间复杂度: </p>
+<p>设source长度为N, target长度为M, 最差的情况是: 一直遍历到最后的部分才知道是否有和target匹配的部分. O((N-M)*M). 不用遍历到source的最后一个元素, 只要剩余部分的长度不足M, 即可退出遍历.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 直观想法 使用双重循环 </span></span><br><span class="line"><span class="comment">// 最外层循环是对源字符串的遍历</span></span><br><span class="line"><span class="comment">// 需要考虑源字符串剩余长度不够匹配目标字符串的情况</span></span><br><span class="line"><span class="comment">// 建议使用source target这类有意义的变量命名</span></span><br><span class="line"><span class="keyword">var</span> strStr = <span class="function"><span class="keyword">function</span> (<span class="params">haystack, needle</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 目标串为'' 默认出现位置是0</span></span><br><span class="line">  <span class="keyword">if</span> (needle == <span class="string">''</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 源串为''(这里needle不为'') 则找不到</span></span><br><span class="line">  <span class="keyword">if</span> (haystack == <span class="string">''</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; haystack.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (haystack[i] == needle[<span class="number">0</span>]) &#123;</span><br><span class="line">      <span class="keyword">if</span> (isEqual(haystack, needle, i))</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> isEqual = <span class="function">(<span class="params">haystack, needle, i</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 处理源字符串需要比较的串长度小于needle的长度的情况</span></span><br><span class="line">  <span class="keyword">if</span> (haystack.length - i &lt; needle.length) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; needle.length; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (needle[j] != haystack[i])</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">      i++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -668,7 +678,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#43-Multiply-Strings"><span class="nav-number">1.</span> <span class="nav-text">[43] Multiply Strings</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-Roman-to-Integer"><span class="nav-number">2.</span> <span class="nav-text">[13] Roman to Integer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-Integer-to-Roman"><span class="nav-number">3.</span> <span class="nav-text">[12] Integer to Roman</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#49-Group-Anagrams"><span class="nav-number">4.</span> <span class="nav-text">[49] Group Anagrams</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#67-Add-Binary"><span class="nav-number">5.</span> <span class="nav-text">[67] Add Binary</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#43-Multiply-Strings"><span class="nav-number">1.</span> <span class="nav-text">[43] Multiply Strings</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-Roman-to-Integer"><span class="nav-number">2.</span> <span class="nav-text">[13] Roman to Integer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-Integer-to-Roman"><span class="nav-number">3.</span> <span class="nav-text">[12] Integer to Roman</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#49-Group-Anagrams"><span class="nav-number">4.</span> <span class="nav-text">[49] Group Anagrams</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#67-Add-Binary"><span class="nav-number">5.</span> <span class="nav-text">[67] Add Binary</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#28-Implement-strStr"><span class="nav-number">6.</span> <span class="nav-text">[28] Implement strStr()</span></a></li></ol></div>
             
 
           </div>
@@ -702,7 +712,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">23.2k</span>
+    <span title="Site words total count">23.5k</span>
   
 </div>
 
