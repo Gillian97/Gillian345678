@@ -293,6 +293,191 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.zhangjinling.top/2020/09/27/Binary-Tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gillian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_2.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gillian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/27/Binary-Tree/" itemprop="url">Binary Tree</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-27T12:27:05+08:00">
+                2020-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  655
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>每个节点最多只有两个分支的树结构, 子树分左右.</p>
+<p>每层的节点数&lt;=2^(i-1), 总共的节点数</p>
+<p>假设根节点的层数为0, 则一颗二叉树总共的节点数不超过2^k-1(等比数列求和公式得来)</p>
+<h4 id="特殊类型"><a href="#特殊类型" class="headerlink" title="特殊类型"></a>特殊类型</h4><h5 id="满二叉树"><a href="#满二叉树" class="headerlink" title="满二叉树"></a>满二叉树</h5><p>定义: 深度为k, 且总节点数为2^k-1的二叉树, 数的外形是严格三角形.</p>
+<p>假设总结点数为n, 则树高为$log_2(n+1)$.</p>
+<h5 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h5><p>定义: 高度为h的二叉树,  其第0到(h-1)层的节点都满, 第h层节点不满, 且最后一层的节点都是从左往右排, 节点都在左边, 空位都在右边. Called 完全二叉树. 与满二叉数的节点一一对应.</p>
+<p>性质: </p>
+<p>一棵完全二叉树的节点数目为 n, 假设根节点的序号为0,  则最后一个节点的序号为n-1. </p>
+<p>对于序号为i的节点, 其父节点序号为 <strong>(i-1)/2</strong> [向下取整 画图可知]. 左子节点为left = 2*i+1(前提是left&lt;=n-1), 右子节点序号为 right = 2*i+2(前提是right&lt;=n-1).</p>
+<h4 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h4><h4 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h4><p>按照系统化方式访问二叉树的每一个节点, 每棵二叉树都有唯一的根节点 root, 是基于树结构的处理入口.</p>
+<img src="Binary-Tree/二叉树.png" width="50%" height="50%">
+
+<blockquote>
+<p>深度优先遍历</p>
+</blockquote>
+<h5 id="前-根-序遍历"><a href="#前-根-序遍历" class="headerlink" title="前(根)序遍历"></a>前(根)序遍历</h5><p>先访问根节点, 再访问左节点和右节点</p>
+<p>ABDHEICFJKG</p>
+<h5 id="中-根-序遍历"><a href="#中-根-序遍历" class="headerlink" title="中(根)序遍历"></a>中(根)序遍历</h5><p>先访问左子树, 再访问根节点, 再访问右子树</p>
+<p>DHBEIAJFKCG</p>
+<h5 id="后-根-序遍历"><a href="#后-根-序遍历" class="headerlink" title="后(根)序遍历"></a>后(根)序遍历</h5><p>先访问左右子树, 再访问根节点.</p>
+<p>HDIEBJKFGCA</p>
+<p>注意: 任意一棵树的任意一种遍历序列都无法唯一确定相应的二叉树.</p>
+<blockquote>
+<p>广度优先遍历</p>
+</blockquote>
+<h5 id="层序遍历"><a href="#层序遍历" class="headerlink" title="层序遍历"></a>层序遍历</h5><p>ABCDEFGHIJK</p>
+<h5 id="遍历实现"><a href="#遍历实现" class="headerlink" title="遍历实现"></a>遍历实现</h5><p>主要使用递归法进行理解与实现.</p>
+<p>深度优先一般使用递归方法/栈结构,  广度优先遍历使用队列.</p>
+<p>中序(知道左右子树的位置)+前序/后序(知道根节点的位置) + 元素不重复 –&gt; 复原二叉树结构</p>
+<h5 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h5><p>统计每个节点被访问的次数</p>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h3 id="二叉查找树-Binary-Search-Tree-BST"><a href="#二叉查找树-Binary-Search-Tree-BST" class="headerlink" title="二叉查找树(Binary Search Tree-BST)"></a>二叉查找树(Binary Search Tree-BST)</h3><p>每个节点都包含一个可比较的键以及相应的值, 且每个节点的值都&gt;=左子树中任意节点的键, &lt;右子树中任意节点的键.</p>
+<p><strong>使用中序遍历可以得到一个有序数组</strong>.</p>
+<p>BST使用的每个节点含有2个链接.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <!--- The End --->
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://blog.zhangjinling.top/2020/09/21/Array/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2337,7 +2522,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  510
+                  1.3k
                 </span>
               
 
@@ -2353,7 +2538,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  2
+                  6
                 </span>
               
             </div>
@@ -2376,7 +2561,30 @@
       
         
           
-            <h4 id="35-Search-Insert-Position"><a href="#35-Search-Insert-Position" class="headerlink" title="[35] Search Insert Position"></a>[35] Search Insert Position</h4><blockquote>
+            <h3 id="二分查找-折半查找"><a href="#二分查找-折半查找" class="headerlink" title="二分查找/折半查找"></a>二分查找/折半查找</h3><h4 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h4><p>数列有序; </p>
+<p>数列使用顺序存储结构</p>
+<h4 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h4><p>将目标元素与有序数列的中间元素比较大小, 比中间元素大, 则在数列的右半部分查找, 比中间元素小, 则在数列的左半部分查找, 如果相等, 则找到.</p>
+<p>不会查找所有的元素, 查找的数据量正好符合元素的对数, 正常情况每次查找的元素都在对半减少.所以时间复杂度为 $O(log_2N)$.</p>
+<img src="Binary-Search/binary-search.png" height="70%" width="70%">
+
+<h4 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h4><p>根据要找的key的大小, 从更接近的位置进行查找.eg.1-100000找10, 肯定采取顺序查找而不是折半查找.</p>
+<p>called 插值查找. 适用于数列比较大&amp;均匀的数列.</p>
+<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><p>有序; 元素个数较多; 不进行频繁增删</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><h5 id="普通的二分查找"><a href="#普通的二分查找" class="headerlink" title="普通的二分查找"></a>普通的二分查找</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 标准的二分查找模板</span></span><br><span class="line"><span class="keyword">var</span> binary_search = <span class="function">(<span class="params">nums, target</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">if</span>(len == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">let</span> left = <span class="number">0</span>, right = len - <span class="number">1</span>; <span class="comment">// 注意! [0, nums.length-1] 闭区间</span></span><br><span class="line">  <span class="keyword">let</span> mid = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 停止条件: 找不到/数组为空</span></span><br><span class="line">  <span class="comment">// 找不到时是区间为空 当 left=right+1 时区间为空</span></span><br><span class="line">  <span class="comment">// 注意!</span></span><br><span class="line">  <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">    <span class="comment">// 防止使用 (left+right)/2 计算 mid 时溢出 </span></span><br><span class="line">    mid = left + <span class="built_in">Math</span>.floor((right - left) / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">      <span class="keyword">return</span> mid;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target) &#123; <span class="comment">// 对于已经比较过的mid 不应该在下一次进行搜索的区间内</span></span><br><span class="line">      right = mid - <span class="number">1</span>; <span class="comment">// 注意!</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">      left = mid + <span class="number">1</span>; <span class="comment">// 注意!</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="寻找左侧边界的二分查找-模板"><a href="#寻找左侧边界的二分查找-模板" class="headerlink" title="寻找左侧边界的二分查找(模板)"></a>寻找左侧边界的二分查找(模板)</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> search_left = <span class="function">(<span class="params">nums, target</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">if</span> (len == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">let</span> left = <span class="number">0</span>, right = len - <span class="number">1</span>, mid = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 循环停止条件是 left = right + 1</span></span><br><span class="line">  <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">    mid = left + <span class="built_in">Math</span>.floor((right - left) / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (nums[mid] == target) &#123; <span class="comment">// 关键 !!! 向左缩小区域</span></span><br><span class="line">      right = mid - <span class="number">1</span>; <span class="comment">// 探索区间为 [left, mid-1]</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target) &#123;</span><br><span class="line">      right = mid - <span class="number">1</span>; <span class="comment">// 探索区间为 [left, mid-1]</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">      left = mid + <span class="number">1</span>; <span class="comment">// 探索区间为 [mid+1, right]</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// console.log('left:', left, 'mid:', mid, 'right:', right);</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 处理数组越界情况</span></span><br><span class="line">  <span class="comment">// target&gt;所有值(left==nums.length) || target&lt;所有值(right==-1)</span></span><br><span class="line">  <span class="comment">// nums[left] != target ps.即使right == -1 left==0 nums[0]也有可能是target</span></span><br><span class="line">  <span class="keyword">if</span> (left == len || nums[left] != target) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="寻找右侧边界的二分查找-模板"><a href="#寻找右侧边界的二分查找-模板" class="headerlink" title="寻找右侧边界的二分查找(模板)"></a>寻找右侧边界的二分查找(模板)</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> search_right = <span class="function">(<span class="params">nums, target</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">if</span> (len == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">let</span> left = <span class="number">0</span>, right = len - <span class="number">1</span>, mid = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 循环停止条件是 left = right + 1</span></span><br><span class="line">  <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">    mid = left + <span class="built_in">Math</span>.floor((right - left) / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (nums[mid] == target) &#123; <span class="comment">// 关键!!! 向右缩小区域</span></span><br><span class="line">      left = mid + <span class="number">1</span>; <span class="comment">// 探索区间为 [mid+1, right]</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target) &#123;</span><br><span class="line">      right = mid - <span class="number">1</span>; <span class="comment">// 探索区间为 [left, mid-1]</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">      left = mid + <span class="number">1</span>; <span class="comment">// 探索区间为 [mid+1, right]</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// console.log('left:', left, 'mid:', mid, 'right:', right);</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 处理数组越界情况</span></span><br><span class="line">  <span class="comment">// target&gt;所有值(left==nums.length) || target&lt;所有值(right==-1)</span></span><br><span class="line">  <span class="comment">// 即使left==len 但是 right==len-1 nums[right]也有可能是target</span></span><br><span class="line">  <span class="keyword">if</span> (nums[right] != target || right == <span class="number">-1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> right;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="35-Search-Insert-Position"><a href="#35-Search-Insert-Position" class="headerlink" title="[35] Search Insert Position"></a>[35] Search Insert Position</h4><blockquote>
 <p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
 <p>You may assume no duplicates in the array.</p>
 </blockquote>
@@ -2633,319 +2841,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.zhangjinling.top/2020/07/30/Two-Pointers/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Gillian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar_2.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Gillian's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/30/Two-Pointers/" itemprop="url">Two Pointers</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-30T10:03:54+08:00">
-                2020-07-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  3.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  15
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="11-Container-With-Most-Water"><a href="#11-Container-With-Most-Water" class="headerlink" title="[11] Container With Most Water"></a>[11] Container With Most Water</h4><blockquote>
-<p>Given <em>n</em> non-negative integers <em>a1</em>, <em>a2</em>, …, <em>an</em> , where each represents a point at coordinate (<em>i</em>, <em>ai</em>). <em>n</em> vertical lines are drawn such that the two endpoints of line <em>i</em> is at (<em>i</em>, <em>ai</em>) and (<em>i</em>, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.</p>
-<p><strong>Note:</strong> You may not slant the container and <em>n</em> is at least 2.</p>
-</blockquote>
-<h6 id="my-solution-Brute-Force"><a href="#my-solution-Brute-Force" class="headerlink" title="my solution : Brute Force"></a>my solution : Brute Force</h6><p>穷举所有面积的可能性,最后对面积进行排序,找到最大值.</p>
-<p>中间一度尝试过将 <code>partArea</code> 组成数组先排序,也还是超时.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> maxArea = <span class="function"><span class="keyword">function</span> (<span class="params">height</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> partMaxSet = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; height.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; height.length; j++) &#123;</span><br><span class="line">      <span class="keyword">let</span> yVal = height[j] &lt; height[i] ? height[j] : height[i];</span><br><span class="line">      <span class="keyword">let</span> partArea = (j - i) * yVal;</span><br><span class="line">      partMaxSet.add(partArea);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> partMaxList = <span class="built_in">Array</span>.from(partMaxSet);</span><br><span class="line">  <span class="comment">// 数字降序排列</span></span><br><span class="line">  partMaxList.sort(<span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123; <span class="keyword">return</span> b - a &#125;);</span><br><span class="line">  <span class="keyword">return</span> partMaxList[<span class="number">0</span>];</span><br><span class="line">  <span class="comment">// return Math.max.apply(null, partMaxList);</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="Two-pointers"><a href="#Two-pointers" class="headerlink" title="Two pointers"></a>Two pointers</h6><p>采用双指针做法, 对于 S(i, j) 来说, 都是每次向里移动一步.</p>
-<p>移动短板, 短板有可能变长, 面积有可能变大.</p>
-<p>但是移动长板,  短板只会不变或者变小, 因为盛水的体积取决于短板, 所以面积只会不变或变小.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 此算法需要证明</span></span><br><span class="line"><span class="keyword">var</span> maxArea = <span class="function"><span class="keyword">function</span> (<span class="params">height</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>, j = height.length - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> areaList = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">  <span class="keyword">while</span> (j - i &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (height[i] &lt; height[j]) &#123;</span><br><span class="line">      <span class="comment">// 计算面积以短边为准</span></span><br><span class="line">      areaList.push((j - i) * height[i]);</span><br><span class="line">      <span class="comment">// 移动短边有可能获得更大面积</span></span><br><span class="line">      i++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      areaList.push((j - i) * height[j]);</span><br><span class="line">      j--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 将可能的面积列表倒序排列,返回第一个</span></span><br><span class="line">  <span class="keyword">return</span> areaList.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> b - a)[<span class="number">0</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Complexity Analysis</strong></p>
-<ul>
-<li>Time complexity : O(n)<em>O</em>(<em>n</em>). Single pass.</li>
-<li>Space complexity : O(1)<em>O</em>(1). Constant space is used.</li>
-</ul>
-<h4 id="26-Remove-Duplicates-from-Sorted-Array"><a href="#26-Remove-Duplicates-from-Sorted-Array" class="headerlink" title="[26] Remove Duplicates from Sorted Array"></a>[26] Remove Duplicates from Sorted Array</h4><blockquote>
-<p>Given a sorted array <em>nums</em>, remove the duplicates <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener"><strong>in-place</strong></a> such that each element appear only <em>once</em> and return the new length.</p>
-<p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener">in-place</a></strong> with O(1) extra memory.</p>
-</blockquote>
-<h6 id="my-solution"><a href="#my-solution" class="headerlink" title="my solution"></a>my solution</h6><p>借用 js 数组splice方法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> removeDuplicates = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> j = i+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (nums[j] == nums[i]) &#123;</span><br><span class="line">      nums.splice(j, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="Two-pointers-1"><a href="#Two-pointers-1" class="headerlink" title="Two pointers"></a>Two pointers</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 参考双指针的方法, 优化了解法</span></span><br><span class="line"><span class="comment">// js的数组越界不会报错,只会得到 undefined 值</span></span><br><span class="line"><span class="keyword">var</span> removeDuplicates = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[j] != nums[j + <span class="number">1</span>]) &#123;</span><br><span class="line">      nums[i] = nums[j];</span><br><span class="line">      i++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> i;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="27-Remove-Element"><a href="#27-Remove-Element" class="headerlink" title="[27] Remove Element"></a>[27] Remove Element</h4><blockquote>
-<p>Given an array <em>nums</em> and a value <em>val</em>, remove all instances of that value <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener"><strong>in-place</strong></a> and return the new length.</p>
-<p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener">in-place</a></strong> with O(1) extra memory.</p>
-<p>The order of elements can be changed. It doesn’t matter what you leave beyond the new length.</p>
-</blockquote>
-<h6 id="my-solution-1"><a href="#my-solution-1" class="headerlink" title="my solution"></a>my solution</h6><p>我自己的解法是利用了js数组操作的特性, 可以直接删除数组元素然后剩余元素位置前移的那种,比较方便,但是运行效果不咋地.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// solution 1</span></span><br><span class="line"><span class="keyword">var</span> removeElement = <span class="function"><span class="keyword">function</span> (<span class="params">nums, val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">    <span class="comment">// 使用 while 保证对于同一个i, 去除该位置所有与val相等的值</span></span><br><span class="line">    <span class="comment">// 不会遗漏由于删除数组元素而位置前移的新元素</span></span><br><span class="line">    <span class="keyword">while</span> (nums[i] == val) &#123;</span><br><span class="line">      nums.splice(i, <span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="Two-pointers-2"><a href="#Two-pointers-2" class="headerlink" title="Two pointers"></a>Two pointers</h6><p>下面的解法是参考了示例解法, 双指针解法. 我觉得很精巧.</p>
-<p>主要思路是, 将需要保留的元素都赋值给数组的前部分, 使用 i 标记赋值的位置.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// solution two pointers</span></span><br><span class="line"><span class="comment">// 只保留与val不同的元素</span></span><br><span class="line"><span class="comment">// 赋值操作比起splice的删除操作 肯定速度更快 至于额外的空间 需要看splice的实现有没有占用了</span></span><br><span class="line"><span class="keyword">var</span> removeElement = <span class="function"><span class="keyword">function</span> (<span class="params">nums, val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[j] != val) &#123;</span><br><span class="line">      nums[i] = nums[j];</span><br><span class="line">      <span class="comment">// console.log("i=", i, " ", nums[i]);</span></span><br><span class="line">      i++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> i;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>最差的情况应该是, 没有一个一样的, 但是遍历数组两遍而不是嵌套, 所以是 O(n).</p>
-<p><strong>Complexity analysis</strong></p>
-<ul>
-<li>Time complexity : O(n). Assume the array has a total of n<em>n</em> elements, both <em>i</em> and <em>j</em> traverse at most 2<em>n</em> steps.</li>
-<li>Space complexity : O(1).</li>
-</ul>
-<h4 id="15-3Sum"><a href="#15-3Sum" class="headerlink" title="[15] 3Sum"></a>[15] 3Sum</h4><blockquote>
-<p>Given an array <code>nums</code> of <em>n</em> integers, are there elements <em>a</em>, <em>b</em>, <em>c</em> in <code>nums</code> such that <em>a</em> + <em>b</em> + <em>c</em> = 0? Find all unique triplets in the array which gives the sum of zero.</p>
-<p><strong>Note:</strong></p>
-<p>The solution set must not contain duplicate triplets.</p>
-</blockquote>
-<p>数组排序后, 方便去除重复的元素 + 双指针移动不用嵌套且有方向可循.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// solution 2 ：将数组排序后的双指针解法</span></span><br><span class="line"><span class="keyword">var</span> threeSum = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  nums = nums.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b); <span class="comment">// 将数组正序排列</span></span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">let</span> res = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len - <span class="number">2</span>; i++) &#123;</span><br><span class="line">    <span class="comment">// 第一个数大于 0，肯定加起来和不为0了</span></span><br><span class="line">    <span class="keyword">if</span> (nums[i] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 去掉重复元素</span></span><br><span class="line">    <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i - <span class="number">1</span>])</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    <span class="keyword">let</span> target = -nums[i];</span><br><span class="line">    <span class="keyword">let</span> left = i + <span class="number">1</span>, right = len - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">      <span class="keyword">if</span> (nums[left] + nums[right] == target) &#123;</span><br><span class="line">        res.push([nums[i], nums[left], nums[right]]);</span><br><span class="line">        left++;</span><br><span class="line">        right--;</span><br><span class="line">        <span class="comment">// 这里是否判断 left &lt; right 都没有那么重要, 因为最外面还会再判断一次</span></span><br><span class="line">        <span class="comment">// 但是加上判断可能会少做一次计算</span></span><br><span class="line">        <span class="comment">// 去掉重复元素</span></span><br><span class="line">        <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[left] == nums[left - <span class="number">1</span>]) &#123;</span><br><span class="line">          left++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[right] == nums[right + <span class="number">1</span>]) &#123;</span><br><span class="line">          right--;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[left] + nums[right] &lt; target) &#123;</span><br><span class="line">        left++;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        right--;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="16-3Sum-Closest"><a href="#16-3Sum-Closest" class="headerlink" title="[16] 3Sum Closest"></a>[16] 3Sum Closest</h4><blockquote>
-<p>Given an array <code>nums</code> of <em>n</em> integers and an integer <code>target</code>, find three integers in <code>nums</code> such that the sum is closest to <code>target</code>. Return the sum of the three integers. You may assume that each input would have exactly one solution.</p>
-</blockquote>
-<p>注意这里不是找相等, 而是保留最接近target的值, 实现方法类似.</p>
-<p>与target比较, 由于一直在找最接近的, 比target小就left++, 比target大就right–, 总之就是不断靠近target.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> threeSumClosest = <span class="function"><span class="keyword">function</span> (<span class="params">nums, target</span>) </span>&#123;</span><br><span class="line">  nums = nums.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b);</span><br><span class="line">  <span class="keyword">let</span> closest = nums[<span class="number">0</span>] + nums[<span class="number">1</span>] + nums[<span class="number">2</span>];</span><br><span class="line">  <span class="keyword">let</span> diff = <span class="built_in">Math</span>.abs(closest - target);</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len - <span class="number">2</span>; i++) &#123;</span><br><span class="line">    <span class="comment">// 由于数组是排好序的</span></span><br><span class="line">    <span class="comment">// 如果nums[i] * 3 &gt; target, 则 nums[i]+nums[i+1]+nums[i+2] 是接下来遍历的最小值</span></span><br><span class="line">    <span class="comment">// 后面差距只会越来越大</span></span><br><span class="line">    <span class="comment">// 将接下来最小值与当前最小值closest分别与target比较, 返回与target差距较小的那个值</span></span><br><span class="line">    <span class="comment">// 优化部分</span></span><br><span class="line">    <span class="keyword">if</span> (nums[i] * <span class="number">3</span> &gt; target) &#123;</span><br><span class="line">      <span class="keyword">let</span> cDiff = <span class="built_in">Math</span>.abs(closest - target);</span><br><span class="line">      <span class="keyword">let</span> tempMin = nums[i] + nums[i + <span class="number">1</span>] + nums[i + <span class="number">2</span>];</span><br><span class="line">      <span class="keyword">let</span> tDiff = <span class="built_in">Math</span>.abs(tempMin - target);</span><br><span class="line">      <span class="keyword">return</span> cDiff &lt; tDiff ? closest : tempMin;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 双指针 遍历数组剩余元素</span></span><br><span class="line">    <span class="keyword">let</span> left = i + <span class="number">1</span>, right = len - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">      <span class="keyword">let</span> sum = nums[i] + nums[left] + nums[right];</span><br><span class="line">      <span class="keyword">let</span> newDiff = <span class="built_in">Math</span>.abs(sum - target);</span><br><span class="line">      <span class="keyword">if</span> (newDiff == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> target</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (newDiff &lt; diff) &#123;</span><br><span class="line">        diff = newDiff;</span><br><span class="line">        closest = sum;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (sum &lt; target)</span><br><span class="line">        left++;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        right--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// console.log('closest:', closest);</span></span><br><span class="line">  <span class="keyword">return</span> closest;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="18-4Sum"><a href="#18-4Sum" class="headerlink" title="[18] 4Sum"></a>[18] 4Sum</h4><blockquote>
-<p>Given an array <code>nums</code> of <em>n</em> integers and an integer <code>target</code>, are there elements <em>a</em>, <em>b</em>, <em>c</em>, and <em>d</em>in <code>nums</code> such that <em>a</em> + <em>b</em> + <em>c</em> + <em>d</em> = <code>target</code>? Find all unique quadruplets in the array which gives the sum of <code>target</code>.</p>
-<p><strong>Note:</strong></p>
-<p>The solution set must not contain duplicate quadruplets.</p>
-</blockquote>
-<p>有了双指针, nSum都可解, 不过这个嵌套有点多,估计有更巧妙的解法.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fourSum = <span class="function"><span class="keyword">function</span> (<span class="params">nums, target</span>) </span>&#123;</span><br><span class="line">  nums = nums.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b);</span><br><span class="line">  <span class="keyword">let</span> len = nums.length, res = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len - <span class="number">3</span>; i++) &#123;</span><br><span class="line">    <span class="comment">// 去重</span></span><br><span class="line">    <span class="keyword">if</span> (nums[i] == nums[i - <span class="number">1</span>] &amp;&amp; i &gt; <span class="number">0</span>)</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; len - <span class="number">2</span>; j++) &#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (nums[j] == nums[j - <span class="number">1</span>] &amp;&amp; j &gt; i + <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">        </span><br><span class="line">      <span class="keyword">let</span> t = target - nums[i] - nums[j];</span><br><span class="line">      <span class="keyword">let</span> left = j + <span class="number">1</span>, right = len - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">        <span class="keyword">let</span> twoSum = nums[left] + nums[right];</span><br><span class="line">        <span class="keyword">if</span> (twoSum == t) &#123;</span><br><span class="line">          res.push([nums[i], nums[j], nums[left], nums[right]]);</span><br><span class="line">          left++;</span><br><span class="line">          right--;</span><br><span class="line">          <span class="comment">// 去重</span></span><br><span class="line">          <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[left] == nums[left - <span class="number">1</span>])</span><br><span class="line">            left++;</span><br><span class="line">          <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[right] == nums[right + <span class="number">1</span>])</span><br><span class="line">            right--;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (twoSum &gt; t) &#123;</span><br><span class="line">          right--;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          left++;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// console.log(res);</span></span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="283-Move-Zeroes"><a href="#283-Move-Zeroes" class="headerlink" title="[283] Move Zeroes"></a>[283] Move Zeroes</h4><blockquote>
-<p>Given an array <code>nums</code>, write a function to move all <code>0</code>‘s to the end of it while maintaining the relative order of the non-zero elements.</p>
-<p><strong>Note</strong>:</p>
-<ol>
-<li>You must do this <strong>in-place</strong> without making a copy of the array.</li>
-<li>Minimize the total number of operations.</li>
-</ol>
-</blockquote>
-<p>双指针解法, 一次成功.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// solution: two pointers</span></span><br><span class="line"><span class="comment">// 借鉴之前的做题经验, 这题算是完成的比较快</span></span><br><span class="line"><span class="keyword">var</span> moveZeroes = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length, i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; len; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[j] != <span class="number">0</span>) &#123;</span><br><span class="line">      nums[i] = nums[j];</span><br><span class="line">      i++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> t = i; t &lt; len; t++) &#123;</span><br><span class="line">    nums[t] = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// console.log(nums);</span></span><br><span class="line">  <span class="keyword">return</span> nums;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="66-Plus-One"><a href="#66-Plus-One" class="headerlink" title="[66] Plus One"></a>[66] Plus One</h4><blockquote>
-<p>Given a <strong>non-empty</strong> array of digits representing a non-negative integer, increment one to the integer.</p>
-<p>The digits are stored such that the most significant digit is at the head of the list, and each element in the array contains a single digit.</p>
-<p>You may assume the integer does not contain any leading zero, except the number 0 itself.</p>
-</blockquote>
-<p>主要是运用数组特性.不是很难, 理解题意即可.</p>
-<p>还挺多人不喜欢这道题的, 可能觉得太弱智了?…</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> plusOne = <span class="function"><span class="keyword">function</span> (<span class="params">digits</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = digits.length;</span><br><span class="line">  <span class="comment">// c 表示进位</span></span><br><span class="line">  <span class="keyword">let</span> i = len - <span class="number">1</span>, c = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (i &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// 没有向前进位, 就 +1 结束</span></span><br><span class="line">    <span class="keyword">if</span> (digits[i] + c &lt; <span class="number">10</span>) &#123;</span><br><span class="line">      digits[i]++;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">0</span>) &#123; </span><br><span class="line">      <span class="comment">// 首位元素 +1 后有进位, 向数组头部插入 1 结束</span></span><br><span class="line">      digits[i] = <span class="number">0</span>;</span><br><span class="line">      digits.unshift(<span class="number">1</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 不是首位元素 +1 后有进位</span></span><br><span class="line">      <span class="comment">// 当前元素设为 0 , 继续看更高位元素</span></span><br><span class="line">      digits[i] = <span class="number">0</span>;</span><br><span class="line">      i--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// console.log(digits);</span></span><br><span class="line">  <span class="keyword">return</span> digits;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="88-Merge-Sorted-Array"><a href="#88-Merge-Sorted-Array" class="headerlink" title="[88] Merge Sorted Array"></a>[88] Merge Sorted Array</h4><blockquote>
-<p>Given two sorted integer arrays <em>nums1</em> and <em>nums2</em>, merge <em>nums2</em> into <em>nums1</em> as one sorted array.</p>
-<p><strong>Note:</strong></p>
-<ul>
-<li>The number of elements initialized in <em>nums1</em> and <em>nums2</em> are <em>m</em>and <em>n</em> respectively.</li>
-<li>You may assume that <em>nums1</em> has enough space (size that is <strong>equal</strong> to <em>m</em> + <em>n</em>) to hold additional elements from <em>nums2</em>.</li>
-</ul>
-</blockquote>
-<p>我用的方法比较死板, 感觉没有什么难度. 就是分情况讨论. </p>
-<p>不过用到了 js 里 Array 的特性.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> merge = <span class="function"><span class="keyword">function</span> (<span class="params">nums1, m, nums2, n</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 说明没有自己的元素</span></span><br><span class="line">    <span class="keyword">if</span> (m == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            nums1[i] = nums2[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> len = nums1.length;</span><br><span class="line">        <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">let</span> j = m;</span><br><span class="line">        <span class="keyword">let</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; len &amp;&amp; k &lt; n) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (nums2[k] &gt;= nums1[i] &amp;&amp; nums2[k] &lt; nums1[i + <span class="number">1</span>]) &#123;</span><br><span class="line">                nums1.splice(i + <span class="number">1</span>, <span class="number">0</span>, nums2[k]);</span><br><span class="line">                nums1.pop();</span><br><span class="line">                j++;</span><br><span class="line">                k++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums2[k] &gt;= nums1[j - <span class="number">1</span>]) &#123;</span><br><span class="line">                nums1[j] = nums2[k];</span><br><span class="line">                j++;</span><br><span class="line">                k++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums2[k] &lt;= nums1[<span class="number">0</span>]) &#123;</span><br><span class="line">                nums1.unshift(nums2[k]);</span><br><span class="line">                nums1.pop();</span><br><span class="line">                j++;</span><br><span class="line">                k++;</span><br><span class="line">                i = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="80-Remove-Duplicates-from-Sorted-Array-II"><a href="#80-Remove-Duplicates-from-Sorted-Array-II" class="headerlink" title="[80] Remove Duplicates from Sorted Array II"></a>[80] Remove Duplicates from Sorted Array II</h4><blockquote>
-<p>Given a sorted array <em>nums</em>, remove the duplicates <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener"><strong>in-place</strong></a> such that duplicates appeared at most <em>twice</em> and return the new length.</p>
-<p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener">in-place</a></strong> with O(1) extra memory.</p>
-</blockquote>
-<p><strong>时间复杂度</strong>: 遍历整个数组 $O(N)$</p>
-<p><strong>空间复杂度</strong>: 仅使用两个index: left和right标记数组元素位置, $O(1)$ </p>
-<p>使用splice方法直接修改数组. (这个方法的实现原理需要了解一下 TODO)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组是排好序的</span></span><br><span class="line"><span class="comment">// 不能使用额外空间,直接修改数组</span></span><br><span class="line"><span class="comment">// 使所有元素出现次数最多不超过2次</span></span><br><span class="line"><span class="keyword">var</span> removeDuplicates = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = nums.length;</span><br><span class="line">  <span class="keyword">let</span> left = <span class="number">0</span>, right = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (right &lt; len) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[right] == nums[left] &amp;&amp; right - left == <span class="number">1</span>) &#123;</span><br><span class="line">      right++;</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 说明至少是第三个相同的元素</span></span><br><span class="line">    <span class="comment">// 需要将该元素删除</span></span><br><span class="line">    <span class="keyword">if</span> (nums[right] == nums[left] &amp;&amp; right - left &gt; <span class="number">1</span>) &#123;</span><br><span class="line">      nums.splice(right, <span class="number">1</span>);</span><br><span class="line">      <span class="comment">// 删除元素时会影响原数组的长度</span></span><br><span class="line">      <span class="comment">// 但是right仍然需要控制不能超过数组的边界</span></span><br><span class="line">      len = nums.length;</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// right和left指向的元素不同</span></span><br><span class="line">    left = right;</span><br><span class="line">    right = right + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 当right==len的时候,说明数组遍历结束</span></span><br><span class="line">  <span class="comment">// 返回当前删除重复元素后的数组长度</span></span><br><span class="line">  <span class="keyword">return</span> len;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="202-Happy-Number"><a href="#202-Happy-Number" class="headerlink" title="[202] Happy Number"></a>[202] Happy Number</h4><blockquote>
-<p>Write an algorithm to determine if a number <code>n</code> is “happy”.</p>
-<p>A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it <strong>loops endlessly in a cycle</strong> which does not include 1. Those numbers for which this process <strong>ends in 1</strong> are happy numbers.</p>
-<p>Return True if <code>n</code> is a happy number, and False if not.</p>
-</blockquote>
-<p>复杂度分析有点困难, 以及为什么只有循环或者归1两种结果, 而不是无穷大.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// solution 1: 快慢指针法</span></span><br><span class="line"><span class="comment">// 快慢指针找循环</span></span><br><span class="line"><span class="comment">// 在平方累加的过程中, 要不最后等于1, 要不最后陷入循环, 至于为什么不是无穷大</span></span><br><span class="line"><span class="comment">// 需要再琢磨一下</span></span><br><span class="line"><span class="keyword">var</span> isHappy1 = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 慢指针一次计算一步, 快指针一次计算两步</span></span><br><span class="line">  <span class="comment">// 如果两个指针的值一样, 说明进入循环</span></span><br><span class="line">  <span class="comment">// 否则, 快指针一定比慢指针率先到达1</span></span><br><span class="line">  <span class="comment">// 初始化快慢指针</span></span><br><span class="line">  <span class="keyword">let</span> slow = getPow(n), fast = getPow(getPow(n));</span><br><span class="line">  <span class="keyword">while</span> (fast != <span class="number">1</span> &amp;&amp; fast != slow) &#123;</span><br><span class="line">    slow = getPow(slow);</span><br><span class="line">    fast = getPow(fast);</span><br><span class="line">    fast = getPow(fast);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> fast == <span class="number">1</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 计算某个数的各个数位上的平方</span></span><br><span class="line"><span class="keyword">var</span> getPow = <span class="function">(<span class="params">n</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> num = n % <span class="number">10</span>;</span><br><span class="line">    sum += num * num;</span><br><span class="line">    n = <span class="built_in">Math</span>.floor(n / <span class="number">10</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// solution 2: 使用hashmap来判断值有无重复 聪儿判断有无循环</span></span><br><span class="line"><span class="keyword">var</span> isHappy = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> map = &#123;&#125;;</span><br><span class="line">  <span class="keyword">let</span> res = getPow(n);</span><br><span class="line">  <span class="comment">// map中没有该计算结果</span></span><br><span class="line">  <span class="comment">// 则添加进map中</span></span><br><span class="line">  <span class="comment">// 不是undefined 说明该计算结果之前已经被塞进map中</span></span><br><span class="line">  <span class="comment">// 得到循环</span></span><br><span class="line">  <span class="keyword">while</span> (map[res] == <span class="literal">undefined</span> &amp;&amp; res != <span class="number">1</span>) &#123;</span><br><span class="line">    map[res] = <span class="string">'1'</span>;</span><br><span class="line">    res = getPow(res);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res == <span class="number">1</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <!--- The End --->
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2998,7 +2893,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -3081,7 +2976,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">23.5k</span>
+    <span title="Site words total count">24.9k</span>
   
 </div>
 
