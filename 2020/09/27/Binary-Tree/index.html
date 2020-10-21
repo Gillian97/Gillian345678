@@ -77,16 +77,16 @@
 
 
 
-<meta name="description" content="二叉树定义每个节点最多只有两个分支的树结构, 子树分左右. 每层的节点数&lt;&#x3D;2^(i-1), 总共的节点数 假设根节点的层数为0, 则一颗二叉树总共的节点数不超过2^k-1(等比数列求和公式得来) 特殊类型满二叉树定义: 深度为k, 且总节点数为2^k-1的二叉树, 数的外形是严格三角形. 假设总结点数为n, 则树高为$log_2(n+1)$. 完全二叉树定义: 高度为h的二叉树,  其第0">
+<meta name="description" content="二叉树定义每个节点最多只有两个分支的树结构, 子树分左右. 每层的节点数&lt;&#x3D;2^(i-1), 总共的节点数 假设根节点的层数为1, 则一颗二叉树总共的节点数不超过2^k-1(等比数列求和公式得来) 特殊类型满二叉树定义: 深度为k, 且总节点数为2^k-1的二叉树, 数的外形是严格三角形. 假设总结点数为n, 则树高为$log_2(n+1)$. 完全二叉树定义: 高度为h的二叉树,  其第0">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Binary Tree">
 <meta property="og:url" content="https://blog.zhangjinling.top/2020/09/27/Binary-Tree/index.html">
 <meta property="og:site_name" content="Gillian&#39;s Blog">
-<meta property="og:description" content="二叉树定义每个节点最多只有两个分支的树结构, 子树分左右. 每层的节点数&lt;&#x3D;2^(i-1), 总共的节点数 假设根节点的层数为0, 则一颗二叉树总共的节点数不超过2^k-1(等比数列求和公式得来) 特殊类型满二叉树定义: 深度为k, 且总节点数为2^k-1的二叉树, 数的外形是严格三角形. 假设总结点数为n, 则树高为$log_2(n+1)$. 完全二叉树定义: 高度为h的二叉树,  其第0">
+<meta property="og:description" content="二叉树定义每个节点最多只有两个分支的树结构, 子树分左右. 每层的节点数&lt;&#x3D;2^(i-1), 总共的节点数 假设根节点的层数为1, 则一颗二叉树总共的节点数不超过2^k-1(等比数列求和公式得来) 特殊类型满二叉树定义: 深度为k, 且总节点数为2^k-1的二叉树, 数的外形是严格三角形. 假设总结点数为n, 则树高为$log_2(n+1)$. 完全二叉树定义: 高度为h的二叉树,  其第0">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.zhangjinling.top/2020/09/27/Binary-Tree/Binary-Tree/%E4%BA%8C%E5%8F%89%E6%A0%91.png">
 <meta property="article:published_time" content="2020-09-27T04:27:05.000Z">
-<meta property="article:modified_time" content="2020-09-28T11:26:39.405Z">
+<meta property="article:modified_time" content="2020-09-30T09:02:19.232Z">
 <meta property="article:author" content="Gillian">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://blog.zhangjinling.top/2020/09/27/Binary-Tree/Binary-Tree/%E4%BA%8C%E5%8F%89%E6%A0%91.png">
@@ -401,7 +401,7 @@
       
         <h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>每个节点最多只有两个分支的树结构, 子树分左右.</p>
 <p>每层的节点数&lt;=2^(i-1), 总共的节点数</p>
-<p>假设根节点的层数为0, 则一颗二叉树总共的节点数不超过2^k-1(等比数列求和公式得来)</p>
+<p>假设<strong>根节点的层数为1,</strong> 则一颗<strong>二叉树总共的节点数不超过2^k-1</strong>(等比数列求和公式得来)</p>
 <h4 id="特殊类型"><a href="#特殊类型" class="headerlink" title="特殊类型"></a>特殊类型</h4><h5 id="满二叉树"><a href="#满二叉树" class="headerlink" title="满二叉树"></a>满二叉树</h5><p>定义: 深度为k, 且总节点数为2^k-1的二叉树, 数的外形是严格三角形.</p>
 <p>假设总结点数为n, 则树高为$log_2(n+1)$.</p>
 <h5 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h5><p>定义: 高度为h的二叉树,  其第0到(h-1)层的节点都满, 第h层节点不满, 且最后一层的节点都是从左往右排, 节点都在左边, 空位都在右边. Called 完全二叉树. 与满二叉数的节点一一对应.</p>
@@ -483,6 +483,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2020/09/30/Basic-Knowledge/" rel="prev" title="Basic Knowledge">
+                Basic Knowledge <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -560,7 +564,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -659,7 +663,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">25.4k</span>
+    <span title="Site words total count">27.8k</span>
   
 </div>
 
