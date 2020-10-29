@@ -9,7 +9,28 @@
   </url>
   
   <url>
-    <loc>https://blog.zhangjinling.top/2020/09/30/Basic-Knowledge/</loc>
+    <loc>https://blog.zhangjinling.top/2020/08/03/Greedy-Algorithm/</loc>
+    
+    <lastmod>2020-10-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.zhangjinling.top/2020/08/04/Dynamic-Programming/</loc>
+    
+    <lastmod>2020-10-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.zhangjinling.top/2020/07/30/Two-Pointers/</loc>
+    
+    <lastmod>2020-10-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.zhangjinling.top/2020/08/17/String/</loc>
     
     <lastmod>2020-10-29</lastmod>
     
@@ -18,70 +39,49 @@
   <url>
     <loc>https://blog.zhangjinling.top/2020/09/17/Sort/</loc>
     
-    <lastmod>2020-10-28</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.zhangjinling.top/2020/08/18/Backtracking/</loc>
-    
-    <lastmod>2020-10-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.zhangjinling.top/2020/09/27/Binary-Tree/</loc>
-    
-    <lastmod>2020-09-30</lastmod>
+    <lastmod>2020-10-29</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.zhangjinling.top/2020/08/03/Binary-Search/</loc>
     
-    <lastmod>2020-09-29</lastmod>
+    <lastmod>2020-10-29</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.zhangjinling.top/2020/08/17/String/</loc>
+    <loc>https://blog.zhangjinling.top/2020/08/18/Backtracking/</loc>
     
-    <lastmod>2020-09-25</lastmod>
+    <lastmod>2020-10-29</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.zhangjinling.top/2020/09/21/Array/</loc>
     
-    <lastmod>2020-09-23</lastmod>
+    <lastmod>2020-10-29</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.zhangjinling.top/2020/08/04/Dynamic-Programming/</loc>
+    <loc>https://blog.zhangjinling.top/2020/09/27/Binary-Tree/</loc>
     
-    <lastmod>2020-09-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.zhangjinling.top/2020/07/30/Two-Pointers/</loc>
-    
-    <lastmod>2020-09-21</lastmod>
+    <lastmod>2020-10-29</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.zhangjinling.top/2020/09/11/Linked-list/</loc>
     
-    <lastmod>2020-09-20</lastmod>
+    <lastmod>2020-10-29</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.zhangjinling.top/2020/08/03/Greedy-Algorithm/</loc>
+    <loc>https://blog.zhangjinling.top/2020/09/30/Basic-Knowledge/</loc>
     
-    <lastmod>2020-08-03</lastmod>
+    <lastmod>2020-10-29</lastmod>
     
   </url>
   
@@ -158,13 +158,6 @@
   </url>
   
   <url>
-    <loc>https://blog.zhangjinling.top/tags/JavaScript/</loc>
-    <lastmod>2020-10-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.zhangjinling.top/tags/array/</loc>
     <lastmod>2020-10-29</lastmod>
     <changefreq>daily</changefreq>
@@ -173,6 +166,13 @@
   
   <url>
     <loc>https://blog.zhangjinling.top/tags/two-pointers/</loc>
+    <lastmod>2020-10-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.zhangjinling.top/tags/JavaScript/</loc>
     <lastmod>2020-10-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
