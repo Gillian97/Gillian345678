@@ -372,7 +372,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  4
+                  3
                 </span>
               
             </div>
@@ -396,6 +396,7 @@
         
           <h1 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h1><p>数据结构是工具, 算法是通过合适的工具解决特定问题的方法.</p>
 <h2 id="数据结构的存储方式"><a href="#数据结构的存储方式" class="headerlink" title="数据结构的存储方式"></a>数据结构的存储方式</h2><p>数据结构的存储方式只有两种: 数组(顺序存储)与链表(链式存储)</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -405,7 +406,8 @@
 <th>链表</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>队列/栈</td>
 <td></td>
 <td>需要扩容</td>
@@ -429,7 +431,9 @@
 <td>堆, 完全二叉树,不需要节点指针</td>
 <td>不一定是完全二叉树, 衍生出各种巧妙的设计<br /> eg. 二叉搜索树/AVL树/红黑树/区间树/B树等, 应对不同的问题.</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h2 id="数据结构的基本操作"><a href="#数据结构的基本操作" class="headerlink" title="数据结构的基本操作"></a>数据结构的基本操作</h2><p>遍历(找) + 访问(改) (具体点: 增删改查)</p>
 <p>两种形式: 线性(for/while循环) &amp; 非线性(递归)</p>
           <!--noindex-->
@@ -1178,7 +1182,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  12.5k
+                  13.9k
                 </span>
               
 
@@ -1194,7 +1198,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  56
+                  61
                 </span>
               
             </div>
@@ -1221,7 +1225,6 @@
 <p>由浏览器中的执行模块(JS引擎)执行, 考虑到页面打开的速度, 不编译执行.</p>
 <h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><h3 id="操作HTML的DOM"><a href="#操作HTML的DOM" class="headerlink" title="操作HTML的DOM"></a>操作HTML的DOM</h3><p>浏览器从服务器取到HTML页面之后, 会展示页面出来, 但是浏览器内部将HTML组织成一个树给JS, 这个树称为 DOM.</p>
 <img src="/2020/09/01/JavaScript-Notes/htmltree.jpg" class="" title="htmltree">
-
 <p>JS可以定位并操作DOM中的任意一个节点, 且不用刷新页面, 操作就可以立刻显示出效果. 而且操作是内部进行, 并没有改变 html的源码.</p>
 <h3 id="控制浏览器"><a href="#控制浏览器" class="headerlink" title="控制浏览器"></a>控制浏览器</h3><p>打开窗口/在一个窗口内前进后退/获得浏览器名称+版本(判断是什么浏览器, 才能做这个浏览器支持的特殊操作)…</p>
 <h3 id="异步调用"><a href="#异步调用" class="headerlink" title="异步调用"></a>异步调用</h3><p>不能像java一样访问网络, 就不能调用服务器的接口去获取数据. 用户只能get或者post向服务器发送请求, 服务器返回整个页面, 而不是一个片段, 整个页面得重新刷新.</p>
@@ -2111,7 +2114,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">38.4k</span>
+    <span title="Site words total count">39.8k</span>
   
 </div>
 
@@ -2126,6 +2129,11 @@
 
   <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
  -->
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
@@ -2671,6 +2679,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
