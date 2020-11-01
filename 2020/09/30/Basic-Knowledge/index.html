@@ -85,7 +85,7 @@
 <meta property="og:description" content="数据结构与算法数据结构是工具, 算法是通过合适的工具解决特定问题的方法. 数据结构的存储方式数据结构的存储方式只有两种: 数组(顺序存储)与链表(链式存储)     数据结构 定义 数组 链表     队列&#x2F;栈  需要扩容 更多空间存储指针   图 多对多 邻接矩阵 邻接表   散列表 通过散列函数将键映射到一个大数组里  需要解决散列冲突 线性探查法 拉链法   树 一对多 堆, 完全二叉树,不">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-09-30T06:06:46.000Z">
-<meta property="article:modified_time" content="2020-10-29T10:54:05.048Z">
+<meta property="article:modified_time" content="2020-10-31T15:12:34.429Z">
 <meta property="article:author" content="Gillian">
 <meta name="twitter:card" content="summary">
 
@@ -360,7 +360,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.1k
+                  2.3k
                 </span>
               
 
@@ -376,7 +376,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  3
+                  8
                 </span>
               
             </div>
@@ -442,7 +442,34 @@
 <a id="more"></a>
 <h4 id="二叉搜索树操作"><a href="#二叉搜索树操作" class="headerlink" title="二叉搜索树操作"></a>二叉搜索树操作</h4><p>二叉树算法设计: 明确一个节点要做的事, 剩下的交给框架.</p>
 <p>判断 BST 的合法性/增/删/查</p>
-<h5 id="判断BST合法性"><a href="#判断BST合法性" class="headerlink" title="判断BST合法性"></a>判断BST合法性</h5><h5 id="在BST中查找一个数是否存在"><a href="#在BST中查找一个数是否存在" class="headerlink" title="在BST中查找一个数是否存在"></a>在BST中查找一个数是否存在</h5><h5 id="在BST中插入一个数"><a href="#在BST中插入一个数" class="headerlink" title="在BST中插入一个数"></a>在BST中插入一个数</h5><h5 id="在BST中删除一个数"><a href="#在BST中删除一个数" class="headerlink" title="在BST中删除一个数"></a>在BST中删除一个数</h5><h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h1 id="计算机语言"><a href="#计算机语言" class="headerlink" title="计算机语言"></a>计算机语言</h1><h2 id="编译型语言-解释型语言"><a href="#编译型语言-解释型语言" class="headerlink" title="编译型语言 解释型语言"></a>编译型语言 解释型语言</h2><p><strong>编译</strong>: 源代码(高级语言写的代码)转换成目标代码(汇编或者机器(<code>CPU</code>)能够理解的代码)</p>
+<h5 id="判断BST合法性"><a href="#判断BST合法性" class="headerlink" title="判断BST合法性"></a>判断BST合法性</h5><h5 id="在BST中查找一个数是否存在"><a href="#在BST中查找一个数是否存在" class="headerlink" title="在BST中查找一个数是否存在"></a>在BST中查找一个数是否存在</h5><h5 id="在BST中插入一个数"><a href="#在BST中插入一个数" class="headerlink" title="在BST中插入一个数"></a>在BST中插入一个数</h5><h5 id="在BST中删除一个数"><a href="#在BST中删除一个数" class="headerlink" title="在BST中删除一个数"></a>在BST中删除一个数</h5><h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="计算机如何上网"><a href="#计算机如何上网" class="headerlink" title="计算机如何上网"></a>计算机如何上网</h2><p>网卡由MAC地址唯一标识, 传递信件时需要知道对方的MAC地址, 工作在数据链路层.</p>
+<p>为了连接互联网, 计算机 C 首先插入一根网线, 网线与网卡相连. </p>
+<h3 id="计算机获取IP地址"><a href="#计算机获取IP地址" class="headerlink" title="计算机获取IP地址"></a>计算机获取IP地址</h3><p>获取IP地址需要使用DHCP(动态主机配置协议), 需要寻找 DHCP 服务器, 进行动态分配地址</p>
+<p>插入的网线对应的网络中有 DHCP 服务器, 需要与其联系</p>
+<p>首先, 计算机的CPU传递如下内容给网卡.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">收件人: 255.255.255.255:67</span><br><span class="line">发件人: 0.0.0.0:68</span><br><span class="line">内容: 谁有IP地址</span><br></pre></td></tr></table></figure>
+<p>由于网卡不知道对方的MAC地址, 只能对外广播, 即所有电脑都会收到该消息</p>
+<p>网卡对报文进行一层封装之后, 通过网线发送如下内容给交换机:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 请求 IP 地址的包 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面两行为网卡封装</span></span><br><span class="line">目的地: FF:FF:FF:FF:FF:FF <span class="comment">// 广播到同一子网内的所有电脑</span></span><br><span class="line">发件人: <span class="number">11</span>:<span class="number">27</span>:F5:<span class="number">8</span>A:<span class="number">79</span>:<span class="number">54</span> <span class="comment">// 该网卡的MAC地址</span></span><br><span class="line"></span><br><span class="line">收件人: <span class="number">255.255</span><span class="number">.255</span><span class="number">.255</span>:<span class="number">67</span></span><br><span class="line">发件人: <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">68</span></span><br><span class="line">内容: 谁有IP地址</span><br></pre></td></tr></table></figure>
+<p>交换机在看到目的地是 FF:FF:FF:FF:FF:FF 之后, 就立刻转发给了所有连接该交换机的设备, 当然该局域网中所有的 DHCP 服务器都能收到.</p>
+<p>由于局域网中不止一个 DHCP 服务器, 所以计算机可能会收到很多条有IP地址的消息, 但是由于计算机只需要一个IP, 所以针对某一条消息进行了确认回复, 网卡再次进行广播, 对应的 DHCP 服务器发来确认信息.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 选择 IP 地址的回复包(广播) */</span></span><br><span class="line">目的地: FF:FF:FF:FF:FF:FF</span><br><span class="line">发件人: <span class="number">11</span>:<span class="number">27</span>:F5:<span class="number">8</span>A:<span class="number">79</span>:<span class="number">54</span></span><br><span class="line">内容: 服务器 <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span>, 确认需要你提供的 IP: <span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* DHCP 服务器的回复*/</span></span><br><span class="line"></span><br><span class="line">分配的IP: <span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span></span><br><span class="line">网关路由器: <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span></span><br><span class="line">DNS服务器: <span class="number">202.102</span><span class="number">.224</span><span class="number">.69</span></span><br></pre></td></tr></table></figure>
+<p>计算机收到这些信息之后, 就会将这些信息存进内存中, 但是计算机重启之后, 需要将上述过程重复一遍, 来获取IP地址. 除非手动配置IP地址/网关/DNS, 但是容易出错, 一般都是开机自动获取IP地址.</p>
+<p>现在的网络结构</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">当前计算机</span><br><span class="line">IP: <span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span></span><br><span class="line">MAC: <span class="number">11</span>:<span class="number">27</span>:F5:<span class="number">8</span>A:<span class="number">79</span>:<span class="number">54</span></span><br><span class="line">|</span><br><span class="line">交换机</span><br><span class="line">|</span><br><span class="line">DHCP 服务器/网关路由器</span><br><span class="line"><span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span></span><br><span class="line">|</span><br><span class="line"><span class="string">'其他局域网'</span></span><br><span class="line">|</span><br><span class="line">DNS 服务器</span><br><span class="line"><span class="number">202.102</span><span class="number">.224</span><span class="number">.69</span></span><br></pre></td></tr></table></figure>
+<p>有了IP地址之后, 就可以上网了, 现在在浏览器输入一个域名www.baidu.com. 首先, 计算机需要查找这个域名对应的 IP 地址, 则需要准备DNS查询, 与DNS服务器通信.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 查询域名对应IP的包 */</span></span><br><span class="line"></span><br><span class="line">发件人: <span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span> <span class="comment">// 本机 IP</span></span><br><span class="line">收件人: <span class="number">202.102</span><span class="number">.224</span><span class="number">.69</span> <span class="comment">// DNS 服务器</span></span><br><span class="line">内容: 帮忙查询 www.baidu.com 的域名</span><br></pre></td></tr></table></figure>
+<p>但是上述报文到了数据链路层, 网卡需要将这个信息先发送给网关路由器, 则需要先知道它的MAC地址.</p>
+<p>于是网卡又进行一次广播, 寻找网关路由器的MAC地址. 这里采用的方法是 <strong>ARP</strong> (地址解析协议), 网卡通过广播下述内容, 网关路由器收到后, 就会创建一个ARP应答, 回复自己的 MAC 地址.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 查询网关服务器MAC地址的包*/</span></span><br><span class="line"></span><br><span class="line">收件人: FF:FF:FF:FF:FF:FF</span><br><span class="line">发件人: <span class="number">11</span>:<span class="number">27</span>:F5:<span class="number">8</span>A:<span class="number">79</span>:<span class="number">54</span></span><br><span class="line">内容: 寻找网关路由器(<span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span>)的MAC地址</span><br><span class="line"></span><br><span class="line"><span class="comment">// ARP 应答</span></span><br><span class="line">网关路由器MAC地址: <span class="number">88</span><span class="number">-25</span><span class="number">-93</span><span class="number">-79</span>-E0-C8</span><br></pre></td></tr></table></figure>
+<p>知道网关路由器的MAC地址后, 就可以将DNS查询的包在数据链路层通过网卡发送给网关路由器, 路由器抽取DNS查询的数据报, 看到收件人是非此局域网的 DNS 服务器, 则可以转发出去, DNS 服务器最后会收到并且进行回复, 最终得到百度域名的IP地址: 180.101.49.12.</p>
+<p>接着浏览器开始与180.101.49.12这台服务器建立TCP连接, 通过TCP发送 HTTP GET 请求, 获得百度网页, 然后展示在浏览器中.</p>
+<p>无线网卡通过USB与电脑连接, 不需要网线, 同样能够 DHCP/ARP/DNS, 然后上网.</p>
+<p>总结:</p>
+<p>网卡广播, 谁有IP? get IP.</p>
+<p>网卡广播, 网关你的MAC地址说一下? get 网关MAC地址.</p>
+<p>网卡发送DNS查询给网关服务器, 网关转给DNS服务器. get 域名对应IP.</p>
+<h1 id="计算机语言"><a href="#计算机语言" class="headerlink" title="计算机语言"></a>计算机语言</h1><h2 id="编译型语言-解释型语言"><a href="#编译型语言-解释型语言" class="headerlink" title="编译型语言 解释型语言"></a>编译型语言 解释型语言</h2><p><strong>编译</strong>: 源代码(高级语言写的代码)转换成目标代码(汇编或者机器(<code>CPU</code>)能够理解的代码)</p>
 <p><strong>解释</strong>: 解析源代码, 并直接执行, 没有编译的过程. 或者说, 把源代码转换成中间表示(软件<code>CPU</code>的指令), 然后执行.</p>
 <p>其实编译和解释就是编译的程度, 现在的编译其实就是直接转换成二进制代码, 解释其实就是转换成中间状态.</p>
 <p>很多动态语言不仅有解释器, 还有自己的虚拟机, called <strong>高级语言虚拟机</strong>, 有一套自己的指令集, 相当于一个软件<code>CPU</code>. </p>
@@ -652,7 +679,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构与算法"><span class="nav-number">1.</span> <span class="nav-text">数据结构与算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构的存储方式"><span class="nav-number">1.1.</span> <span class="nav-text">数据结构的存储方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构的基本操作"><span class="nav-number">1.2.</span> <span class="nav-text">数据结构的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#二叉搜索树操作"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">二叉搜索树操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#判断BST合法性"><span class="nav-number">1.2.0.1.1.</span> <span class="nav-text">判断BST合法性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在BST中查找一个数是否存在"><span class="nav-number">1.2.0.1.2.</span> <span class="nav-text">在BST中查找一个数是否存在</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在BST中插入一个数"><span class="nav-number">1.2.0.1.3.</span> <span class="nav-text">在BST中插入一个数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在BST中删除一个数"><span class="nav-number">1.2.0.1.4.</span> <span class="nav-text">在BST中删除一个数</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机网络"><span class="nav-number">2.</span> <span class="nav-text">计算机网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机语言"><span class="nav-number">3.</span> <span class="nav-text">计算机语言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译型语言-解释型语言"><span class="nav-number">3.1.</span> <span class="nav-text">编译型语言 解释型语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象"><span class="nav-number">3.2.</span> <span class="nav-text">面向对象</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构与算法"><span class="nav-number">1.</span> <span class="nav-text">数据结构与算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构的存储方式"><span class="nav-number">1.1.</span> <span class="nav-text">数据结构的存储方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构的基本操作"><span class="nav-number">1.2.</span> <span class="nav-text">数据结构的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#二叉搜索树操作"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">二叉搜索树操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#判断BST合法性"><span class="nav-number">1.2.0.1.1.</span> <span class="nav-text">判断BST合法性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在BST中查找一个数是否存在"><span class="nav-number">1.2.0.1.2.</span> <span class="nav-text">在BST中查找一个数是否存在</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在BST中插入一个数"><span class="nav-number">1.2.0.1.3.</span> <span class="nav-text">在BST中插入一个数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在BST中删除一个数"><span class="nav-number">1.2.0.1.4.</span> <span class="nav-text">在BST中删除一个数</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机网络"><span class="nav-number">2.</span> <span class="nav-text">计算机网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机如何上网"><span class="nav-number">2.1.</span> <span class="nav-text">计算机如何上网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机获取IP地址"><span class="nav-number">2.1.1.</span> <span class="nav-text">计算机获取IP地址</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机语言"><span class="nav-number">3.</span> <span class="nav-text">计算机语言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译型语言-解释型语言"><span class="nav-number">3.1.</span> <span class="nav-text">编译型语言 解释型语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象"><span class="nav-number">3.2.</span> <span class="nav-text">面向对象</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -686,7 +713,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">39.8k</span>
+    <span title="Site words total count">43.3k</span>
   
 </div>
 
