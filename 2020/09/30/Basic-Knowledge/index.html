@@ -85,7 +85,7 @@
 <meta property="og:description" content="数据结构与算法数据结构是工具, 算法是通过合适的工具解决特定问题的方法. 数据结构的存储方式数据结构的存储方式只有两种: 数组(顺序存储)与链表(链式存储)     数据结构 定义 数组 链表     队列&#x2F;栈  需要扩容 更多空间存储指针   图 多对多 邻接矩阵 邻接表   散列表 通过散列函数将键映射到一个大数组里  需要解决散列冲突 线性探查法 拉链法   树 一对多 堆, 完全二叉树,不">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-09-30T06:06:46.000Z">
-<meta property="article:modified_time" content="2020-10-31T15:12:34.429Z">
+<meta property="article:modified_time" content="2020-11-02T06:02:20.023Z">
 <meta property="article:author" content="Gillian">
 <meta name="twitter:card" content="summary">
 
@@ -360,7 +360,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  2.3k
+                  2.7k
                 </span>
               
 
@@ -376,7 +376,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  8
+                  9
                 </span>
               
             </div>
@@ -469,6 +469,43 @@
 <p>网卡广播, 谁有IP? get IP.</p>
 <p>网卡广播, 网关你的MAC地址说一下? get 网关MAC地址.</p>
 <p>网卡发送DNS查询给网关服务器, 网关转给DNS服务器. get 域名对应IP.</p>
+<h3 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h3><p>功能: 建立路由表, 做路由选择, 转发IP数据包.</p>
+<p>网关路由器</p>
+<p>负责局域网内机器IP的分发, 同时, 具有外网IP地址(假设是 61.52.247.112), 局域网内的机器想要上外网必须经过网关路由器.</p>
+<p>网关路由器收到局域网内机器(假设是 192.168.1.2)的报文并向外网(查看IP数据报层的目标IP得知)发送之前, 会进行如下操作:</p>
+<ul>
+<li>TCP报文中的源端口换成自己新创建的端口</li>
+<li>IP 数据报层的IP源地址换成自己在外网中的地址</li>
+<li>以太网帧的MAC源地址也换成自己的MAC地址(有没有记录局域网机器的MAC地址?)</li>
+</ul>
+<p>全部替换完成后, 再向外网发送. </p>
+<p>这种替换源地址与源端口的操作称之为<strong>网络地址转换(NAT)</strong>, 同时, 在网关路由器内部会建立一个映射表, 记录自己替换的信息, 叫做<strong>NAT转换表</strong>.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>NAT转换表</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WAN端</td>
+<td>LAN端</td>
+</tr>
+<tr>
+<td>61.52.247.112:2001</td>
+<td>192.168.1.2:3345</td>
+</tr>
+<tr>
+<td>……</td>
+<td>……</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>在收到外网的回复后, 查看 IP 层的信息, 发现目标地址是61.52.247.112, 目标端口是2001, 则查询NAT转换表之后, 知道该报文需要转发给局域网内的机器192.168.1.2的3345端口, 于是再次修改报文中的目标地址与目标端口, 将修改后的数据报发送给局域网机器.</p>
+<p>UPnP</p>
 <h1 id="计算机语言"><a href="#计算机语言" class="headerlink" title="计算机语言"></a>计算机语言</h1><h2 id="编译型语言-解释型语言"><a href="#编译型语言-解释型语言" class="headerlink" title="编译型语言 解释型语言"></a>编译型语言 解释型语言</h2><p><strong>编译</strong>: 源代码(高级语言写的代码)转换成目标代码(汇编或者机器(<code>CPU</code>)能够理解的代码)</p>
 <p><strong>解释</strong>: 解析源代码, 并直接执行, 没有编译的过程. 或者说, 把源代码转换成中间表示(软件<code>CPU</code>的指令), 然后执行.</p>
 <p>其实编译和解释就是编译的程度, 现在的编译其实就是直接转换成二进制代码, 解释其实就是转换成中间状态.</p>
@@ -679,7 +716,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构与算法"><span class="nav-number">1.</span> <span class="nav-text">数据结构与算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构的存储方式"><span class="nav-number">1.1.</span> <span class="nav-text">数据结构的存储方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构的基本操作"><span class="nav-number">1.2.</span> <span class="nav-text">数据结构的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#二叉搜索树操作"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">二叉搜索树操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#判断BST合法性"><span class="nav-number">1.2.0.1.1.</span> <span class="nav-text">判断BST合法性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在BST中查找一个数是否存在"><span class="nav-number">1.2.0.1.2.</span> <span class="nav-text">在BST中查找一个数是否存在</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在BST中插入一个数"><span class="nav-number">1.2.0.1.3.</span> <span class="nav-text">在BST中插入一个数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在BST中删除一个数"><span class="nav-number">1.2.0.1.4.</span> <span class="nav-text">在BST中删除一个数</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机网络"><span class="nav-number">2.</span> <span class="nav-text">计算机网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机如何上网"><span class="nav-number">2.1.</span> <span class="nav-text">计算机如何上网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机获取IP地址"><span class="nav-number">2.1.1.</span> <span class="nav-text">计算机获取IP地址</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机语言"><span class="nav-number">3.</span> <span class="nav-text">计算机语言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译型语言-解释型语言"><span class="nav-number">3.1.</span> <span class="nav-text">编译型语言 解释型语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象"><span class="nav-number">3.2.</span> <span class="nav-text">面向对象</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构与算法"><span class="nav-number">1.</span> <span class="nav-text">数据结构与算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构的存储方式"><span class="nav-number">1.1.</span> <span class="nav-text">数据结构的存储方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构的基本操作"><span class="nav-number">1.2.</span> <span class="nav-text">数据结构的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#二叉搜索树操作"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">二叉搜索树操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#判断BST合法性"><span class="nav-number">1.2.0.1.1.</span> <span class="nav-text">判断BST合法性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在BST中查找一个数是否存在"><span class="nav-number">1.2.0.1.2.</span> <span class="nav-text">在BST中查找一个数是否存在</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在BST中插入一个数"><span class="nav-number">1.2.0.1.3.</span> <span class="nav-text">在BST中插入一个数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在BST中删除一个数"><span class="nav-number">1.2.0.1.4.</span> <span class="nav-text">在BST中删除一个数</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机网络"><span class="nav-number">2.</span> <span class="nav-text">计算机网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机如何上网"><span class="nav-number">2.1.</span> <span class="nav-text">计算机如何上网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机获取IP地址"><span class="nav-number">2.1.1.</span> <span class="nav-text">计算机获取IP地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由器"><span class="nav-number">2.1.2.</span> <span class="nav-text">路由器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机语言"><span class="nav-number">3.</span> <span class="nav-text">计算机语言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译型语言-解释型语言"><span class="nav-number">3.1.</span> <span class="nav-text">编译型语言 解释型语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象"><span class="nav-number">3.2.</span> <span class="nav-text">面向对象</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -713,7 +750,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">43.3k</span>
+    <span title="Site words total count">43.6k</span>
   
 </div>
 
